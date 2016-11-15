@@ -7,13 +7,7 @@ import rx.Subscriber;
  * on 2016/11/15 17:43.
  */
 
-public class BaseSubscriber<T> extends Subscriber<T> {
-
-    private SubscriberOnNextListener mSubscriberOnNextListener;
-
-    public BaseSubscriber(SubscriberOnNextListener mSubscriberOnNextListener) {
-        this.mSubscriberOnNextListener = mSubscriberOnNextListener;
-    }
+public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onCompleted() {
@@ -27,6 +21,6 @@ public class BaseSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onNext(T t) {
-        if (mSubscriberOnNextListener != null) mSubscriberOnNextListener.onNext(t);
+//        if (mSubscriberOnNextListener != null) mSubscriberOnNextListener.onNext(t);
     }
 }

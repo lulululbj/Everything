@@ -12,12 +12,12 @@ import luyao.everything.R;
 import luyao.everything.adapter.GuideAdapter;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
-import luyao.everything.api.SubscriberOnNextListener;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.LogUtils;
+import rx.Subscriber;
 
 
 /**
@@ -33,7 +33,6 @@ public class GuideActivity extends BaseActivity {
 
     private List<GuideEnity> guideEnities = new ArrayList<>();
     private GuideAdapter guideAdapter;
-    private SubscriberOnNextListener getWeatherNext;
 
     @Override
     protected int getLayoutResId() {
@@ -55,33 +54,14 @@ public class GuideActivity extends BaseActivity {
         guideEnities.add(guideEnity);
         guideAdapter.setData(guideEnities);
 
-        getWeatherNext=new SubscriberOnNextListener<HttpResult<List<WeatherEnity>>>(){
+        Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
 
             @Override
-            public void onNext(HttpResult<List<WeatherEnity>> listHttpResult) {
-                Toast.makeText(getApplicationContext(), listHttpResult.getMsg() + "//" + listHttpResult.getRetCode(), Toast.LENGTH_LONG).show();
-                LogUtils.e(listHttpResult.getMsg() + "//" + listHttpResult.getRetCode());
+            public void onNext(List<WeatherEnity> listHttpResult) {
+                Toast.makeText(getApplicationContext(), listHttpResult.get(0).getCity(), Toast.LENGTH_LONG).show();
+//                LogUtils.e(listHttpResult.getMsg() + "//" + listHttpResult.getRetCode());
             }
         };
-
-
-//        Subscriber<HttpResult<List<WeatherEnity>>> subscriber = new Subscriber<HttpResult<List<WeatherEnity>>>() {
-//            @Override
-//            public void onCompleted() {
-//                LogUtils.e("onCompleted");
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                LogUtils.e("onERROR " + e.getMessage());
-//            }
-//
-//            @Override
-//            public void onNext(HttpResult<List<WeatherEnity>> listHttpResult) {
-//                Toast.makeText(getApplicationContext(), listHttpResult.getMsg() + "//" + listHttpResult.getRetCode(), Toast.LENGTH_LONG).show();
-//                LogUtils.e(listHttpResult.getMsg() + "//" + listHttpResult.getRetCode());
-//            }
-//        };
-        Api.getInstance().getWeather(new BaseSubscriber(getWeatherNext), "南京", "江苏");
+        Api.getInstance().getWeather(subscriber, "南京", "江苏");
     }
 }

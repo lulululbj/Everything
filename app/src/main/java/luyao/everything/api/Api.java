@@ -13,7 +13,9 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import rx.subjects.Subject;
 
 /**
  * Created by Lu
@@ -51,13 +53,30 @@ public class Api {
     }
 
     /**
+     * 用来统一处理Http的resultCode,并将HttpResult的Data部分剥离出来返回给subscriber
+     *
+     * @param <T> Subscriber真正需要的数据类型，也就是Data部分的数据类型
+     */
+    private class HttpResultFunc<T> implements Func1<HttpResult<T>, T> {
+
+        @Override
+        public T call(HttpResult<T> httpResult) {
+//            if (httpResult.get() != 0) {
+//                throw new ApiException(httpResult.getResultCode());
+//            }
+            return httpResult.getResult();
+        }
+    }
+
+    /**
      * 获取天气
      *
      * @param city     城市名
      * @param province 省份名
      */
-    public void getWeather(Subscriber<HttpResult<List<WeatherEnity>>> subscriber, String city, String province) {
+    public void getWeather(Subscriber<List<WeatherEnity>> subscriber, String city, String province) {
         getApiSerVice(MOB_BASE_URL).getWeather(Constants.MOB_APPKEY, city, province)
+                .map(new HttpResultFunc<List<WeatherEnity>>())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
