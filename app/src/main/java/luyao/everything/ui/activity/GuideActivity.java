@@ -14,9 +14,7 @@ import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
-import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.weather.WeatherEnity;
-import luyao.everything.utils.LogUtils;
 import rx.Subscriber;
 
 
@@ -59,7 +57,6 @@ public class GuideActivity extends BaseActivity {
             @Override
             public void onNext(List<WeatherEnity> listHttpResult) {
                 Toast.makeText(getApplicationContext(), listHttpResult.get(0).getCity(), Toast.LENGTH_LONG).show();
-//                LogUtils.e(listHttpResult.getMsg() + "//" + listHttpResult.getRetCode());
             }
         };
         Api.getInstance().getWeather(subscriber, "南京", "江苏");

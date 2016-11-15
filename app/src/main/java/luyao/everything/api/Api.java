@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -30,7 +31,7 @@ public class Api {
     private OkHttpClient.Builder httpClientBuilder;
 
     private Api() {
-        httpClientBuilder= new OkHttpClient.Builder();
+        httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
     }
 
@@ -68,6 +69,13 @@ public class Api {
         }
     }
 
+    private <T> void toSubscribe(Observable<T> o, Subscriber<T> s) {
+        o.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(s);
+    }
+
     /**
      * 获取天气
      *
@@ -75,19 +83,16 @@ public class Api {
      * @param province 省份名
      */
     public void getWeather(Subscriber<List<WeatherEnity>> subscriber, String city, String province) {
-        getApiSerVice(MOB_BASE_URL).getWeather(Constants.MOB_APPKEY, city, province)
-                .map(new HttpResultFunc<List<WeatherEnity>>())
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+        Observable observable = getApiSerVice(MOB_BASE_URL).getWeather(Constants.MOB_APPKEY, city, province)
+                .map(new HttpResultFunc<List<WeatherEnity>>());
+        toSubscribe(observable, subscriber);
     }
 
 
     /**
      * 万年历
      */
-    public void getTodayFortune(Subscriber<HttpResult<TodayFortuneEnity>> subscriber,String date){
-        getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY,date);
+    public void getTodayFortune(Subscriber<HttpResult<TodayFortuneEnity>> subscriber, String date) {
+        getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date);
     }
 }

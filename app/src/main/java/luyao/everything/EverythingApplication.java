@@ -16,9 +16,12 @@ public class EverythingApplication extends Application {
 
     public static List<Activity> activities = new ArrayList<>();
 
+    public static Application CONTEXT=null;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        CONTEXT=this;
     }
 
     public static void addActivity(Activity activity) {

@@ -21,6 +21,6 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onNext(T t) {
-//        if (mSubscriberOnNextListener != null) mSubscriberOnNextListener.onNext(t);
+
     }
 }
