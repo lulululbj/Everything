@@ -1,6 +1,7 @@
 package luyao.everything.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class WelcomeActivity extends BaseActivity {
     @OnClick({R.id.welcome_tv})
     public void stopTimer() {
         timer.cancel();
-        startActivity(MainActivity.class);
+        startActivity(GuideActivity.class);
         finish();
     }
 

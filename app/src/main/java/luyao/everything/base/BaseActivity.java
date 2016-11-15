@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import luyao.everything.EverythingApplication;
+import luyao.everything.R;
 import luyao.everything.utils.ScreenUtil;
 
 
@@ -46,5 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void startActivity(Class z){
         startActivity(new Intent(this,z));
+        overridePendingTransition(R.anim.slide_in_form_right,R.anim.slide_out_from_left);
     }
 }
