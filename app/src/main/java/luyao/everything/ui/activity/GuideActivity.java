@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import luyao.everything.R;
 import luyao.everything.adapter.GuideAdapter;
 import luyao.everything.api.Api;
@@ -15,6 +16,7 @@ import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.enity.weather.WeatherEnity;
+import luyao.everything.utils.ToastUtils;
 import rx.Subscriber;
 
 
@@ -39,7 +41,7 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        guideRecycleView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        guideRecycleView.setLayoutManager(new GridLayoutManager(mContext, 2));
         if (guideAdapter == null) guideAdapter = new GuideAdapter();
         guideRecycleView.setAdapter(guideAdapter);
     }
@@ -49,7 +51,28 @@ public class GuideActivity extends BaseActivity {
         GuideEnity guideEnity = new GuideEnity();
         guideEnity.setName("天气预报");
         guideEnity.setResId(R.mipmap.ic_launcher);
+
+        GuideEnity guideEnity1 = new GuideEnity();
+        guideEnity1.setName("天气预报");
+        guideEnity1.setResId(R.mipmap.ic_launcher);
+
+        GuideEnity guideEnity2 = new GuideEnity();
+        guideEnity2.setName("天气预报");
+        guideEnity2.setResId(R.mipmap.ic_launcher);
+
+        GuideEnity guideEnity3 = new GuideEnity();
+        guideEnity3.setName("天气预报");
+        guideEnity3.setResId(R.mipmap.ic_launcher);
+
+        GuideEnity guideEnity4 = new GuideEnity();
+        guideEnity4.setName("天气预报");
+        guideEnity4.setResId(R.mipmap.ic_launcher);
         guideEnities.add(guideEnity);
+        guideEnities.add(guideEnity1);
+        guideEnities.add(guideEnity2);
+        guideEnities.add(guideEnity3);
+        guideEnities.add(guideEnity4);
+
         guideAdapter.setData(guideEnities);
 
         Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
@@ -60,5 +83,10 @@ public class GuideActivity extends BaseActivity {
             }
         };
         Api.getInstance().getWeather(subscriber, "南京", "江苏");
+    }
+
+    @OnClick({R.id.guide_confirm})
+    public void onClick(){
+        ToastUtils.showToast(guideAdapter.getSelect().size()+"");
     }
 }

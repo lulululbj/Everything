@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
-        android:layout_width="230px"
-        android:layout_height="wrap_content"
+        android:layout_width="360px"
+        android:layout_height="80px"
         android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -19,18 +19,16 @@
             android:textColor="@color/black"
             android:textSize="30px"
             tools:text="天气预报"
-            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginTop="20px"/>
 
-        <ImageView
-            android:id="@+id/guide_img"
-            android:layout_below="@id/guide_title"
-            android:layout_marginTop="20px"
-            android:layout_width="160px"
-            android:layout_height="160px"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginBottom="20px"
-            android:layout_centerHorizontal="true"/>
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/guide_checkbox"
+            android:layout_toRightOf="@id/guide_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

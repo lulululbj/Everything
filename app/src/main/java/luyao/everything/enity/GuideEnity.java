@@ -10,6 +10,7 @@ public class GuideEnity {
     private int id;
     private String name;
     private int resId;
+    private boolean isSelected=false;
 
     public int getId() {
         return id;
@@ -33,6 +34,14 @@ public class GuideEnity {
 
     public void setResId(int resId) {
         this.resId = resId;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     @Override
