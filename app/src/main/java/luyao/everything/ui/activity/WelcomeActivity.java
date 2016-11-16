@@ -43,7 +43,7 @@ public class WelcomeActivity extends BaseActivity {
         finish();
     }
 
-    private CountDownTimer timer = new CountDownTimer(4 * 1000, 1000) {
+    private CountDownTimer timer = new CountDownTimer(1 * 1000, 1000) {
         @SuppressLint("DefaultLocale")
         @Override
         public void onTick(long l) {
@@ -52,7 +52,7 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            startActivity(MainActivity.class);
+            startActivity(GuideActivity.class);
             finish();
         }
     };

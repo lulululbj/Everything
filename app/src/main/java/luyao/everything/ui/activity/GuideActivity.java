@@ -1,8 +1,9 @@
 package luyao.everything.ui.activity;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +12,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.R;
 import luyao.everything.adapter.GuideAdapter;
-import luyao.everything.api.Api;
-import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
-import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.ToastUtils;
-import rx.Subscriber;
 
 
 /**
@@ -44,6 +41,9 @@ public class GuideActivity extends BaseActivity {
         guideRecycleView.setLayoutManager(new GridLayoutManager(mContext, 2));
         if (guideAdapter == null) guideAdapter = new GuideAdapter();
         guideRecycleView.setAdapter(guideAdapter);
+
+        showSnackBar();
+
     }
 
     @Override
@@ -75,18 +75,32 @@ public class GuideActivity extends BaseActivity {
 
         guideAdapter.setData(guideEnities);
 
-        Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
-
-            @Override
-            public void onNext(List<WeatherEnity> listHttpResult) {
-                Toast.makeText(getApplicationContext(), listHttpResult.get(0).getCity(), Toast.LENGTH_LONG).show();
-            }
-        };
-        Api.getInstance().getWeather(subscriber, "南京", "江苏");
+//        Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
+//
+//            @Override
+//            public void onNext(List<WeatherEnity> listHttpResult) {
+//                Toast.makeText(getApplicationContext(), listHttpResult.get(0).getCity(), Toast.LENGTH_LONG).show();
+//            }
+//        };
+//        Api.getInstance().getWeather(subscriber, "南京", "江苏");
     }
 
     @OnClick({R.id.guide_confirm})
     public void onClick(){
         ToastUtils.showToast(guideAdapter.getSelect().size()+"");
+    }
+
+    @Override
+    protected void clickBack() {
+        finish();
+    }
+
+    private void showSnackBar(){
+        Snackbar.make(guideRecycleView,"Choose Service",Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }).show();
     }
 }

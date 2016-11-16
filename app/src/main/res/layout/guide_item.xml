@@ -6,28 +6,21 @@
 
     <RelativeLayout
         android:layout_width="360px"
-        android:layout_height="80px"
+        android:layout_height="120px"
         android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:padding="20px">
 
-        <TextView
-            android:id="@+id/guide_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="30px"
-            tools:text="天气预报"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="20px"/>
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/guide_checkbox"
-            android:layout_toRightOf="@id/guide_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"/>
+       <Button
+           android:id="@+id/guide_bt"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:textSize="32px"
+           tools:text="天气预报"
+           android:gravity="center"
+           android:background="@drawable/guide_item_bg_normal"/>
 
     </RelativeLayout>
 

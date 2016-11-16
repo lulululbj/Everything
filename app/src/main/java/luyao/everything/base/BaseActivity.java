@@ -2,11 +2,19 @@ package luyao.everything.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Optional;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.utils.ScreenUtil;
@@ -22,6 +30,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
 
+    @Nullable
+    @BindView(R.id.title_back)
+    protected ImageView title_back;
+    @Nullable
+    @BindView(R.id.title_tv)
+    protected TextView title_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +45,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutResId());
         ButterKnife.bind(this);
         ScreenUtil.initScale(ButterKnife.findById(this, android.R.id.content));
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
         initView();
         setListener();
+
+
+    }
+
+    @Optional
+    @OnClick(R.id.title_back)
+    public void back(){
+        clickBack();
     }
 
     @Override
@@ -46,8 +73,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void setListener();
 
-    protected void startActivity(Class z){
-        startActivity(new Intent(this,z));
-        overridePendingTransition(R.anim.slide_in_form_right,R.anim.slide_out_from_left);
+    protected void clickBack(){}
+
+    protected void startActivity(Class z) {
+        startActivity(new Intent(this, z));
+        overridePendingTransition(R.anim.slide_in_form_right, R.anim.slide_out_from_left);
     }
 }

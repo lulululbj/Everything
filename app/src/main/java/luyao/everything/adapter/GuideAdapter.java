@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
 
@@ -24,15 +26,25 @@ import luyao.everything.enity.GuideEnity;
 
 public class GuideAdapter extends BaseRecycleViewAdapter<GuideEnity, GuideAdapter.GuideHolder> {
 
-    @Override
-    public void bindData(GuideHolder holder, final GuideEnity data, int viewType, final int position) {
-        holder.guide_title.setText(data.getName());
-        holder.guide_checkbox.setChecked(data.isSelected());
+    private Handler mHandler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            notifyDataSetChanged();
+        }
+    };
 
-        holder.guide_checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void bindData(final GuideHolder holder, final GuideEnity data, int viewType, final int position) {
+        holder.guide_bt.setText(data.getName());
+        holder.guide_bt.setBackgroundResource(data.isSelected() ? R.drawable.guide_item_bg_selected : R.drawable.guide_item_bg_normal);
+        holder.guide_bt.setTextColor(data.isSelected()? EverythingApplication.CONTEXT.getResources().getColor(R.color.guide_bg_selected):
+                EverythingApplication.CONTEXT.getResources().getColor(R.color.guide_bg_normal));
+        holder.guide_bt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                mData.get(position).setSelected(b);
+            public void onClick(View view) {
+                data.setSelected(!data.isSelected());
+                mHandler.post(runnable);
             }
         });
 
@@ -54,12 +66,9 @@ public class GuideAdapter extends BaseRecycleViewAdapter<GuideEnity, GuideAdapte
 
     public static class GuideHolder extends BaseRecycleViewAdapter.BaseHolder {
 
+        @BindView(R.id.guide_bt)
+        Button guide_bt;
 
-        @BindView(R.id.guide_title)
-        TextView guide_title;
-
-        @BindView(R.id.guide_checkbox)
-        AppCompatCheckBox guide_checkbox;
 
         public GuideHolder(View itemView) {
             super(itemView);
