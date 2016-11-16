@@ -6,6 +6,8 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+import luyao.everything.utils.ACache;
+
 /**
  * 全局Application
  * Created by Lu
@@ -18,10 +20,13 @@ public class EverythingApplication extends Application {
 
     public static Application CONTEXT=null;
 
+    public static ACache mACache;
+
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT=this;
+        mACache=ACache.get(this);
     }
 
     public static void addActivity(Activity activity) {

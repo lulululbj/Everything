@@ -79,8 +79,12 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
     }
 
 
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener=onItemClickListener;
     }
 
 

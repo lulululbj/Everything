@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="guide_name">
+        <item>天气预报</item>
+        <item>万年历</item>
+    </string-array>
+</resources>

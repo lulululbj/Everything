@@ -5,16 +5,20 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.adapter.GuideAdapter;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
-import luyao.everything.utils.ToastUtils;
+import luyao.everything.utils.Constants;
+import luyao.everything.utils.ToastUtil;
+import luyao.everything.utils.Util;
 
 
 /**
@@ -41,39 +45,13 @@ public class GuideActivity extends BaseActivity {
         guideRecycleView.setLayoutManager(new GridLayoutManager(mContext, 2));
         if (guideAdapter == null) guideAdapter = new GuideAdapter();
         guideRecycleView.setAdapter(guideAdapter);
-
         showSnackBar();
-
     }
 
     @Override
     protected void setListener() {
-        GuideEnity guideEnity = new GuideEnity();
-        guideEnity.setName("天气预报");
-        guideEnity.setResId(R.mipmap.ic_launcher);
 
-        GuideEnity guideEnity1 = new GuideEnity();
-        guideEnity1.setName("天气预报");
-        guideEnity1.setResId(R.mipmap.ic_launcher);
-
-        GuideEnity guideEnity2 = new GuideEnity();
-        guideEnity2.setName("天气预报");
-        guideEnity2.setResId(R.mipmap.ic_launcher);
-
-        GuideEnity guideEnity3 = new GuideEnity();
-        guideEnity3.setName("天气预报");
-        guideEnity3.setResId(R.mipmap.ic_launcher);
-
-        GuideEnity guideEnity4 = new GuideEnity();
-        guideEnity4.setName("天气预报");
-        guideEnity4.setResId(R.mipmap.ic_launcher);
-        guideEnities.add(guideEnity);
-        guideEnities.add(guideEnity1);
-        guideEnities.add(guideEnity2);
-        guideEnities.add(guideEnity3);
-        guideEnities.add(guideEnity4);
-
-        guideAdapter.setData(guideEnities);
+        guideAdapter.setData(Util.getAllGuide(getApplicationContext()));
 
 //        Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
 //
@@ -87,7 +65,15 @@ public class GuideActivity extends BaseActivity {
 
     @OnClick({R.id.guide_confirm})
     public void onClick(){
-        ToastUtils.showToast(guideAdapter.getSelect().size()+"");
+
+        List<GuideEnity> guideEnities=guideAdapter.getSelect();
+        if (guideEnities==null || guideEnities.size()==0){
+            ToastUtil.showToast("请选择您感兴趣的服务");
+        }else {
+            EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
+            startActivity(MainActivity.class);
+        }
+
     }
 
     @Override

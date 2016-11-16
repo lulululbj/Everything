@@ -1,16 +1,19 @@
 package luyao.everything.enity;
 
+import java.io.Serializable;
+
 /**
  * Created by Lu
  * on 2016/11/15 11:03.
  */
 
-public class GuideEnity {
+public class GuideEnity implements Serializable {
 
     private int id;
     private String name;
     private int resId;
-    private boolean isSelected=false;
+    private boolean isSelected = false;
+    private Class z;
 
     public int getId() {
         return id;
@@ -42,6 +45,14 @@ public class GuideEnity {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public Class getZ() {
+        return z;
+    }
+
+    public void setZ(Class z) {
+        this.z = z;
     }
 
     @Override

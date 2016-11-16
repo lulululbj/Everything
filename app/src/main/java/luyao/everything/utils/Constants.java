@@ -8,4 +8,7 @@ package luyao.everything.utils;
 public class Constants {
 
     public static final String MOB_APPKEY="19053c976d790";
+
+    //Acache
+    public static final String SELECT_GUIDES="select_guides";
 }
