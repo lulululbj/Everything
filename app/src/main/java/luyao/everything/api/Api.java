@@ -3,8 +3,10 @@ package luyao.everything.api;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import luyao.everything.EverythingApplication;
 import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.TodayFortuneEnity;
+import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
 import okhttp3.OkHttpClient;
@@ -86,6 +88,14 @@ public class Api {
         Observable observable = getApiSerVice(MOB_BASE_URL).getWeather(Constants.MOB_APPKEY, city, province)
                 .map(new HttpResultFunc<List<WeatherEnity>>());
         toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取城市列表
+     */
+    public void getcityList(Subscriber<List<Province>> subscriber){
+        Observable observable=getApiSerVice(MOB_BASE_URL).getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
+        toSubscribe(observable,subscriber);
     }
 
 

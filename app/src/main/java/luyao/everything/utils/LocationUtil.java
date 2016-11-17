@@ -46,7 +46,7 @@ public class LocationUtil {
     private void initOption() {
         clientOption = new AMapLocationClientOption();
         clientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
-        clientOption.setGpsFirst(true);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+        clientOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
         clientOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
 //        clientOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
         clientOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
@@ -55,6 +55,7 @@ public class LocationUtil {
         AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
         clientOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
         locationClient.setLocationListener(locationListener);
+        locationClient.setLocationOption(clientOption);
     }
 
 

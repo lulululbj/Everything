@@ -4,6 +4,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,11 +15,15 @@ import butterknife.OnClick;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.adapter.GuideAdapter;
+import luyao.everything.api.Api;
+import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
+import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.ToastUtil;
 import luyao.everything.utils.Util;
+import rx.Subscriber;
 
 
 /**
@@ -54,15 +59,6 @@ public class GuideActivity extends BaseActivity {
     protected void setListener() {
 
         guideAdapter.setData(Util.getAllGuide(getApplicationContext()));
-
-//        Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
-//
-//            @Override
-//            public void onNext(List<WeatherEnity> listHttpResult) {
-//                Toast.makeText(getApplicationContext(), listHttpResult.get(0).getCity(), Toast.LENGTH_LONG).show();
-//            }
-//        };
-//        Api.getInstance().getWeather(subscriber, "南京", "江苏");
     }
 
     @Override

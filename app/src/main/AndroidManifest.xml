@@ -49,11 +49,14 @@
             android:name=".ui.activity.WeatherActivity"
             android:screenOrientation="portrait" />
 
-        <!-- 高德定位 -->
+        <!-- 高德定位
+        home  a12d49644becf5133d31346c45189ae2
+        -->
+
         <service android:name="com.amap.api.location.APSService" />
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="ba6bc21d21a0ce26f183eea623e97c14" />
+            android:value="a12d49644becf5133d31346c45189ae2" />
     </application>
 
 </manifest>

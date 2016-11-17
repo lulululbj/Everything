@@ -48,7 +48,7 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
     public void onBindViewHolder(VH holder, int position) {
         holder.itemView.setTag(R.id.item_position, position);
         holder.itemView.setOnClickListener(clickListener);
-        bindData(holder,mData.get(position),getItemViewType(position),position);
+        bindData(holder,mData.get(position),getItemViewType(position),position );
     }
 
     @Override
