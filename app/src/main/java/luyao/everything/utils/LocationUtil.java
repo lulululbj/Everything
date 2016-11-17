@@ -37,20 +37,6 @@ public class LocationUtil {
 
     }
 
-
-    private class MyLocationListener implements AMapLocationListener {
-        @Override
-        public void onLocationChanged(AMapLocation aMapLocation) {
-
-        }
-    }
-
-    public interface LocationCallBack {
-        void locationCallBack(AMapLocation location);
-    }
-
-
-
     /**
      * 默认的定位参数
      *
@@ -62,12 +48,25 @@ public class LocationUtil {
         clientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
         clientOption.setGpsFirst(true);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
         clientOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
-        clientOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
+//        clientOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
         clientOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
         clientOption.setOnceLocation(true);//可选，设置是否单次定位。默认是false
         clientOption.setOnceLocationLatest(true);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
         AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
         clientOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+        locationClient.setLocationListener(locationListener);
+    }
+
+
+    private class MyLocationListener implements AMapLocationListener {
+        @Override
+        public void onLocationChanged(AMapLocation aMapLocation) {
+             locationCallBack.locationCallBack(aMapLocation);
+        }
+    }
+
+    public interface LocationCallBack {
+        void locationCallBack(AMapLocation location);
     }
 
     public void startLocation(LocationCallBack locationCallBack) {

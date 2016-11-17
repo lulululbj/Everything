@@ -1,10 +1,13 @@
 package luyao.everything.ui.activity;
 
 import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
 
 import luyao.everything.R;
 import luyao.everything.base.BaseActivity;
+import luyao.everything.utils.AMapLocationUtil;
 import luyao.everything.utils.LocationUtil;
+import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.ToastUtil;
 
 /**
@@ -27,12 +30,22 @@ public class WeatherActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
+
+//        AMapLocationUtil locationUtil = new AMapLocationUtil();
+//        locationUtil.startLocation(new AMapLocationUtil.LocationCallBack() {
+//            @Override
+//            public void locationCallBack(AMapLocation location) {
+//                LogUtils.e("weather", location.toString());
+//            }
+//        });
+
         LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
             @Override
             public void locationCallBack(AMapLocation location) {
-                ToastUtil.showToast(location.getAddress());
+                LogUtils.e("weather", location.toString());
             }
         });
+
     }
 
     @Override
