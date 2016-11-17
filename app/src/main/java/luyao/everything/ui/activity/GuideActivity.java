@@ -32,7 +32,6 @@ public class GuideActivity extends BaseActivity {
     @BindView(R.id.guideRecycleView)
     RecyclerView guideRecycleView;
 
-    private List<GuideEnity> guideEnities = new ArrayList<>();
     private GuideAdapter guideAdapter;
 
     @Override
@@ -42,6 +41,9 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        title_back.setVisibility(View.GONE);
+        title_right.setVisibility(View.VISIBLE);
+        title_right.setText(R.string.finish);
         guideRecycleView.setLayoutManager(new GridLayoutManager(mContext, 2));
         if (guideAdapter == null) guideAdapter = new GuideAdapter();
         guideRecycleView.setAdapter(guideAdapter);
@@ -63,30 +65,37 @@ public class GuideActivity extends BaseActivity {
 //        Api.getInstance().getWeather(subscriber, "南京", "江苏");
     }
 
-    @OnClick({R.id.guide_confirm})
-    public void onClick(){
-
-        List<GuideEnity> guideEnities=guideAdapter.getSelect();
-        if (guideEnities==null || guideEnities.size()==0){
-            ToastUtil.showToast("请选择您感兴趣的服务");
-        }else {
-            EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
-            startActivity(MainActivity.class);
-        }
-
-    }
-
     @Override
     protected void clickBack() {
         finish();
     }
 
-    private void showSnackBar(){
-        Snackbar.make(guideRecycleView,"Choose Service",Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+    @Override
+    protected void clickRight() {
+        next();
+    }
+
+    private void showSnackBar() {
+        Snackbar.make(guideRecycleView, "Choose Service", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                next();
             }
         }).show();
+    }
+
+    /**
+     * 存储用户选择的服务
+     */
+    private void next() {
+        List<GuideEnity> guideEnities = guideAdapter.getSelect();
+        if (guideEnities == null || guideEnities.size() == 0) {
+            ToastUtil.showToast("请选择您感兴趣的服务");
+        } else {
+            EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
+            EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) guideAdapter.getAll());
+            startActivity(MainActivity.class);
+            finish();
+        }
     }
 }

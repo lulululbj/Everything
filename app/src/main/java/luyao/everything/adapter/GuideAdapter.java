@@ -63,6 +63,11 @@ public class GuideAdapter extends BaseRecycleViewAdapter<GuideEnity, GuideAdapte
         return selectList;
     }
 
+    public List<GuideEnity> getAll() {
+
+        return mData;
+    }
+
 
     public static class GuideHolder extends BaseRecycleViewAdapter.BaseHolder {
 

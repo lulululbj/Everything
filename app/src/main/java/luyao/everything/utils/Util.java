@@ -7,7 +7,9 @@ import java.util.List;
 
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
+import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.ui.activity.GuideActivity;
+import luyao.everything.ui.activity.WeatherActivity;
 
 /**
  * 业务工具类
@@ -21,7 +23,7 @@ public class Util {
         List<GuideEnity> guideEnities = new ArrayList<>();
         String[] guideNames = context.getResources().getStringArray(R.array.guide_name);
         int[] guideImgs = {R.mipmap.ic_launcher, R.mipmap.ic_launcher};
-        Class[] z = {GuideActivity.class, GuideActivity.class};
+        Class[] z = {WeatherActivity.class, GuideActivity.class};
 
         for (int i = 0; i < guideNames.length; i++) {
             GuideEnity guideEnity = new GuideEnity();

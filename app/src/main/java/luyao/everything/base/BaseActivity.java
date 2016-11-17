@@ -36,6 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Nullable
     @BindView(R.id.title_tv)
     protected TextView title_tv;
+    @Nullable
+    @BindView(R.id.title_right)
+    protected TextView title_right;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +60,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Optional
     @OnClick(R.id.title_back)
-    public void back(){
+    public void back() {
         clickBack();
+    }
+
+    @Optional
+    @OnClick(R.id.title_right)
+    public void right() {
+        clickRight();
     }
 
     @Override
@@ -73,7 +82,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void setListener();
 
-    protected void clickBack(){}
+    protected void clickBack() {}
+    protected void clickRight() {}
 
     protected void startActivity(Class z) {
         startActivity(new Intent(this, z));
