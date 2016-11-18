@@ -5,4 +5,15 @@
     <string name="finish">完成</string>
     <string name="weather_forecast">天气预报</string>
     <string name="calendar">万年历</string>
+    <string name="today">今天</string>
+    <string name="sunrise">日出：</string>
+    <string name="sunoff">日落：</string>
+    <string name="wind_speed">风速：</string>
+    <string name="humidity">湿度：</string>
+    <string name="airCondition">空气质量：</string>
+    <string name="exerciseIndex">晨练指数：</string>
+    <string name="coldIndex">感冒指数：</string>
+    <string name="dressingIndex">穿衣指南：</string>
+    <string name="washIndex">洗衣指数：</string>
+    <string name="pollutionIndex">污染指数：</string>
 </resources>
