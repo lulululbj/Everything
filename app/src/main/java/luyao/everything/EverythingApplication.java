@@ -6,7 +6,7 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-import luyao.everything.utils.ACache;
+import luyao.everything.utils.Acache;
 
 
 /**
@@ -21,13 +21,13 @@ public class EverythingApplication extends Application {
 
     public static Application CONTEXT=null;
 
-    public static ACache mACache;
+    public static Acache mACache;
 
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT=this;
-        mACache=ACache.get(this);
+        mACache=Acache.get(this);
     }
 
     public static void addActivity(Activity activity) {

@@ -50,36 +50,36 @@ import android.graphics.drawable.Drawable;
 /**
  * @author Michael Yang（www.yangfuhai.com） update at 2013.08.07
  */
-public class ACache {
+public class Acache {
     public static final int TIME_HOUR = 60 * 60;
     public static final int TIME_DAY = TIME_HOUR * 24;
     private static final int MAX_SIZE = 1000 * 1000 * 50; // 50 mb
     private static final int MAX_COUNT = Integer.MAX_VALUE; // 不限制存放数据的数量
-    private static Map<String, ACache> mInstanceMap = new HashMap<String, ACache>();
-    private ACacheManager mCache;
+    private static Map<String, Acache> mInstanceMap = new HashMap<String, Acache>();
+    private AcacheManager mCache;
 
-    public static ACache get(Context ctx) {
-        return get(ctx, "ACache");
+    public static Acache get(Context ctx) {
+        return get(ctx, "Acache");
     }
 
-    public static ACache get(Context ctx, String cacheName) {
+    public static Acache get(Context ctx, String cacheName) {
         File f = new File(ctx.getCacheDir(), cacheName);
         return get(f, MAX_SIZE, MAX_COUNT);
     }
 
-    public static ACache get(File cacheDir) {
+    public static Acache get(File cacheDir) {
         return get(cacheDir, MAX_SIZE, MAX_COUNT);
     }
 
-    public static ACache get(Context ctx, long max_zise, int max_count) {
-        File f = new File(ctx.getCacheDir(), "ACache");
+    public static Acache get(Context ctx, long max_zise, int max_count) {
+        File f = new File(ctx.getCacheDir(), "Acache");
         return get(f, max_zise, max_count);
     }
 
-    public static ACache get(File cacheDir, long max_zise, int max_count) {
-        ACache manager = mInstanceMap.get(cacheDir.getAbsoluteFile() + myPid());
+    public static Acache get(File cacheDir, long max_zise, int max_count) {
+        Acache manager = mInstanceMap.get(cacheDir.getAbsoluteFile() + myPid());
         if (manager == null) {
-            manager = new ACache(cacheDir, max_zise, max_count);
+            manager = new Acache(cacheDir, max_zise, max_count);
             mInstanceMap.put(cacheDir.getAbsolutePath() + myPid(), manager);
         }
         return manager;
@@ -89,12 +89,12 @@ public class ACache {
         return "_" + android.os.Process.myPid();
     }
 
-    private ACache(File cacheDir, long max_size, int max_count) {
+    private Acache(File cacheDir, long max_size, int max_count) {
         if (!cacheDir.exists() && !cacheDir.mkdirs()) {
             throw new RuntimeException("can't make dirs in "
                     + cacheDir.getAbsolutePath());
         }
-        mCache = new ACacheManager(cacheDir, max_size, max_count);
+        mCache = new AcacheManager(cacheDir, max_size, max_count);
     }
 
     // =======================================
@@ -565,7 +565,7 @@ public class ACache {
      * @author 杨福海（michael） www.yangfuhai.com
      * @version 1.0
      */
-    public class ACacheManager {
+    public class AcacheManager {
         private final AtomicLong cacheSize;
         private final AtomicInteger cacheCount;
         private final long sizeLimit;
@@ -574,7 +574,7 @@ public class ACache {
                 .synchronizedMap(new HashMap<File, Long>());
         protected File cacheDir;
 
-        private ACacheManager(File cacheDir, long sizeLimit, int countLimit) {
+        private AcacheManager(File cacheDir, long sizeLimit, int countLimit) {
             this.cacheDir = cacheDir;
             this.sizeLimit = sizeLimit;
             this.countLimit = countLimit;
