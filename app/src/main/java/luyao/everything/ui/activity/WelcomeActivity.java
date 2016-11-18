@@ -32,7 +32,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void setListener() {
+    protected void initData() {
 
     }
 

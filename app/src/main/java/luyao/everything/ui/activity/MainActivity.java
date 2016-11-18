@@ -38,8 +38,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void setListener() {
-
+    protected void initData() {
 
         guideEnities= (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.SELECT_GUIDES);
         if (guideEnities==null)guideEnities=new ArrayList<>();

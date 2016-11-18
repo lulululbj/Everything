@@ -56,7 +56,7 @@ public class GuideActivity extends BaseActivity {
     }
 
     @Override
-    protected void setListener() {
+    protected void initData() {
 
         guideAdapter.setData(Util.getAllGuide(getApplicationContext()));
     }

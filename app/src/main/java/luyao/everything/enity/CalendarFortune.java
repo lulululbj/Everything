@@ -5,7 +5,7 @@ package luyao.everything.enity;
  * on 2016/11/15 17:34.
  */
 
-public class TodayFortuneEnity {
+public class CalendarFortune {
 //    "avoid":"安葬 出行 安葬 针灸 ",
 //            "date":"2015-05-01",
 //            "holiday":"劳动节",

@@ -38,7 +38,7 @@ public class WeatherActivity extends BaseActivity {
     }
 
     @Override
-    protected void setListener() {
+    protected void initData() {
 
         LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
             @Override
@@ -46,7 +46,7 @@ public class WeatherActivity extends BaseActivity {
 
                 getWeather(location);
 
-                LogUtils.e("weather",location.toString());
+                LogUtils.e("weather", location.toString());
             }
         });
 
@@ -54,22 +54,23 @@ public class WeatherActivity extends BaseActivity {
 
             @Override
             public void onNext(List<Province> listHttpResult) {
-               ToastUtil.showToast(listHttpResult.size()+"");
+                ToastUtil.showToast(listHttpResult.size() + "");
             }
         };
         Api.getInstance().getcityList(subscriber);
 
 
-
     }
 
-    private void getWeather(AMapLocation location){
-        String city=location.getDistrict();
-        if (city.endsWith("区")){
-           city=city.substring(0,city.length()-1);
+    private void getWeather(AMapLocation location) {
+        if (location.getErrorCode() == 0) {
+            String city = location.getDistrict();
+            if (city.endsWith("区")) {
+                city = city.substring(0, city.length() - 1);
+            }
+            String province = location.getDistrict();
+            Api.getInstance().getWeather(subscriber, city, province);
         }
-        String province=location.getDistrict();
-        Api.getInstance().getWeather(subscriber, city, province);
     }
 
     @Override
@@ -81,8 +82,8 @@ public class WeatherActivity extends BaseActivity {
 
         @Override
         public void onNext(List<WeatherEnity> listHttpResult) {
-            WeatherEnity weatherEnity=listHttpResult.get(0);
-            LogUtils.e("weather",weatherEnity.toString());
+            WeatherEnity weatherEnity = listHttpResult.get(0);
+            LogUtils.e("weather", weatherEnity.toString());
         }
     };
 }

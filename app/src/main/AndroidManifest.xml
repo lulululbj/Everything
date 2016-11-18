@@ -48,9 +48,13 @@
         <activity
             android:name=".ui.activity.WeatherActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.CalendarActivty"
+            android:screenOrientation="portrait" />
 
         <!-- 高德定位
         home  a12d49644becf5133d31346c45189ae2
+        company ba6bc21d21a0ce26f183eea623e97c14
         -->
 
         <service android:name="com.amap.api.location.APSService" />

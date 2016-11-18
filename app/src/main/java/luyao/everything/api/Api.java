@@ -3,9 +3,8 @@ package luyao.everything.api;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import luyao.everything.EverythingApplication;
+import luyao.everything.enity.CalendarFortune;
 import luyao.everything.enity.HttpResult;
-import luyao.everything.enity.TodayFortuneEnity;
 import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
@@ -102,7 +101,8 @@ public class Api {
     /**
      * 万年历
      */
-    public void getTodayFortune(Subscriber<HttpResult<TodayFortuneEnity>> subscriber, String date) {
-        getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date);
+    public void getTodayFortune(Subscriber<CalendarFortune> subscriber, String date) {
+        Observable o=getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
+        toSubscribe(o,subscriber);
     }
 }

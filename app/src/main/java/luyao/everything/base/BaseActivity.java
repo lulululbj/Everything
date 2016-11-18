@@ -53,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         initView();
-        setListener();
+        initData();
 
 
     }
@@ -80,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView();
 
-    protected abstract void setListener();
+    protected abstract void initData();
 
     protected void clickBack() {}
     protected void clickRight() {}
