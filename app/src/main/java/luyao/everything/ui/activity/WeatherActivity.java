@@ -1,24 +1,22 @@
 package luyao.everything.ui.activity;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationListener;
 
 import java.util.List;
 
 import butterknife.BindView;
 import luyao.everything.R;
+import luyao.everything.adapter.FutureWeatherAdapter;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
-import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;
-import luyao.everything.utils.ToastUtil;
-import luyao.everything.utils.Util;
 import rx.Subscriber;
 
 /**
@@ -59,6 +57,10 @@ public class WeatherActivity extends BaseActivity {
     TextView weather_washIndex;
     @BindView(R.id.weather_pollutionIndex)
     TextView weather_pollutionIndex;
+    @BindView(R.id.futureWeatherRecycle)
+    RecyclerView futureWeatherRecycle;
+
+    private FutureWeatherAdapter weatherAdapter;
 
 
     @Override
@@ -68,7 +70,10 @@ public class WeatherActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-//        title_tv.setText(R.string.weather_forecast);
+         futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
+        if (weatherAdapter==null)weatherAdapter=new FutureWeatherAdapter();
+        futureWeatherRecycle.setAdapter(weatherAdapter);
+        futureWeatherRecycle.requestDisallowInterceptTouchEvent(false);
     }
 
     @Override
@@ -121,7 +126,7 @@ public class WeatherActivity extends BaseActivity {
         }
     };
 
-    private void setWeatherData(WeatherEnity weatherData){
+    private void setWeatherData(WeatherEnity weatherData) {
         weather_city.setText(weatherData.getDistrct());
         weather_today.setText(weatherData.getWeather());
         weather_tem.setText(weatherData.getTemperature());
@@ -134,9 +139,10 @@ public class WeatherActivity extends BaseActivity {
         weather_airCondition.setText(weatherData.getAirCondition());
         weather_exerciseIndex.setText(weatherData.getExerciseIndex());
         weather_coldIndex.setText(weatherData.getColdIndex());
-        weather_dressingIndex.setText(weatherData.getDistrct());
+        weather_dressingIndex.setText(weatherData.getDressingIndex());
         weather_washIndex.setText(weatherData.getWashIndex());
         weather_pollutionIndex.setText(weatherData.getPollutionIndex());
 
+        weatherAdapter.setData(weatherData.getFuture());
     }
 }

@@ -79,10 +79,19 @@
                 tools:text="14°C~25°C" />
         </RelativeLayout>
 
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/futureWeatherRecycle"
+            android:layout_below="@id/rl_weather_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rl_weather_today"
+            android:layout_below="@id/futureWeatherRecycle"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
