@@ -1,5 +1,6 @@
 package luyao.everything.enity.area;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * on 2016/11/18 00:14
  */
 
-public class Province {
+public class Province implements Serializable{
 
     private String province;
     private List<City> city;

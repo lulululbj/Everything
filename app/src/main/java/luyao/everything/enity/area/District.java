@@ -1,12 +1,14 @@
 package luyao.everything.enity.area;
 
+import java.io.Serializable;
+
 /**
  * 区/县
  * Created by Lu
  * on 2016/11/18 00:17
  */
 
-public class District {
+public class District implements Serializable{
 
     private String district;
 

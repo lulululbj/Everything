@@ -5,10 +5,21 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import luyao.everything.EverythingApplication;
 import luyao.everything.R;
+import luyao.everything.api.Api;
+import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
+import luyao.everything.enity.area.Province;
+import luyao.everything.utils.Constants;
+import luyao.everything.utils.LogUtils;
+import luyao.everything.utils.PreferencesUtils;
+import rx.Subscriber;
 
 /**
  * 欢迎页
@@ -33,7 +44,9 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        if (PreferencesUtils.get(PreferencesUtils.IS_FIRST, true)) {
+            Api.getInstance().getcityList(subscriber);
+        }
     }
 
     @OnClick({R.id.welcome_tv})
@@ -54,6 +67,14 @@ public class WelcomeActivity extends BaseActivity {
         public void onFinish() {
             startActivity(GuideActivity.class);
             finish();
+        }
+    };
+
+    Subscriber<List<Province>> subscriber = new BaseSubscriber<List<Province>>() {
+        @Override
+        public void onNext(List<Province> provinces) {
+            LogUtils.e("weather",provinces.size()+"  welcome");
+            EverythingApplication.mACache.put(Constants.CITY_LIST, (Serializable) provinces);
         }
     };
 }

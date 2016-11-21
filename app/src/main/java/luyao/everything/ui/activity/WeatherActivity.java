@@ -3,6 +3,7 @@ package luyao.everything.ui.activity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.adapter.FutureWeatherAdapter;
@@ -24,6 +26,7 @@ import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;
+import luyao.everything.utils.PreferencesUtils;
 import luyao.everything.utils.TimeUtils;
 import rx.Subscriber;
 
@@ -74,18 +77,25 @@ public class WeatherActivity extends BaseActivity {
 
     private FutureWeatherAdapter weatherAdapter;
 
-    SwipeRefreshLayout.OnRefreshListener refreshListener=new SwipeRefreshLayout.OnRefreshListener() {
+    SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
-                @Override
-                public void locationCallBack(AMapLocation location) {
 
-                    getWeather(location);
+            String district = PreferencesUtils.get(PreferencesUtils.DISTRICT, "");
+            if (TextUtils.isEmpty(district)) {
+                LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
+                    @Override
+                    public void locationCallBack(AMapLocation location) {
 
-                    LogUtils.e("weather", location.toString());
-                }
-            });
+                        getWeather(location);
+
+                        LogUtils.e("weather", location.toString());
+                    }
+                });
+            } else {
+                getWeather(district);
+            }
+
         }
     };
 
@@ -99,40 +109,27 @@ public class WeatherActivity extends BaseActivity {
         futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
         if (weatherAdapter == null) weatherAdapter = new FutureWeatherAdapter();
         futureWeatherRecycle.setAdapter(weatherAdapter);
-
     }
 
     @Override
     protected void initData() {
 
-        WeatherEnity weatherEnity= (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);
-        if (weatherEnity!=null){
+        WeatherEnity weatherEnity = (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);
+        if (weatherEnity != null) {
             setWeatherData(weatherEnity);
-        }else {
+        } else {
             rl_weather_root.setVisibility(View.GONE);
         }
 
         weather_refresh.post(new Runnable() {
             @Override
             public void run() {
-              weather_refresh.setRefreshing(true);
+                weather_refresh.setRefreshing(true);
             }
         });
         refreshListener.onRefresh();
 
-        ((ScrollView)ButterKnife.findById(this,R.id.weather_scrollview)).smoothScrollTo(0,20);
-
-
-//        Subscriber<List<Province>> subscriber = new BaseSubscriber<List<Province>>() {
-//
-//            @Override
-//            public void onNext(List<Province> listHttpResult) {
-//                ToastUtil.showToast(listHttpResult.size() + "");
-//            }
-//        };
-//        Api.getInstance().getcityList(subscriber);
-
-
+        ((ScrollView) ButterKnife.findById(this, R.id.weather_scrollview)).smoothScrollTo(0, 20);
     }
 
     private void getWeather(AMapLocation location) {
@@ -146,10 +143,10 @@ public class WeatherActivity extends BaseActivity {
         }
     }
 
-//    @Override
-//    protected void clickBack() {
-//        finish();
-//    }
+    private void getWeather(String location) {
+        Api.getInstance().getWeather(subscriber, location, location);
+    }
+
 
     Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
 
@@ -159,7 +156,7 @@ public class WeatherActivity extends BaseActivity {
             if (listHttpResult != null && listHttpResult.size() != 0) {
                 closeRefresh();
                 WeatherEnity weatherEnity = listHttpResult.get(0);
-                LogUtils.e("weather",weatherEnity.toString());
+                LogUtils.e("weather", weatherEnity.toString());
                 setWeatherData(weatherEnity);
                 EverythingApplication.mACache.put(Constants.WEATHER_DATA, weatherEnity);
             }
@@ -172,7 +169,7 @@ public class WeatherActivity extends BaseActivity {
         weather_today.setText(weatherData.getWeather());
         weather_tem.setText(weatherData.getTemperature());
         weather_weekday.setText(weatherData.getWeek());
-        weather_tem_range.setText(TimeUtils.LongToTime(weatherData.getUpdateTime(),"MM-dd HH:mm"));
+        weather_tem_range.setText(TimeUtils.LongToTime(weatherData.getUpdateTime(), "MM-dd HH:mm"));
         weather_sunrise.setText(weatherData.getSunrise());
         weather_sunoff.setText(weatherData.getSunset());
         weather_wind_speed.setText(weatherData.getWind());
@@ -187,12 +184,18 @@ public class WeatherActivity extends BaseActivity {
         weatherAdapter.setData(weatherData.getFuture());
     }
 
-    private void closeRefresh(){
+    private void closeRefresh() {
         weather_refresh.post(new Runnable() {
             @Override
             public void run() {
-                 weather_refresh.setRefreshing(false);
+                weather_refresh.setRefreshing(false);
             }
         });
+    }
+
+
+    @OnClick({R.id.edit_city})
+    public void editCity() {
+        startActivity(ChooseProvinceActivity.class);
     }
 }
