@@ -1,5 +1,6 @@
 package luyao.everything.enity.weather;
 
+import java.io.Serializable;
 import java.util.List;
 
 import luyao.everything.enity.weather.FutureWeatherEnity;
@@ -9,7 +10,7 @@ import luyao.everything.enity.weather.FutureWeatherEnity;
  * on 2016/11/15 13:37.
  */
 
-public class WeatherEnity {
+public class WeatherEnity implements Serializable{
 
 //            "airCondition":"轻度污染",
 //            "city":"南京",

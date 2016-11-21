@@ -1,7 +1,10 @@
 package luyao.everything.ui.activity;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -9,14 +12,17 @@ import com.amap.api.location.AMapLocation;
 import java.util.List;
 
 import butterknife.BindView;
+import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.adapter.FutureWeatherAdapter;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
+import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;
+import luyao.everything.utils.TimeUtils;
 import rx.Subscriber;
 
 /**
@@ -59,9 +65,27 @@ public class WeatherActivity extends BaseActivity {
     TextView weather_pollutionIndex;
     @BindView(R.id.futureWeatherRecycle)
     RecyclerView futureWeatherRecycle;
+    @BindView(R.id.weather_refresh)
+    SwipeRefreshLayout weather_refresh;
+    @BindView(R.id.rl_weather_root)
+    RelativeLayout rl_weather_root;
 
     private FutureWeatherAdapter weatherAdapter;
 
+    SwipeRefreshLayout.OnRefreshListener refreshListener=new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
+                @Override
+                public void locationCallBack(AMapLocation location) {
+
+                    getWeather(location);
+
+                    LogUtils.e("weather", location.toString());
+                }
+            });
+        }
+    };
 
     @Override
     protected int getLayoutResId() {
@@ -70,24 +94,31 @@ public class WeatherActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-         futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
-        if (weatherAdapter==null)weatherAdapter=new FutureWeatherAdapter();
+        futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
+        if (weatherAdapter == null) weatherAdapter = new FutureWeatherAdapter();
         futureWeatherRecycle.setAdapter(weatherAdapter);
-        futureWeatherRecycle.requestDisallowInterceptTouchEvent(false);
+
     }
 
     @Override
     protected void initData() {
 
-        LocationUtil.getInstance().startLocation(new LocationUtil.LocationCallBack() {
+        WeatherEnity weatherEnity= (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);
+        if (weatherEnity!=null){
+            rl_weather_root.setVisibility(View.VISIBLE);
+            setWeatherData(weatherEnity);
+        }else {
+            rl_weather_root.setVisibility(View.GONE);
+        }
+
+        weather_refresh.post(new Runnable() {
             @Override
-            public void locationCallBack(AMapLocation location) {
-
-                getWeather(location);
-
-                LogUtils.e("weather", location.toString());
+            public void run() {
+              weather_refresh.setRefreshing(true);
             }
         });
+        refreshListener.onRefresh();
+
 
 //        Subscriber<List<Province>> subscriber = new BaseSubscriber<List<Province>>() {
 //
@@ -103,11 +134,11 @@ public class WeatherActivity extends BaseActivity {
 
     private void getWeather(AMapLocation location) {
         if (location.getErrorCode() == 0) {
-            String city = location.getDistrict();
-            if (city.endsWith("区")) {
+            String city = location.getCity();
+            if (city.endsWith("市")) {
                 city = city.substring(0, city.length() - 1);
             }
-            String province = location.getDistrict();
+            String province = location.getCity();
             Api.getInstance().getWeather(subscriber, city, province);
         }
     }
@@ -121,8 +152,12 @@ public class WeatherActivity extends BaseActivity {
 
         @Override
         public void onNext(List<WeatherEnity> listHttpResult) {
-            WeatherEnity weatherEnity = listHttpResult.get(0);
-            setWeatherData(weatherEnity);
+            closeRefresh();
+            if (listHttpResult != null && listHttpResult.size() != 0) {
+                WeatherEnity weatherEnity = listHttpResult.get(0);
+                setWeatherData(weatherEnity);
+                EverythingApplication.mACache.put(Constants.WEATHER_DATA, weatherEnity);
+            }
         }
     };
 
@@ -131,7 +166,7 @@ public class WeatherActivity extends BaseActivity {
         weather_today.setText(weatherData.getWeather());
         weather_tem.setText(weatherData.getTemperature());
         weather_weekday.setText(weatherData.getWeek());
-        weather_tem_range.setText(weatherData.getUpdateTime());
+        weather_tem_range.setText(TimeUtils.LongToTime(weatherData.getUpdateTime(),"MM-dd HH:mm"));
         weather_sunrise.setText(weatherData.getSunrise());
         weather_sunoff.setText(weatherData.getSunset());
         weather_wind_speed.setText(weatherData.getWind());
@@ -144,5 +179,14 @@ public class WeatherActivity extends BaseActivity {
         weather_pollutionIndex.setText(weatherData.getPollutionIndex());
 
         weatherAdapter.setData(weatherData.getFuture());
+    }
+
+    private void closeRefresh(){
+        weather_refresh.post(new Runnable() {
+            @Override
+            public void run() {
+                 weather_refresh.setRefreshing(false);
+            }
+        });
     }
 }
