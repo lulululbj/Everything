@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
@@ -12,6 +13,7 @@ import com.amap.api.location.AMapLocation;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.adapter.FutureWeatherAdapter;
@@ -105,7 +107,6 @@ public class WeatherActivity extends BaseActivity {
 
         WeatherEnity weatherEnity= (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);
         if (weatherEnity!=null){
-            rl_weather_root.setVisibility(View.VISIBLE);
             setWeatherData(weatherEnity);
         }else {
             rl_weather_root.setVisibility(View.GONE);
@@ -118,6 +119,8 @@ public class WeatherActivity extends BaseActivity {
             }
         });
         refreshListener.onRefresh();
+
+        ((ScrollView)ButterKnife.findById(this,R.id.weather_scrollview)).smoothScrollTo(0,20);
 
 
 //        Subscriber<List<Province>> subscriber = new BaseSubscriber<List<Province>>() {
@@ -152,9 +155,11 @@ public class WeatherActivity extends BaseActivity {
 
         @Override
         public void onNext(List<WeatherEnity> listHttpResult) {
-            closeRefresh();
+
             if (listHttpResult != null && listHttpResult.size() != 0) {
+                closeRefresh();
                 WeatherEnity weatherEnity = listHttpResult.get(0);
+                LogUtils.e("weather",weatherEnity.toString());
                 setWeatherData(weatherEnity);
                 EverythingApplication.mACache.put(Constants.WEATHER_DATA, weatherEnity);
             }
@@ -162,6 +167,7 @@ public class WeatherActivity extends BaseActivity {
     };
 
     private void setWeatherData(WeatherEnity weatherData) {
+        rl_weather_root.setVisibility(View.VISIBLE);
         weather_city.setText(weatherData.getDistrct());
         weather_today.setText(weatherData.getWeather());
         weather_tem.setText(weatherData.getTemperature());

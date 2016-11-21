@@ -6,253 +6,267 @@
     android:layout_height="match_parent">
 
     <ScrollView
+        android:id="@+id/weather_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:id="@+id/rl_weather_root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-
-        <TextView
-            android:id="@+id/weather_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="200px"
-            android:textColor="@color/black"
-            android:textSize="36px"
-            tools:text="上海" />
-
-        <TextView
-            android:id="@+id/weather_today"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/weather_city"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10px"
-            android:textSize="32px"
-            tools:text="多云" />
-
-        <TextView
-            android:id="@+id/weather_tem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/weather_today"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20px"
-            android:textSize="40px"
-            tools:text="19°C" />
-
-
         <RelativeLayout
-            android:id="@+id/rl_weather_today"
+            android:id="@+id/rl_weather_root"
             android:layout_width="match_parent"
-            android:layout_height="50px"
-            android:layout_below="@id/weather_tem"
-            android:layout_marginTop="80px"
-            android:gravity="center_vertical"
-            android:paddingLeft="30px"
-            android:paddingRight="30px">
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
 
             <TextView
-                android:id="@+id/weather_weekday"
+                android:id="@+id/weather_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200px"
                 android:textColor="@color/black"
-                android:textSize="26px"
-                tools:text="周五" />
+                android:textSize="36px"
+                tools:text="上海" />
+
+            <ImageView
+                android:id="@+id/edit_city"
+                android:layout_width="45px"
+                android:layout_height="45px"
+                android:layout_marginLeft="15px"
+                android:layout_marginTop="200px"
+                android:layout_toRightOf="@id/weather_city"
+                android:src="@drawable/edit" />
 
             <TextView
-                android:id="@+id/weather_tv_today"
+                android:id="@+id/weather_today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
-                android:layout_toRightOf="@id/weather_weekday"
-                android:text="@string/today"
-                android:textColor="@color/black"
-                android:textSize="26px" />
+                android:layout_below="@id/weather_city"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10px"
+                android:textSize="32px"
+                tools:text="多云" />
 
             <TextView
-                android:id="@+id/weather_tem_range"
+                android:id="@+id/weather_tem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="20px"
-                android:textColor="@color/black"
-                android:textSize="26px"
-                tools:text="14°C~25°C" />
+                android:layout_below="@id/weather_today"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20px"
+                android:textSize="40px"
+                tools:text="19°C" />
+
+
+            <RelativeLayout
+                android:id="@+id/rl_weather_today"
+                android:layout_width="match_parent"
+                android:layout_height="50px"
+                android:layout_below="@id/weather_tem"
+                android:layout_marginTop="80px"
+                android:gravity="center_vertical"
+                android:paddingLeft="30px"
+                android:paddingRight="30px">
+
+                <TextView
+                    android:id="@+id/weather_weekday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="26px"
+                    tools:text="周五" />
+
+                <TextView
+                    android:id="@+id/weather_tv_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@id/weather_weekday"
+                    android:text="@string/today"
+                    android:textColor="@color/black"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:id="@+id/weather_tem_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20px"
+                    android:textColor="@color/black"
+                    android:textSize="26px"
+                    tools:text="14°C~25°C" />
+            </RelativeLayout>
+
+
+            <ScrollView
+                android:id="@+id/futureScroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_weather_today">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/futureWeatherRecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </ScrollView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/futureScroll"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <LinearLayout style="@style/Rl_Weather">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/sunrise" />
+
+                    <TextView
+                        android:id="@+id/weather_sunrise"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="05:00" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/sunoff" />
+
+                    <TextView
+                        android:id="@+id/weather_sunoff"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="05:00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="20px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/wind_speed" />
+
+                    <TextView
+                        android:id="@+id/weather_wind_speed"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="05:00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/humidity" />
+
+                    <TextView
+                        android:id="@+id/weather_humidity"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="93%" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="20px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/airCondition" />
+
+                    <TextView
+                        android:id="@+id/weather_airCondition"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="良好" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/exerciseIndex" />
+
+                    <TextView
+                        android:id="@+id/weather_exerciseIndex"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="不适宜" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="20px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/coldIndex" />
+
+                    <TextView
+                        android:id="@+id/weather_coldIndex"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="低发期" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/dressingIndex" />
+
+                    <TextView
+                        android:id="@+id/weather_dressingIndex"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="单衣类" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="20px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/washIndex" />
+
+                    <TextView
+                        android:id="@+id/weather_washIndex"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="不适宜" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Rl_Weather"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        style="@style/Rl_Weather_left_tv"
+                        android:text="@string/pollutionIndex" />
+
+                    <TextView
+                        android:id="@+id/weather_pollutionIndex"
+                        style="@style/Rl_Weather_right_tv"
+                        tools:text="71" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
         </RelativeLayout>
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/futureWeatherRecycle"
-            android:layout_below="@id/rl_weather_today"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/futureWeatherRecycle"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-
-            <LinearLayout style="@style/Rl_Weather">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/sunrise" />
-
-                <TextView
-                    android:id="@+id/weather_sunrise"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="05:00" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="10px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/sunoff" />
-
-                <TextView
-                    android:id="@+id/weather_sunoff"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="05:00" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="20px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/wind_speed" />
-
-                <TextView
-                    android:id="@+id/weather_wind_speed"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="05:00" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="10px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/humidity" />
-
-                <TextView
-                    android:id="@+id/weather_humidity"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="93%" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="20px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/airCondition" />
-
-                <TextView
-                    android:id="@+id/weather_airCondition"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="良好" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="10px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/exerciseIndex" />
-
-                <TextView
-                    android:id="@+id/weather_exerciseIndex"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="不适宜" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="20px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/coldIndex" />
-
-                <TextView
-                    android:id="@+id/weather_coldIndex"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="低发期" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="10px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/dressingIndex" />
-
-                <TextView
-                    android:id="@+id/weather_dressingIndex"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="单衣类" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="20px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/washIndex" />
-
-                <TextView
-                    android:id="@+id/weather_washIndex"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="不适宜" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Rl_Weather"
-                android:layout_marginTop="10px">
-
-                <TextView
-                    style="@style/Rl_Weather_left_tv"
-                    android:text="@string/pollutionIndex" />
-
-                <TextView
-                    android:id="@+id/weather_pollutionIndex"
-                    style="@style/Rl_Weather_right_tv"
-                    tools:text="71" />
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
 
 
     </ScrollView>

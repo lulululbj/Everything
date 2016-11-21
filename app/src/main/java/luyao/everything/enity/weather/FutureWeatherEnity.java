@@ -1,11 +1,13 @@
 package luyao.everything.enity.weather;
 
+import java.io.Serializable;
+
 /**
  * Created by Lu
  * on 2016/11/15 14:15.
  */
 
-public class FutureWeatherEnity {
+public class FutureWeatherEnity implements Serializable{
 
 //    "date":"2016-11-15",
 //            "dayTime":"多云",
