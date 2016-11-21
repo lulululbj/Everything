@@ -82,17 +82,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initData();
 
-    protected void clickBack() {}
-    protected void clickRight() {}
+    protected void clickBack() {
+    }
+
+    protected void clickRight() {
+    }
 
     protected void startActivity(Class z) {
         startActivity(new Intent(this, z));
-        overridePendingTransition(R.anim.slide_in_form_right,R.anim.slide_out_to_left);
+        overridePendingTransition(R.anim.slide_in_form_right, R.anim.slide_out_to_left);
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_from_left,R.anim.slide_out_to_right);
+        finish();
+        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+
     }
 }

@@ -3,11 +3,16 @@ package luyao.everything.base;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import luyao.everything.R;
+import luyao.everything.message.ChooseCityMessage;
 import luyao.everything.utils.ToastUtil;
 import luyao.everything.view.LinearItemDecoration;
 
@@ -33,7 +38,6 @@ public abstract class BaseChooseActivity<T> extends BaseActivity {
     protected void initView() {
         chooseRecycler.setLayoutManager(new LinearLayoutManager(mContext));
         chooseRecycler.addItemDecoration(new LinearItemDecoration(mContext,LinearItemDecoration.VERTICAL_LIST));
-        ToastUtil.showToast("test");
     }
 
     @Override
@@ -44,5 +48,24 @@ public abstract class BaseChooseActivity<T> extends BaseActivity {
     protected void setDataList(List<T> list){
         if (dataList.size()>0)dataList.clear();
         dataList.addAll(list);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void chooseCity(ChooseCityMessage cityMessage){
+        onBackPressed();
     }
 }

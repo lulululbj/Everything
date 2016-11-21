@@ -34,7 +34,6 @@ public class ChooseProvinceActivity extends BaseChooseActivity<Province> {
     @Override
     protected void initView() {
         super.initView();
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -60,16 +59,6 @@ public class ChooseProvinceActivity extends BaseChooseActivity<Province> {
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(ChooseCityMessage message) {
-       onBackPressed();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
 
     @Override
     protected void clickBack() {

@@ -33,8 +33,9 @@ public class ChooseDistrictActivity extends BaseChooseActivity<District> {
         districtAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                EventBus.getDefault().post(new ChooseCityMessage());
+
                 PreferencesUtils.set(PreferencesUtils.DISTRICT,dataList.get(position).getDistrict());
+                EventBus.getDefault().post(new ChooseCityMessage());
                 startActivity(WeatherActivity.class);
                 finish();
             }

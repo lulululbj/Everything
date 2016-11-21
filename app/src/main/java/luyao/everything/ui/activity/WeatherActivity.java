@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,6 +27,7 @@ import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
+import luyao.everything.message.ChooseCityMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;
@@ -151,6 +156,21 @@ public class WeatherActivity extends BaseActivity {
     Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
 
         @Override
+        public void onCompleted() {
+            super.onCompleted();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            super.onError(e);
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+        }
+
+        @Override
         public void onNext(List<WeatherEnity> listHttpResult) {
 
             if (listHttpResult != null && listHttpResult.size() != 0) {
@@ -197,5 +217,24 @@ public class WeatherActivity extends BaseActivity {
     @OnClick({R.id.edit_city})
     public void editCity() {
         startActivity(ChooseProvinceActivity.class);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void chooseCity(ChooseCityMessage cityMessage){
+        onBackPressed();
     }
 }

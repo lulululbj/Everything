@@ -29,9 +29,7 @@ public class ChooseCityActivity extends BaseChooseActivity<City> {
 
     @Override
     protected void initView() {
-        super.initView();
-        EventBus.getDefault().register(this);
-    }
+        super.initView();  }
 
     @Override
     protected void initData() {
@@ -55,16 +53,5 @@ public class ChooseCityActivity extends BaseChooseActivity<City> {
     protected void clickBack() {
         super.clickBack();
         onBackPressed();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(ChooseCityMessage message) {
-        onBackPressed();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }
