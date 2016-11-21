@@ -2,6 +2,10 @@ package luyao.everything.ui.activity;
 
 import android.view.View;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +14,7 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.CityAdapter;
 import luyao.everything.base.BaseChooseActivity;
 import luyao.everything.enity.area.City;
+import luyao.everything.message.ChooseCityMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.PreferencesUtils;
 
@@ -21,6 +26,12 @@ import luyao.everything.utils.PreferencesUtils;
 public class ChooseCityActivity extends BaseChooseActivity<City> {
 
     private CityAdapter cityAdapter;
+
+    @Override
+    protected void initView() {
+        super.initView();
+        EventBus.getDefault().register(this);
+    }
 
     @Override
     protected void initData() {
@@ -43,6 +54,17 @@ public class ChooseCityActivity extends BaseChooseActivity<City> {
     @Override
     protected void clickBack() {
         super.clickBack();
-        finish();
+        onBackPressed();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ChooseCityMessage message) {
+        onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

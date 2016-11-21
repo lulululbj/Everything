@@ -2,6 +2,8 @@ package luyao.everything.ui.activity;
 
 import android.view.View;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import luyao.everything.EverythingApplication;
@@ -9,6 +11,7 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.DistrictAdapter;
 import luyao.everything.base.BaseChooseActivity;
 import luyao.everything.enity.area.District;
+import luyao.everything.message.ChooseCityMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.PreferencesUtils;
 
@@ -30,6 +33,7 @@ public class ChooseDistrictActivity extends BaseChooseActivity<District> {
         districtAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                EventBus.getDefault().post(new ChooseCityMessage());
                 PreferencesUtils.set(PreferencesUtils.DISTRICT,dataList.get(position).getDistrict());
                 startActivity(WeatherActivity.class);
                 finish();
@@ -40,5 +44,11 @@ public class ChooseDistrictActivity extends BaseChooseActivity<District> {
         setDataList(districtList);
         districtAdapter.setData(dataList);
 
+    }
+
+    @Override
+    protected void clickBack() {
+        super.clickBack();
+        onBackPressed();
     }
 }
