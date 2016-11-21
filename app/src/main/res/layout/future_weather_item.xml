@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/future_item_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
@@ -7,34 +8,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:paddingLeft="20px"
-        android:paddingRight="20px"
-        android:gravity="center_vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="60px"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:gravity="center_vertical">
 
 
         <TextView
             android:id="@+id/future_weekday"
             style="@style/FutureWeather_Item_tv"
-            tools:text="星期一" />
+            android:text="星期" />
 
         <TextView
             android:id="@+id/future_day_weather"
             style="@style/FutureWeather_Item_tv"
-            tools:text="多云" />
+            android:text="日" />
 
         <TextView
             android:id="@+id/future_night_weather"
             style="@style/FutureWeather_Item_tv"
-            tools:text="多云" />
+            android:text="夜" />
 
         <TextView
             android:id="@+id/future_tem"
             style="@style/FutureWeather_Item_tv"
-            tools:text="5°C~17°" />
+            android:text="温度" />
 
 
 

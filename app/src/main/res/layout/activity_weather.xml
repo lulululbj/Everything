@@ -23,9 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="200px"
+                android:layout_marginTop="150px"
                 android:textColor="@color/black"
-                android:textSize="36px"
+                android:textSize="48px"
                 tools:text="上海" />
 
             <ImageView
@@ -33,7 +33,7 @@
                 android:layout_width="45px"
                 android:layout_height="45px"
                 android:layout_marginLeft="15px"
-                android:layout_marginTop="200px"
+                android:layout_marginTop="160px"
                 android:layout_toRightOf="@id/weather_city"
                 android:src="@drawable/edit" />
 
@@ -43,9 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/weather_city"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10px"
-                android:textSize="32px"
-                tools:text="多云" />
+                android:layout_marginTop="8px"
+                android:textSize="40px"
+                tools:text="多云"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/weather_tem"
@@ -53,8 +54,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/weather_today"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20px"
-                android:textSize="40px"
+                android:layout_marginTop="10px"
+                android:textSize="100px"
+                android:textColor="@color/black"
                 tools:text="19°C" />
 
 
@@ -73,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:textSize="26px"
+                    android:textSize="30px"
                     tools:text="周五" />
 
                 <TextView
@@ -84,7 +86,7 @@
                     android:layout_toRightOf="@id/weather_weekday"
                     android:text="@string/today"
                     android:textColor="@color/black"
-                    android:textSize="26px" />
+                    android:textSize="30px" />
 
                 <TextView
                     android:id="@+id/weather_tem_range"
@@ -93,16 +95,56 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="20px"
                     android:textColor="@color/black"
-                    android:textSize="26px"
+                    android:textSize="30px"
                     tools:text="14°C~25°C" />
             </RelativeLayout>
 
+            <View
+                android:id="@+id/weather_view"
+                android:layout_below="@id/rl_weather_today"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"
+                android:layout_marginTop="5px"/>
 
+
+            <LinearLayout
+                android:id="@+id/weather_item"
+                android:layout_below="@id/weather_view"
+                android:layout_width="match_parent"
+                android:layout_height="60px"
+                android:paddingLeft="30px"
+                android:paddingRight="30px"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:id="@+id/future_weekday"
+                    style="@style/FutureWeather_Item_tv"
+                    android:text="星期" />
+
+                <TextView
+                    android:id="@+id/future_day_weather"
+                    style="@style/FutureWeather_Item_tv"
+                    android:text="日" />
+
+                <TextView
+                    android:id="@+id/future_night_weather"
+                    style="@style/FutureWeather_Item_tv"
+                    android:text="夜" />
+
+                <TextView
+                    android:id="@+id/future_tem"
+                    style="@style/FutureWeather_Item_tv"
+                    android:text="温度" />
+
+            </LinearLayout>
             <ScrollView
                 android:id="@+id/futureScroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rl_weather_today">
+                android:layout_below="@id/weather_item"
+                android:layout_marginTop="5px">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/futureWeatherRecycle"
@@ -112,11 +154,19 @@
                 </android.support.v7.widget.RecyclerView>
             </ScrollView>
 
+            <View
+                android:id="@+id/weather_view2"
+                android:layout_below="@id/futureScroll"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"
+                android:layout_marginTop="5px"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/futureScroll"
+                android:layout_below="@id/weather_view2"
+                android:layout_marginTop="15px"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -250,7 +300,8 @@
 
                 <LinearLayout
                     style="@style/Rl_Weather"
-                    android:layout_marginTop="10px">
+                    android:layout_marginTop="10px"
+                    android:layout_marginBottom="100px">
 
                     <TextView
                         style="@style/Rl_Weather_left_tv"

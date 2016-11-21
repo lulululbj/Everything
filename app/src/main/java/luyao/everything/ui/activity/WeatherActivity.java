@@ -156,26 +156,12 @@ public class WeatherActivity extends BaseActivity {
     Subscriber<List<WeatherEnity>> subscriber = new BaseSubscriber<List<WeatherEnity>>() {
 
         @Override
-        public void onCompleted() {
-            super.onCompleted();
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            super.onError(e);
-        }
-
-        @Override
-        public void onStart() {
-            super.onStart();
-        }
-
-        @Override
         public void onNext(List<WeatherEnity> listHttpResult) {
 
             if (listHttpResult != null && listHttpResult.size() != 0) {
                 closeRefresh();
                 WeatherEnity weatherEnity = listHttpResult.get(0);
+                weatherEnity.getFuture().remove(0);
                 LogUtils.e("weather", weatherEnity.toString());
                 setWeatherData(weatherEnity);
                 EverythingApplication.mACache.put(Constants.WEATHER_DATA, weatherEnity);
