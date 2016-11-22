@@ -1,10 +1,14 @@
 package luyao.everything.api;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONArray;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.enity.HttpResult;
+import luyao.everything.enity.LotteryResult;
 import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
@@ -30,7 +34,6 @@ public class Api {
     private static final int TIME_OUT = 5;
     private static Api api = null;
     private OkHttpClient.Builder httpClientBuilder;
-    private ApiService mApiService;
 
     private Api() {
         httpClientBuilder = new OkHttpClient.Builder();
@@ -103,5 +106,22 @@ public class Api {
     public void getTodayFortune(Subscriber<CalendarFortune> subscriber, String date) {
         Observable o = getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
         toSubscribe(o, subscriber);
+    }
+
+    /**
+     * 获取支持的彩种
+     */
+    public void getLotteryList(Subscriber<List<String>> subscribe) {
+        Observable observable = getApiSerVice(MOB_BASE_URL).getLotteryList(Constants.MOB_APPKEY).map(new HttpResultFunc<List<String>>());
+        toSubscribe(observable, subscribe);
+    }
+
+
+    /**
+     * 获取开奖结果
+     */
+    public void getLotteryResult(Subscriber<LotteryResult> subscriber, String name, String period) {
+        Observable observable = getApiSerVice(MOB_BASE_URL).getLotteryResult(Constants.MOB_APPKEY, name, period).map(new HttpResultFunc<LotteryResult>());
+        toSubscribe(observable, subscriber);
     }
 }

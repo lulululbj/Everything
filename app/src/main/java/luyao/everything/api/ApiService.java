@@ -1,9 +1,12 @@
 package luyao.everything.api;
 
+import org.json.JSONArray;
+
 import java.util.List;
 
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.enity.HttpResult;
+import luyao.everything.enity.LotteryResult;
 import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import retrofit2.http.GET;
@@ -26,5 +29,11 @@ interface ApiService {
 
     @GET("appstore/calendar/day")
     Observable<HttpResult<CalendarFortune>> getTodayFortune(@Query("key") String key, @Query("date") String date);
+
+    @GET("lottery/list")
+    Observable<HttpResult<List<String>>>  getLotteryList(@Query("key")String key);
+
+    @GET("lottery/query")
+    Observable<HttpResult<LotteryResult>> getLotteryResult(@Query("key")String key,@Query("name")String name,@Query("period")String period);
 
 }

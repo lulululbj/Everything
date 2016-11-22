@@ -60,6 +60,9 @@
         <activity
             android:name=".ui.activity.ChooseDistrictActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.LotteryActivity"
+            android:screenOrientation="portrait" />
 
         <!-- 高德定位
         home  a12d49644becf5133d31346c45189ae2
