@@ -175,7 +175,7 @@ public class WeatherActivity extends BaseActivity {
         weather_today.setText(weatherData.getWeather());
         weather_tem.setText(weatherData.getTemperature());
         weather_weekday.setText(weatherData.getWeek());
-        weather_tem_range.setText(TimeUtils.LongToTime(weatherData.getUpdateTime(), "MM-dd HH:mm"));
+        weather_tem_range.setText(TimeUtils.LongToTime(weatherData.getUpdateTime(), "HH:mm"));
         weather_sunrise.setText(weatherData.getSunrise());
         weather_sunoff.setText(weatherData.getSunset());
         weather_wind_speed.setText(weatherData.getWind());

@@ -30,10 +30,12 @@ public class Api {
     private static final int TIME_OUT = 5;
     private static Api api = null;
     private OkHttpClient.Builder httpClientBuilder;
+    private ApiService mApiService;
 
     private Api() {
         httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
+
     }
 
     public static Api getInstance() {
@@ -43,15 +45,12 @@ public class Api {
 
     private ApiService getApiSerVice(String baseUrl) {
 
-        Retrofit mRetrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .client(httpClientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseUrl)
-                .build();
-
-        ApiService mApiService = mRetrofit.create(ApiService.class);
-        return mApiService;
+                .build().create(ApiService.class);
     }
 
     /**
@@ -92,9 +91,9 @@ public class Api {
     /**
      * 获取城市列表
      */
-    public void getcityList(Subscriber<List<Province>> subscriber){
-        Observable observable=getApiSerVice(MOB_BASE_URL).getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
-        toSubscribe(observable,subscriber);
+    public void getcityList(Subscriber<List<Province>> subscriber) {
+        Observable observable = getApiSerVice(MOB_BASE_URL).getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
+        toSubscribe(observable, subscriber);
     }
 
 
@@ -102,7 +101,7 @@ public class Api {
      * 万年历
      */
     public void getTodayFortune(Subscriber<CalendarFortune> subscriber, String date) {
-        Observable o=getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
-        toSubscribe(o,subscriber);
+        Observable o = getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
+        toSubscribe(o, subscriber);
     }
 }

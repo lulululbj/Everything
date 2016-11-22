@@ -13,7 +13,6 @@ import java.util.List;
 import butterknife.BindView;
 import luyao.everything.R;
 import luyao.everything.message.ChooseCityMessage;
-import luyao.everything.utils.ToastUtil;
 import luyao.everything.view.LinearItemDecoration;
 
 /**

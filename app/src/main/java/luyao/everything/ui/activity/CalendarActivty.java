@@ -3,11 +3,15 @@ package luyao.everything.ui.activity;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import cn.aigestudio.datepicker.cons.DPMode;
+import cn.aigestudio.datepicker.views.DatePicker;
 import luyao.everything.R;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.CalendarFortune;
+import luyao.everything.utils.LogUtils;
+import luyao.everything.utils.ToastUtil;
 import rx.Subscriber;
 
 /**
@@ -18,8 +22,18 @@ import rx.Subscriber;
 
 public class CalendarActivty extends BaseActivity {
 
-    @BindView(R.id.tv)
-    TextView tv;
+    @BindView(R.id.datePicker)
+    DatePicker datePicker;
+    @BindView(R.id.lunar)
+    TextView lunar;
+    @BindView(R.id.lunarYear)
+    TextView lunarYear;
+    @BindView(R.id.zodiac)
+    TextView zodiac;
+    @BindView(R.id.suit)
+    TextView suit;
+    @BindView(R.id.avoid)
+    TextView avoid;
 
     @Override
     protected int getLayoutResId() {
@@ -28,24 +42,29 @@ public class CalendarActivty extends BaseActivity {
 
     @Override
     protected void initView() {
-        Api.getInstance().getTodayFortune(subscriber,"2016-11-18");
-        title_tv.setText(R.string.calendar);
+        datePicker.setDate(2016,11);
+        datePicker.setMode(DPMode.SINGLE);
+
     }
 
     @Override
     protected void initData() {
-
+        datePicker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
+            @Override
+            public void onDatePicked(String date) {
+                Api.getInstance().getTodayFortune(new BaseSubscriber<CalendarFortune>() {
+                    @Override
+                    public void onNext(CalendarFortune calendarFortune) {
+                        LogUtils.e("calendar",calendarFortune.toString());
+                        lunar.setText(calendarFortune.getLunar());
+                        lunarYear.setText(calendarFortune.getLunarYear());
+                        avoid.setText(calendarFortune.getAvoid());
+                        suit.setText(calendarFortune.getSuit());
+                        zodiac.setText(calendarFortune.getZodiac());
+                    }
+                }, date);
+            }
+        });
     }
 
-    @Override
-    protected void clickBack() {
-        finish();
-    }
-
-    Subscriber<CalendarFortune> subscriber=new BaseSubscriber<CalendarFortune>() {
-        @Override
-        public void onNext(CalendarFortune calendarFortune) {
-             tv.setText(calendarFortune.toString());
-        }
-    };
 }

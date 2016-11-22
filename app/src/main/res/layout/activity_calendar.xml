@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
-    <include layout="@layout/title_layout"/>
+    <cn.aigestudio.datepicker.views.DatePicker
+        android:layout_marginTop="60px"
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="750px">
+
+    </cn.aigestudio.datepicker.views.DatePicker>
+
 
     <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"/>
+        android:id="@+id/lunar"
+        style="@style/Calendar_tv" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/lunarYear"
+        style="@style/Calendar_tv"/>
+
+    <TextView
+        android:id="@+id/zodiac"
+        style="@style/Calendar_tv"/>
+
+    <TextView
+        android:id="@+id/suit"
+        style="@style/Calendar_tv"/>
+
+    <TextView
+        android:id="@+id/avoid"
+        style="@style/Calendar_tv"/>
+
+
+
+</LinearLayout>

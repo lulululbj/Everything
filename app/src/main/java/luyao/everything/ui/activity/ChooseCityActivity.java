@@ -2,10 +2,6 @@ package luyao.everything.ui.activity;
 
 import android.view.View;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +10,6 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.CityAdapter;
 import luyao.everything.base.BaseChooseActivity;
 import luyao.everything.enity.area.City;
-import luyao.everything.message.ChooseCityMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.PreferencesUtils;
 
