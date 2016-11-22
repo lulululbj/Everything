@@ -24,7 +24,7 @@ public class LotteryActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        getLotteryResult("大乐透");
+
     }
 
     @Override
