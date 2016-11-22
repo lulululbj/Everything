@@ -1,13 +1,19 @@
 package luyao.everything.ui.activity;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import java.util.List;
 
+import butterknife.BindView;
 import luyao.everything.R;
+import luyao.everything.adapter.LotteryAdapter;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.LotteryResult;
 import luyao.everything.utils.ToastUtil;
+import luyao.everything.view.SpaceItemDecoration;
 
 /**
  * 彩票查询
@@ -17,6 +23,11 @@ import luyao.everything.utils.ToastUtil;
 
 public class LotteryActivity extends BaseActivity {
 
+    @BindView(R.id.lotteryRecycle)
+    RecyclerView lotteryRecycle;
+
+    private LotteryAdapter lotteryAdapter;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_lottery;
@@ -24,29 +35,24 @@ public class LotteryActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        lotteryRecycle.setLayoutManager(new LinearLayoutManager(mContext));
+        lotteryRecycle.addItemDecoration(new SpaceItemDecoration(20));
+        if (lotteryAdapter == null) lotteryAdapter = new LotteryAdapter();
+        lotteryRecycle.setAdapter(lotteryAdapter);
     }
 
     @Override
     protected void initData() {
-
+        getLotteryList();
     }
 
     private void getLotteryList() {
         Api.getInstance().getLotteryList(new BaseSubscriber<List<String>>() {
             @Override
             public void onNext(List<String> list) {
-                ToastUtil.showToast(list.size() + "");
+                lotteryAdapter.setData(list);
             }
         });
     }
 
-    private void getLotteryResult(String name) {
-        Api.getInstance().getLotteryResult(new BaseSubscriber<LotteryResult>() {
-            @Override
-            public void onNext(LotteryResult lotteryResult) {
-                ToastUtil.showToast(lotteryResult.toString());
-            }
-        }, name, "");
-    }
 }

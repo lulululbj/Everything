@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="20px"
+        android:background="@drawable/bg_card"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/lottery_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            tools:text="大乐透" />
+
+        <TextView
+        android:id="@+id/lottery_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_toRightOf="@id/lottery_name"
+        android:textColor="@color/black"
+        android:textSize="32px"
+        tools:text="16137期" />
+
+
+        <TextView
+        android:id="@+id/lottery_pool_tv"
+        android:layout_below="@id/lottery_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:textColor="@color/black"
+        android:textSize="32px"
+        android:text="奖池金额：" />
+
+        <TextView
+            android:id="@+id/lottery_pool"
+            android:layout_below="@id/lottery_name"
+            android:layout_toRightOf="@id/lottery_pool_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            tools:text="1000000000" />
+
+        <TextView
+            android:id="@+id/lottery_number_tv"
+            android:layout_below="@id/lottery_pool_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:text="中奖号码：" />
+
+        <TextView
+            android:id="@+id/lottery_number"
+            android:layout_below="@id/lottery_pool_tv"
+            android:layout_toRightOf="@id/lottery_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            tools:text="1000000000" />
+
+        <TextView
+            android:id="@+id/lottery_time_tv"
+            android:layout_below="@id/lottery_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:text="开奖时间：" />
+
+        <TextView
+            android:id="@+id/lottery_time"
+            android:layout_below="@id/lottery_number_tv"
+            android:layout_toRightOf="@id/lottery_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            tools:text="1000000000" />
+
+
+
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

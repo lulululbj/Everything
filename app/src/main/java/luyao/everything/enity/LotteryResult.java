@@ -26,6 +26,15 @@ public class LotteryResult {
     private int sales;
     private List<LotteryDetailsBean> lotteryDetails;
     private List<String> lotteryNumber;
+    private String number;
+
+    public String getNumber() {
+        StringBuffer stringBuffer = new StringBuffer();
+        for (String s : lotteryNumber) {
+            stringBuffer.append(s+"  ");
+        }
+        return stringBuffer.toString();
+    }
 
     public String getAwardDateTime() {
         return awardDateTime;
