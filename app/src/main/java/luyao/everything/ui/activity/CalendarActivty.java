@@ -1,5 +1,6 @@
 package luyao.everything.ui.activity;
 
+import android.provider.Settings;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -11,6 +12,7 @@ import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.utils.LogUtils;
+import luyao.everything.utils.TimeUtils;
 import luyao.everything.utils.ToastUtil;
 import rx.Subscriber;
 
@@ -44,7 +46,7 @@ public class CalendarActivty extends BaseActivity {
     protected void initView() {
         datePicker.setDate(2016,11);
         datePicker.setMode(DPMode.SINGLE);
-
+        getCalendarData(TimeUtils.LongToTime(Long.toString(System.currentTimeMillis()),"yyyy-MM-dd"));
     }
 
     @Override
@@ -52,19 +54,24 @@ public class CalendarActivty extends BaseActivity {
         datePicker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
             @Override
             public void onDatePicked(String date) {
-                Api.getInstance().getTodayFortune(new BaseSubscriber<CalendarFortune>() {
-                    @Override
-                    public void onNext(CalendarFortune calendarFortune) {
-                        LogUtils.e("calendar",calendarFortune.toString());
-                        lunar.setText(calendarFortune.getLunar());
-                        lunarYear.setText(calendarFortune.getLunarYear());
-                        avoid.setText(calendarFortune.getAvoid());
-                        suit.setText(calendarFortune.getSuit());
-                        zodiac.setText(calendarFortune.getZodiac());
-                    }
-                }, date);
+                getCalendarData(date);
             }
         });
+    }
+
+
+    private void getCalendarData(String date){
+        Api.getInstance().getTodayFortune(new BaseSubscriber<CalendarFortune>() {
+            @Override
+            public void onNext(CalendarFortune calendarFortune) {
+                LogUtils.e("calendar",calendarFortune.toString());
+                lunar.setText(calendarFortune.getLunar());
+                lunarYear.setText(String.format("%s年",calendarFortune.getLunarYear()));
+                avoid.setText(String.format("宜：%s",calendarFortune.getAvoid()));
+                suit.setText(String.format("忌：%s",calendarFortune.getSuit()));
+                zodiac.setText(calendarFortune.getZodiac());
+            }
+        }, date);
     }
 
 }
