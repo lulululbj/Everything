@@ -1,10 +1,10 @@
 package luyao.everything.api;
 
-import org.json.JSONArray;
 
 import java.util.List;
 
 import luyao.everything.enity.CalendarFortune;
+import luyao.everything.enity.ExcangeResult;
 import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.LotteryResult;
 import luyao.everything.enity.area.Province;
@@ -35,5 +35,8 @@ interface ApiService {
 
     @GET("lottery/query")
     Observable<HttpResult<LotteryResult>> getLotteryResult(@Query("key")String key,@Query("name")String name,@Query("period")String period);
+
+    @GET("exchange/code/query")
+    Observable<HttpResult<ExcangeResult>> getExchangeResult(@Query("key")String key,@Query("code")String code);
 
 }

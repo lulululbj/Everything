@@ -18,4 +18,7 @@
     <string name="pollutionIndex">污染指数：</string>
     <string name="express_search">快递查询</string>
     <string name="lottery_search">开奖查询</string>
+    <string name="train_search">列车时刻表</string>
+    <string name="cueerncy_exchange">货币汇率</string>
+    <string name="choose_currency">选择币种</string>
 </resources>

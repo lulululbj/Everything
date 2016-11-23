@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import luyao.everything.BuildConfig;
 import luyao.everything.enity.CalendarFortune;
+import luyao.everything.enity.ExcangeResult;
 import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.LotteryResult;
 import luyao.everything.enity.area.Province;
@@ -149,5 +150,13 @@ public class Api {
     public void getLotteryResult(Subscriber<LotteryResult> subscriber, String name, String period) {
         Observable observable = getApiSerVice(MOB_BASE_URL).getLotteryResult(Constants.MOB_APPKEY, name, period).map(new HttpResultFunc<LotteryResult>());
         toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取货币汇率
+     */
+    public void getExchangeResult(Subscriber<ExcangeResult> subscriber,String code){
+        Observable observable=getApiSerVice(MOB_BASE_URL).getExchangeResult(Constants.MOB_APPKEY,code).map(new HttpResultFunc<ExcangeResult>());
+        toSubscribe(observable,subscriber);
     }
 }
