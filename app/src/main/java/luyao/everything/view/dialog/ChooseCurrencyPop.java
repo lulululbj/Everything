@@ -18,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
+import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.CurrencyAdapter;
 import luyao.everything.enity.Currency;
 import luyao.everything.utils.ScreenUtil;
@@ -36,6 +37,7 @@ public class ChooseCurrencyPop extends PopupWindow {
     private CurrencyAdapter currencyAdapter;
     private OnItemClick onItemClick;
     private Activity context;
+    private List<Currency> currencyList=new ArrayList<>();
 
     public ChooseCurrencyPop(Activity context){
         this.context=context;
@@ -61,7 +63,6 @@ public class ChooseCurrencyPop extends PopupWindow {
 
         String[] NAMES=EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_name);
         String[] CODES=EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_code);
-        List<Currency> currencyList=new ArrayList<>();
         for (int i=0;i<NAMES.length;i++){
             Currency currency=new Currency();
             currency.setCode(CODES[i]);
@@ -69,6 +70,16 @@ public class ChooseCurrencyPop extends PopupWindow {
             currencyList.add(currency);
         }
         currencyAdapter.setData(currencyList);
+
+        currencyAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (onItemClick!=null){
+                    onItemClick.onItemCkick(position,currencyList.get(position));
+                    dismiss();
+                }
+            }
+        });
 
         this.setOnDismissListener(new OnDismissListener() {
             @Override

@@ -7,9 +7,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.R;
 import luyao.everything.base.BaseActivity;
+import luyao.everything.enity.Currency;
 import luyao.everything.view.dialog.ChooseCurrencyPop;
 
 /**
+ * 货币汇率查询
  * Created by Lu
  * on 2016/11/23 14:50.
  */
@@ -48,8 +50,14 @@ public class CurrencyExchagneActivity extends BaseActivity {
         chooseCurrency((TextView) view);
     }
 
-    private void chooseCurrency(TextView v) {
+    private void chooseCurrency(final TextView v) {
         if (currencyPop == null) currencyPop = new ChooseCurrencyPop(CurrencyExchagneActivity.this);
         currencyPop.show(v);
+        currencyPop.setOnItemClick(new ChooseCurrencyPop.OnItemClick() {
+            @Override
+            public void onItemCkick(int position, Currency currency) {
+                v.setText(currency.getName());
+            }
+        });
     }
 }
