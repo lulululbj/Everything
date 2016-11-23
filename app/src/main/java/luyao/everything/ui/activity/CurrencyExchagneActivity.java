@@ -7,6 +7,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.R;
 import luyao.everything.base.BaseActivity;
+import luyao.everything.view.dialog.ChooseCurrencyPop;
 
 /**
  * Created by Lu
@@ -19,6 +20,8 @@ public class CurrencyExchagneActivity extends BaseActivity {
     TextView currency_from;
     @BindView(R.id.currency_to)
     TextView currency_to;
+
+    private ChooseCurrencyPop currencyPop;
 
     @Override
     protected int getLayoutResId() {
@@ -40,12 +43,13 @@ public class CurrencyExchagneActivity extends BaseActivity {
         onBackPressed();
     }
 
-    @OnClick({R.id.currency_from,R.id.currency_to})
-    public void choose(View view){
-
+    @OnClick({R.id.currency_from, R.id.currency_to})
+    public void choose(View view) {
+        chooseCurrency((TextView) view);
     }
 
-    private void chooseCurrency(TextView v){
-
+    private void chooseCurrency(TextView v) {
+        if (currencyPop == null) currencyPop = new ChooseCurrencyPop();
+        currencyPop.show(v);
     }
 }
