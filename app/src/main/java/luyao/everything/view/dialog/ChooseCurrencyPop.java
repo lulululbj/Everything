@@ -1,5 +1,8 @@
 package luyao.everything.view.dialog;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -31,8 +34,11 @@ public class ChooseCurrencyPop extends PopupWindow {
     RecyclerView currencyRecycle;
 
     private CurrencyAdapter currencyAdapter;
+    private OnItemClick onItemClick;
+    private Activity context;
 
-    public ChooseCurrencyPop(){
+    public ChooseCurrencyPop(Activity context){
+        this.context=context;
         initPop();
     }
 
@@ -43,11 +49,11 @@ public class ChooseCurrencyPop extends PopupWindow {
 
         setContentView(view);
         setWidth(ScreenUtil.getScalePxValue(640));
-        setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        setHeight(ScreenUtil.getScalePxValue(800));
         setFocusable(true);
         setTouchable(true);
         setOutsideTouchable(true);
-//        setBackgroundDrawable();
+        setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 
         currencyRecycle.setLayoutManager(new LinearLayoutManager(EverythingApplication.CONTEXT));
         if (currencyAdapter==null)currencyAdapter=new CurrencyAdapter();
@@ -63,14 +69,43 @@ public class ChooseCurrencyPop extends PopupWindow {
             currencyList.add(currency);
         }
         currencyAdapter.setData(currencyList);
+
+        this.setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(context, 1f);
+            }
+        });
     }
 
     public void show(View v){
         if (isShowing()){
             dismiss();
+            backgroundAlpha(context, 1f);
         }else {
             showAtLocation(v, Gravity.CENTER,0,0);
+            backgroundAlpha(context, 0.7f);
         }
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(Activity context, float bgAlpha) {
+        WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+        lp.alpha = bgAlpha;
+        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        context.getWindow().setAttributes(lp);
+    }
+
+    public interface OnItemClick {
+        void onItemCkick(int position, Currency currency);
+    }
+
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
     }
 
 

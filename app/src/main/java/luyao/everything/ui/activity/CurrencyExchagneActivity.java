@@ -49,7 +49,7 @@ public class CurrencyExchagneActivity extends BaseActivity {
     }
 
     private void chooseCurrency(TextView v) {
-        if (currencyPop == null) currencyPop = new ChooseCurrencyPop();
+        if (currencyPop == null) currencyPop = new ChooseCurrencyPop(CurrencyExchagneActivity.this);
         currencyPop.show(v);
     }
 }
