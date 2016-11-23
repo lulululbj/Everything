@@ -1,11 +1,14 @@
 package luyao.everything.api;
 
+import android.webkit.WebView;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import luyao.everything.BuildConfig;
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.LotteryResult;
@@ -13,6 +16,7 @@ import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,11 +37,9 @@ public class Api {
     private String MOB_BASE_URL = "http://apicloud.mob.com/";
     private static final int TIME_OUT = 5;
     private static Api api = null;
-    private OkHttpClient.Builder httpClientBuilder;
+
 
     private Api() {
-        httpClientBuilder = new OkHttpClient.Builder();
-        httpClientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
 
     }
 
@@ -46,10 +48,34 @@ public class Api {
         return api;
     }
 
+    private OkHttpClient getHttpClient() {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        if (BuildConfig.DEBUG) {
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        } else {
+            logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        }
+
+        return new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .build();
+    }
+
+
+    private <S> S getService(Class<S> serviceClass, String baseUrl) {
+        return new Retrofit.Builder()
+                .client(getHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(baseUrl)
+                .build().create(serviceClass);
+    }
+
     private ApiService getApiSerVice(String baseUrl) {
 
         return new Retrofit.Builder()
-                .client(httpClientBuilder.build())
+                .client(getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseUrl)

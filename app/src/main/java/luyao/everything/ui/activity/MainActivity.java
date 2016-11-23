@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        title_back.setVisibility(View.GONE);
         mainRecycleView.setLayoutManager(new GridLayoutManager(mContext, 3));
         if (mainAdapter == null) mainAdapter = new MainAdapter();
         mainRecycleView.setAdapter(mainAdapter);
@@ -52,6 +53,4 @@ public class MainActivity extends BaseActivity {
         });
 
     }
-
-
 }

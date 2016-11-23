@@ -9,6 +9,7 @@ import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.ui.activity.CalendarActivty;
+import luyao.everything.ui.activity.ExpressActivity;
 import luyao.everything.ui.activity.GuideActivity;
 import luyao.everything.ui.activity.LotteryActivity;
 import luyao.everything.ui.activity.WeatherActivity;
@@ -24,8 +25,8 @@ public class Util {
     public static List<GuideEnity> getAllGuide(Context context) {
         List<GuideEnity> guideEnities = new ArrayList<>();
         String[] guideNames = context.getResources().getStringArray(R.array.guide_name);
-        int[] guideImgs = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.ic_launcher};
-        Class[] z = {WeatherActivity.class, CalendarActivty.class, LotteryActivity.class};
+        int[] guideImgs = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
+        Class[] z = {WeatherActivity.class, CalendarActivty.class, LotteryActivity.class, ExpressActivity.class};
 
         for (int i = 0; i < guideNames.length; i++) {
             GuideEnity guideEnity = new GuideEnity();

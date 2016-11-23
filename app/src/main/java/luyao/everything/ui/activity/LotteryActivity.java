@@ -35,6 +35,7 @@ public class LotteryActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        title_tv.setText(R.string.lottery_search);
         lotteryRecycle.setLayoutManager(new LinearLayoutManager(mContext));
         lotteryRecycle.addItemDecoration(new SpaceItemDecoration(20));
         if (lotteryAdapter == null) lotteryAdapter = new LotteryAdapter();
@@ -55,4 +56,8 @@ public class LotteryActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void clickBack() {
+        onBackPressed();
+    }
 }

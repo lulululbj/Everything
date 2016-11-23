@@ -16,4 +16,6 @@
     <string name="dressingIndex">穿衣指南：</string>
     <string name="washIndex">洗衣指数：</string>
     <string name="pollutionIndex">污染指数：</string>
+    <string name="express_search">快递查询</string>
+    <string name="lottery_search">开奖查询</string>
 </resources>

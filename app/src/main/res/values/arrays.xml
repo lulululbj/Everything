@@ -4,5 +4,6 @@
         <item>天气预报</item>
         <item>万年历</item>
         <item>彩票查询</item>
+        <item>快递查询</item>
     </string-array>
 </resources>
