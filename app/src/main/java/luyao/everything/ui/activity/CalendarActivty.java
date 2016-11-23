@@ -44,6 +44,7 @@ public class CalendarActivty extends BaseActivity {
 
     @Override
     protected void initView() {
+        title_tv.setText(R.string.calendar);
         datePicker.setDate(2016,11);
         datePicker.setMode(DPMode.SINGLE);
         getCalendarData(TimeUtils.LongToTime(Long.toString(System.currentTimeMillis()),"yyyy-MM-dd"));
@@ -59,6 +60,10 @@ public class CalendarActivty extends BaseActivity {
         });
     }
 
+    @Override
+    protected void clickBack() {
+        onBackPressed();
+    }
 
     private void getCalendarData(String date){
         Api.getInstance().getTodayFortune(new BaseSubscriber<CalendarFortune>() {

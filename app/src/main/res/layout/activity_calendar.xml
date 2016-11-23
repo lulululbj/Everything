@@ -5,8 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
+    <include android:id="@+id/calendarTitle"
+        layout="@layout/title_layout"/>
+
     <cn.aigestudio.datepicker.views.DatePicker
-        android:layout_marginTop="60px"
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
         android:layout_height="750px">

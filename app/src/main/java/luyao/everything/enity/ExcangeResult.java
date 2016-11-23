@@ -141,4 +141,23 @@ public class ExcangeResult {
     public void setYesDayPic(String yesDayPic) {
         this.yesDayPic = yesDayPic;
     }
+
+    @Override
+    public String toString() {
+        return "ExcangeResult{" +
+                "buyPic='" + buyPic + '\'' +
+                ", closePri='" + closePri + '\'' +
+                ", code='" + code + '\'' +
+                ", currency='" + currency + '\'' +
+                ", date='" + date + '\'' +
+                ", diffAmo='" + diffAmo + '\'' +
+                ", diffPer='" + diffPer + '\'' +
+                ", highPic='" + highPic + '\'' +
+                ", lowPic='" + lowPic + '\'' +
+                ", openPri='" + openPri + '\'' +
+                ", range='" + range + '\'' +
+                ", sellPic='" + sellPic + '\'' +
+                ", yesDayPic='" + yesDayPic + '\'' +
+                '}';
+    }
 }

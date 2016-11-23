@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
     <include
@@ -11,22 +13,191 @@
 
     <TextView
         android:id="@+id/currency_from"
-        android:layout_below="@id/currency_title"
         style="@style/Currency_tv" />
 
     <ImageView
         android:id="@+id/two_slide"
         android:layout_width="50px"
         android:layout_height="86px"
-        android:layout_below="@+id/currency_from"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/two_slide"
-        android:layout_marginTop="20px"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px"
+        android:src="@drawable/two_slide" />
 
     <TextView
         android:id="@+id/currency_to"
-        android:layout_below="@id/two_slide"
         style="@style/Currency_tv" />
 
+    <TextView
+        android:id="@+id/currency_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px"
+        android:padding="20px"
+        android:text="@string/query"
+        android:textSize="32px" />
 
-</RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/li_currency_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout style="@style/Currency_Li">
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="最新价：" />
+
+                <TextView
+                    android:id="@+id/currency_closePri"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="买入价："
+                    android:id="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/currency_buyPic"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/Currency_Li">
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="开盘价：" />
+
+                <TextView
+                    android:id="@+id/currency_openPri"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="卖出价：" />
+
+                <TextView
+                    android:id="@+id/currency_sellPic"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/Currency_Li">
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="最高价：" />
+
+                <TextView
+                    android:id="@+id/currency_highPic"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    android:id="@+id/currency_diffPer"
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="涨跌幅：" />
+
+                <TextView
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/Currency_Li">
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="最低价：" />
+
+                <TextView
+                    android:id="@+id/currency_lowPic"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="涨跌额：" />
+
+                <TextView
+                    android:id="@+id/currency_diffAmo"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/Currency_Li">
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="振幅：" />
+
+                <TextView
+                    android:id="@+id/currency_range"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Currency_Li2">
+
+                <TextView
+                    style="@style/Currency_Li_Left_tv"
+                    android:text="昨收价：" />
+
+                <TextView
+                    android:id="@+id/currency_yesDayPic"
+                    style="@style/Currency_Li_Right_tv"
+                    tools:text="1.12139" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
