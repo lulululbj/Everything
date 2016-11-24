@@ -31,6 +31,7 @@
             android:layout_marginTop="20px"/>
 
         <RelativeLayout
+            android:id="@+id/rl_num1"
             android:layout_width="match_parent"
             android:layout_height="100px"
             android:layout_marginTop="15px">
@@ -83,6 +84,7 @@
             android:layout_marginTop="15px"/>
 
         <RelativeLayout
+            android:id="@+id/rl_num2"
             android:layout_width="match_parent"
             android:layout_height="100px"
             android:layout_marginTop="15px">
