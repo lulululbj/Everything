@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal">
+
+
+    <LinearLayout
+        android:layout_width="600px"
+        android:layout_height="400px"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/white"
+        android:paddingLeft="20px"
+        android:paddingRight="20px">
+
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="德邦"
+            android:layout_gravity="center_horizontal"
+            android:textSize="36px"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/divider"
+            android:layout_marginTop="20px"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginTop="15px">
+
+            <ImageView
+                android:id="@+id/img_call1"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@drawable/call"/>
+
+            <RelativeLayout
+                android:layout_toRightOf="@id/img_call1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tv_num1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="95588"
+                    android:textColor="@color/black"
+                    android:textSize="34px"/>
+
+                <View
+                    android:id="@+id/num_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/tv_num1"
+                    android:background="@drawable/divider"
+                    android:layout_marginTop="10px"/>
+
+                <TextView
+                    android:id="@+id/tv_name1"
+                    android:layout_below="@id/num_line1"
+                    android:layout_marginTop="10px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="客服热线"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="28px"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/divider"
+            android:layout_marginTop="15px"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginTop="15px">
+
+            <ImageView
+                android:id="@+id/img_call2"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@drawable/green_call"/>
+
+            <RelativeLayout
+                android:layout_toRightOf="@id/img_call2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tv_num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="95588"
+                    android:textColor="@color/black"
+                    android:textSize="34px"/>
+
+                <View
+                    android:id="@+id/num_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_below="@id/tv_num2"
+                    android:background="@drawable/divider"
+                    android:layout_marginTop="10px"/>
+
+                <TextView
+                    android:id="@+id/tv_name2"
+                    android:layout_below="@id/num_line2"
+                    android:layout_marginTop="10px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="客服热线"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="28px"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

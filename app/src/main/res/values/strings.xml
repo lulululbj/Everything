@@ -23,4 +23,5 @@
     <string name="choose_currency">选择币种</string>
     <string name="query">查询</string>
     <string name="please_choose_currency">请选择币种</string>
+    <string name="userful_number">常用号码</string>
 </resources>

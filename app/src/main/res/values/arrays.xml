@@ -7,6 +7,7 @@
         <item>快递查询</item>
         <item>车票查询</item>
         <item>货币汇率</item>
+        <item>常用号码</item>
     </string-array>
 
     <string-array name="currency_name">

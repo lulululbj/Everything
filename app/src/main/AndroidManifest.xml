@@ -12,6 +12,7 @@
     <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!--用于访问网络，网络定位需要上网-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -71,6 +72,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.TrainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.UserfulNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.NumberDetailActivity"
             android:screenOrientation="portrait" />
 
         <!-- 高德定位

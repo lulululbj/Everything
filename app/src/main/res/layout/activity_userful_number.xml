@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include android:id="@+id/number_title"
+        layout="@layout/title_layout"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/currencyRecycle"
+        android:layout_below="@id/number_title"
+        android:id="@+id/numberRecycle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30px"
-        android:paddingBottom="30px"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 

@@ -29,13 +29,16 @@
 
     <TextView
         android:id="@+id/currency_confirm"
-        android:layout_width="wrap_content"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20px"
         android:padding="20px"
         android:text="@string/query"
-        android:textSize="32px" />
+        android:textSize="32px"
+        android:textColor="@color/white"
+        android:background="@drawable/round_corner"
+        android:gravity="center"/>
 
 
     <LinearLayout

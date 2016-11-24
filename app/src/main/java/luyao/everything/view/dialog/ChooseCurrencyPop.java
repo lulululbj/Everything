@@ -22,6 +22,7 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.CurrencyAdapter;
 import luyao.everything.enity.Currency;
 import luyao.everything.utils.ScreenUtil;
+import luyao.everything.view.LinearItemDecoration;
 
 /**
  * 选择币种
@@ -58,6 +59,7 @@ public class ChooseCurrencyPop extends PopupWindow {
         setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 
         currencyRecycle.setLayoutManager(new LinearLayoutManager(EverythingApplication.CONTEXT));
+        currencyRecycle.addItemDecoration(new LinearItemDecoration(EverythingApplication.CONTEXT,LinearItemDecoration.VERTICAL_LIST));
         if (currencyAdapter==null)currencyAdapter=new CurrencyAdapter();
         currencyRecycle.setAdapter(currencyAdapter);
 
@@ -101,8 +103,6 @@ public class ChooseCurrencyPop extends PopupWindow {
 
     /**
      * 设置添加屏幕的背景透明度
-     *
-     * @param bgAlpha
      */
     public void backgroundAlpha(Activity context, float bgAlpha) {
         WindowManager.LayoutParams lp = context.getWindow().getAttributes();

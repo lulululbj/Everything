@@ -12,6 +12,7 @@
         android:textColor="@color/black"
         tools:text="人民币"
         android:gravity="center_vertical"
-        android:paddingLeft="30px" />
+        android:paddingLeft="30px"
+        android:background="@color/white"/>
 
 </RelativeLayout>
