@@ -91,8 +91,8 @@
             android:value="ba6bc21d21a0ce26f183eea623e97c14" />
 
         <!-- 友盟统计 -->
-        <meta-data android:value="YOUR_APP_KEY" android:name="5837b7244ad1563050000def"/>
-        <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
+        <meta-data android:value="5837b7244ad1563050000def" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="test" android:name="UMENG_CHANNEL"/>
     </application>
 
 </manifest>

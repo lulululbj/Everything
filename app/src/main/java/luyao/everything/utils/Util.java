@@ -36,8 +36,8 @@ public class Util {
     public static List<GuideEnity> getAllGuide(Context context) {
         List<GuideEnity> guideEnities = new ArrayList<>();
         String[] guideNames = context.getResources().getStringArray(R.array.guide_name);
-        int[] guideImgs = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+        int[] guideImgs = {R.drawable.weather_forecast, R.drawable.calendar, R.drawable.lottery, R.drawable.express, R.drawable.train,
+                R.drawable.currency, R.drawable.number};
         Class[] z = {WeatherActivity.class, CalendarActivty.class, LotteryActivity.class, ExpressActivity.class, TrainActivity.class,
                 CurrencyExchagneActivity.class, UserfulNumberActivity.class};
 

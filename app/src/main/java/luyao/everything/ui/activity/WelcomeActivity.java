@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import com.squareup.haha.perflib.Main;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -54,8 +56,7 @@ public class WelcomeActivity extends BaseActivity {
     @OnClick({R.id.welcome_tv})
     public void stopTimer() {
         timer.cancel();
-        startActivity(GuideActivity.class);
-        finish();
+        startActivity();
     }
 
     private CountDownTimer timer = new CountDownTimer(1 * 1000, 1000) {
@@ -67,16 +68,26 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            startActivity(GuideActivity.class);
-            finish();
+            startActivity();
         }
     };
 
     Subscriber<List<Province>> subscriber = new BaseSubscriber<List<Province>>() {
         @Override
         public void onNext(List<Province> provinces) {
-            LogUtils.e("weather",provinces.size()+"  welcome");
+            LogUtils.e("weather", provinces.size() + "  welcome");
             EverythingApplication.mACache.put(Constants.CITY_LIST, (Serializable) provinces);
         }
     };
+
+    private void startActivity() {
+        if (PreferencesUtils.get(PreferencesUtils.IS_FIRST, true)) {
+            startActivity(GuideActivity.class);
+
+        } else {
+            startActivity(MainActivity.class);
+        }
+        PreferencesUtils.set(PreferencesUtils.IS_FIRST, false);
+        finish();
+    }
 }
