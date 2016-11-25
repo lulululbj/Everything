@@ -94,7 +94,6 @@ public class WeatherActivity extends BaseActivity {
 
                         getWeather(location);
 
-                        LogUtils.e("weather", location.toString());
                     }
                 });
             } else {

@@ -3,6 +3,8 @@ package luyao.everything;
 import android.app.Activity;
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,12 @@ public class EverythingApplication extends Application {
         super.onCreate();
         CONTEXT=this;
         mACache=Acache.get(this);
+
+        //初始化LeakCanary
+        if (LeakCanary.isInAnalyzerProcess(this)){
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public static void addActivity(Activity activity) {
