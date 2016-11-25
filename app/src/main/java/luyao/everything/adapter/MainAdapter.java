@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.List;
+
 import butterknife.BindView;
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
@@ -15,7 +18,7 @@ import luyao.everything.enity.GuideEnity;
  * on 2016/11/16 13:16.
  */
 
-public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.MainHolder> {
+public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.MainHolder> implements OnMoveListener{
 
 
     @Override
@@ -29,6 +32,13 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
         return new MainHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item, null));
     }
 
+    @Override
+    public boolean onItemMove(int fromPostion, int toPosition) {
+        Collections.swap(mData,fromPostion,toPosition);
+        notifyItemMoved(fromPostion,toPosition);
+        return true;
+    }
+
     static class MainHolder extends BaseRecycleViewAdapter.BaseHolder {
 
         @BindView(R.id.main_img)
@@ -40,5 +50,9 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
         public MainHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public List<GuideEnity> getAllList(){
+        return mData;
     }
 }

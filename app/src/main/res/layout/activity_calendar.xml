@@ -11,7 +11,7 @@
     <cn.aigestudio.datepicker.views.DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
-        android:layout_height="750px">
+        android:layout_height="wrap_content">
 
     </cn.aigestudio.datepicker.views.DatePicker>
 
@@ -20,17 +20,28 @@
         android:id="@+id/lunar"
         style="@style/Calendar_tv" />
 
-    <TextView
-        android:id="@+id/lunarYear"
-        style="@style/Calendar_tv"/>
 
-    <TextView
-        android:id="@+id/zodiac"
-        style="@style/Calendar_tv"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px">
+        <TextView
+            android:id="@+id/lunarYear"
+            style="@style/Calendar_tv"/>
+
+        <TextView
+            android:id="@+id/zodiac"
+            style="@style/Calendar_tv"
+            android:layout_marginLeft="20px"/>
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/suit"
-        style="@style/Calendar_tv"/>
+        style="@style/Calendar_tv"
+        android:layout_marginTop="0px"/>
 
     <TextView
         android:id="@+id/avoid"
