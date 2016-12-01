@@ -85,7 +85,7 @@ public class WelcomeActivity extends BaseActivity {
             startActivity(GuideActivity.class);
 
         } else {
-            startActivity(MainActivity.class);
+            startActivity(MenuActivity.class);
         }
         PreferencesUtils.set(PreferencesUtils.IS_FIRST, false);
         finish();

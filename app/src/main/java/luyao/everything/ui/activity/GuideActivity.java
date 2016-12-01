@@ -83,7 +83,7 @@ public class GuideActivity extends BaseActivity {
         } else {
             EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
             EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) guideAdapter.getAll());
-            startActivity(MainActivity.class);
+            startActivity(MenuActivity.class);
             finish();
         }
     }

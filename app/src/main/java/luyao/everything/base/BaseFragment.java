@@ -28,7 +28,7 @@ public abstract class BaseFragment extends Fragment {
         if (mView == null) {
             mView = inflater.inflate(getLayoutResId(), container, false);
             ScreenUtil.initScale(mView);
-            ButterKnife.bind(getActivity());
+            ButterKnife.bind(this,mView);
             initView();
             initData();
 
