@@ -84,7 +84,7 @@ public class ServiceManagerActivity extends BaseActivity {
 
             EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) allList);
 
-            for (int i=ints.size();i>0;i--){
+            for (int i=ints.size()-1;i>=0;i--){
                 allList.remove(i);
             }
 
