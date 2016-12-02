@@ -14,7 +14,7 @@
 
     <FrameLayout
         android:id="@+id/left_content"
-        android:layout_width="200px"
+        android:layout_width="480px"
         android:layout_height="match_parent"
         android:layout_gravity="start">
 
