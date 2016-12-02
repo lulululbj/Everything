@@ -6,12 +6,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
+import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
+import luyao.everything.utils.Constants;
 
 /**
  * Created by Lu
@@ -38,6 +42,14 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
     public boolean onItemMove(int fromPostion, int toPosition) {
         Collections.swap(mData,fromPostion,toPosition);
         notifyItemMoved(fromPostion,toPosition);
+
+
+        List<GuideEnity> unSelect= (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.UNSELECT_GUIDES);
+        List<GuideEnity> allGuide=new ArrayList<>();
+        allGuide.addAll(mData);
+        allGuide.addAll(unSelect);
+        EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) mData);
+        EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) allGuide);
         return true;
     }
 

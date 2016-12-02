@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -83,6 +84,11 @@ public class GuideActivity extends BaseActivity {
         } else {
             EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
             EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) guideAdapter.getAll());
+            List<GuideEnity> unSelect=new ArrayList<>();
+            for (GuideEnity guideEnity:guideAdapter.getAll()){
+                if (!guideEnity.isSelected())unSelect.add(guideEnity);
+            }
+            EverythingApplication.mACache.put(Constants.UNSELECT_GUIDES, (Serializable) unSelect);
             startActivity(MenuActivity.class);
             finish();
         }

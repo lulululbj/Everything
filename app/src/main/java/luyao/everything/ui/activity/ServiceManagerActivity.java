@@ -56,52 +56,22 @@ public class ServiceManagerActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        List<Integer> ints = new ArrayList<>();
+
         List<GuideEnity> allList = managerAdapter.getList();
-        List<GuideEnity> newList2 = new ArrayList<>();
-        List<GuideEnity> selectList = (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.SELECT_GUIDES);
-        List<GuideEnity> newList = new ArrayList<>();
-        if (selectList != null && allList != null) {
-//            for (GuideEnity guideEnity : selectList) {//为保证顺序，先取出已选列表中仍选择的，再取出新增加的
-//                for (GuideEnity guideEnity1 : allList) {
-//                    if (guideEnity.getName().equals(guideEnity1.getName())) {
-//                        if (guideEnity1.isSelected()) newList.add(guideEnity1);
-//                    }
-//                }
-//            }
+        List<GuideEnity> selectList = new ArrayList<>();
+        List<GuideEnity> unSelectList = new ArrayList<>();
 
-            for (int i = 0; i < selectList.size(); i++) {
-                for (int j = 0; j < allList.size(); j++) {
-                    if (selectList.get(i).getName().equals(allList.get(j).getName())) {
-                        if (allList.get(j).isSelected()) {
-                            newList.add(allList.get(j));
-                            ints.add(j);
-                        }
-                    }
-                }
+        for (GuideEnity guideEnity : allList) {
+            if (guideEnity.isSelected()) {
+                selectList.add(guideEnity);
+            } else {
+                unSelectList.add(guideEnity);
             }
-
-            EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) allList);
-
-            for (int i=ints.size()-1;i>=0;i--){
-                allList.remove(i);
-            }
-
-            for (GuideEnity guideEnity : allList) {
-                boolean hasAdd = false;
-                for (GuideEnity guideEnity1 : newList) {
-                    if (!guideEnity.getName().equals(guideEnity1.getName()) && guideEnity.isSelected()) {
-                        if (!hasAdd) {
-                            newList2.add(guideEnity);
-                            hasAdd = true;
-                        }
-                    }
-                }
-            }
-            newList.addAll(newList2);
-            EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) newList);
-
         }
+        EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) selectList);
+        EverythingApplication.mACache.put(Constants.UNSELECT_GUIDES, (Serializable) unSelectList);
+        EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) allList);
+
+        super.onBackPressed();
     }
 }

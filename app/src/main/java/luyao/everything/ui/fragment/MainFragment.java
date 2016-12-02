@@ -68,13 +68,6 @@ public class MainFragment extends BaseFragment {
         });
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        //存储用户拖动后的集合
-        List<GuideEnity> guideEnityList = mainAdapter.getAllList();
-        EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnityList);
-    }
 
     @OnClick({R.id.title_back})
     public void onClick(View v){
