@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--用于申请调用A-GPS模块-->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:name=".EverythingApplication"
@@ -49,7 +49,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.WeatherActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.CalendarActivty"
             android:screenOrientation="portrait" />
@@ -84,8 +84,12 @@
             android:name=".ui.activity.ServiceManagerActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.activity.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:theme="@android:style/Theme.Translucent" />
+
 
         <!-- 高德定位
         home  a12d49644becf5133d31346c45189ae2

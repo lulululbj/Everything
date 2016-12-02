@@ -68,6 +68,13 @@ public class MainFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        guideEnities = (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.SELECT_GUIDES);
+        if (guideEnities == null) guideEnities = new ArrayList<>();
+        mainAdapter.setData(guideEnities);
+    }
 
     @OnClick({R.id.title_back})
     public void onClick(View v){
