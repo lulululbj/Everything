@@ -12,4 +12,5 @@
 
     <color name="guide_bg_normal">#a9a9a9</color>
     <color name="guide_bg_selected">#ff1793</color>
+    <color name="menu_text">#E8F5FF</color>
 </resources>

@@ -24,4 +24,8 @@
     <string name="query">查询</string>
     <string name="please_choose_currency">请选择币种</string>
     <string name="userful_number">常用号码</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="manager_services">服务管理</string>
+    <string name="share">分享</string>
 </resources>

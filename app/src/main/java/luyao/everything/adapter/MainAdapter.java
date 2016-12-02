@@ -23,8 +23,10 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
 
     @Override
     public void bindData(MainHolder holder, GuideEnity data, int viewType, int position) {
-        holder.main_img.setImageResource(data.getResId());
-        holder.main_tv.setText(data.getName());
+        if (data.isSelected()){
+            holder.main_img.setImageResource(data.getResId());
+            holder.main_tv.setText(data.getName());
+        }
     }
 
     @Override

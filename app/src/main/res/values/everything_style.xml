@@ -89,7 +89,34 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="LeftMenu_Rl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120px</item>
+    </style>
 
+    <style name="LeftMenu_TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">120px</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20px</item>
+        <item name="android:textColor">@color/menu_text</item>
+        <item name="android:textSize">28px</item>
+    </style>
+
+    <style name="LeftMenu_Image">
+        <item name="android:layout_width">40px</item>
+        <item name="android:layout_height">40px</item>
+        <item name="android:layout_marginLeft">40px</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="LeftMenu_Line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2px</item>
+        <item name="android:background">#22adadad</item>
+        <item name="android:layout_marginRight">50px</item>
+        <item name="android:layout_marginLeft">40px</item>
+    </style>
 
 
 </resources>

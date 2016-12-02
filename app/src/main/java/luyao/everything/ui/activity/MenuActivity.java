@@ -120,11 +120,21 @@ public class MenuActivity extends BaseFragmentActivity {
         child.measure(childWidthSpec, childHeightSpec);
     }
 
-    private  void openMenu(){
+    public  void openMenu(){
         if (mDrawerLayout.isDrawerOpen(left_content)){
             mDrawerLayout.closeDrawer(left_content);
         }else {
             mDrawerLayout.openDrawer(left_content);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(left_content)){
+            mDrawerLayout.closeDrawer(left_content);
+        }else {
+            super.onBackPressed();
+        }
+
     }
 }
