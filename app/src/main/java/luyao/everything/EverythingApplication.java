@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +33,14 @@ public class EverythingApplication extends Application {
         CONTEXT=this;
         mACache=Acache.get(this);
 
+        Bugly.init(getApplicationContext(),"a97cec080f",false);
+
         //初始化LeakCanary
         if (LeakCanary.isInAnalyzerProcess(this)){
             return;
         }
         LeakCanary.install(this);
+
     }
 
     public static void addActivity(Activity activity) {

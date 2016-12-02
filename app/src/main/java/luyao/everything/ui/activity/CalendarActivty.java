@@ -3,6 +3,8 @@ package luyao.everything.ui.activity;
 import android.provider.Settings;
 import android.widget.TextView;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import butterknife.BindView;
 import cn.aigestudio.datepicker.cons.DPMode;
 import cn.aigestudio.datepicker.views.DatePicker;
@@ -44,10 +46,12 @@ public class CalendarActivty extends BaseActivity {
 
     @Override
     protected void initView() {
+
+//        CrashReport.testJavaCrash();
         title_tv.setText(R.string.calendar);
-        datePicker.setDate(2016,11);
+        datePicker.setDate(2016, 11);
         datePicker.setMode(DPMode.SINGLE);
-        getCalendarData(TimeUtils.LongToTime(Long.toString(System.currentTimeMillis()),"yyyy-MM-dd"));
+        getCalendarData(TimeUtils.LongToTime(Long.toString(System.currentTimeMillis()), "yyyy-MM-dd"));
     }
 
     @Override
@@ -65,15 +69,15 @@ public class CalendarActivty extends BaseActivity {
         onBackPressed();
     }
 
-    private void getCalendarData(String date){
+    private void getCalendarData(String date) {
         Api.getInstance().getTodayFortune(new BaseSubscriber<CalendarFortune>() {
             @Override
             public void onNext(CalendarFortune calendarFortune) {
-                LogUtils.e("calendar",calendarFortune.toString());
+                LogUtils.e("calendar", calendarFortune.toString());
                 lunar.setText(calendarFortune.getLunar());
-                lunarYear.setText(String.format("%s年",calendarFortune.getLunarYear()));
-                avoid.setText(String.format("宜：%s",calendarFortune.getAvoid()));
-                suit.setText(String.format("忌：%s",calendarFortune.getSuit()));
+                lunarYear.setText(String.format("%s年", calendarFortune.getLunarYear()));
+                avoid.setText(String.format("宜：%s", calendarFortune.getAvoid()));
+                suit.setText(String.format("忌：%s", calendarFortune.getSuit()));
                 zodiac.setText(calendarFortune.getZodiac());
             }
         }, date);
