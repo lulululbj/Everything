@@ -1,11 +1,8 @@
 package luyao.everything.ui.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.TextView;
-
-import com.squareup.haha.perflib.Main;
 
 import java.io.Serializable;
 import java.util.List;
