@@ -2,6 +2,7 @@ package luyao.everything.ui.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -42,7 +43,7 @@ public class UserfulNumberActivity extends BaseActivity {
     @Override
     protected void initView() {
         title_tv.setText(R.string.userful_number);
-        numRecycle.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+        numRecycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         if (numAdapter == null) numAdapter = new NumAdapter();
         numRecycle.setAdapter(numAdapter);
 

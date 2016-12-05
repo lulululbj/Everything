@@ -26,7 +26,7 @@ public class NumAdapter extends BaseRecycleViewAdapter<NumberEnity, NumAdapter.N
 
     @Override
     public NumberHolder createHolder(ViewGroup parent, int viewType) {
-        return new NumberHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item, null));
+        return new NumberHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.number_item, null));
     }
 
     class NumberHolder extends BaseRecycleViewAdapter.BaseHolder {
