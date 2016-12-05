@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import luyao.everything.R;
 import luyao.everything.message.ChooseCityMessage;
-import luyao.everything.view.LinearItemDecoration;
+
 
 /**
  * 选择省市区 基类Activity
@@ -36,7 +36,7 @@ public abstract class BaseChooseActivity<T> extends BaseActivity {
     @Override
     protected void initView() {
         chooseRecycler.setLayoutManager(new LinearLayoutManager(mContext));
-        chooseRecycler.addItemDecoration(new LinearItemDecoration(mContext,LinearItemDecoration.VERTICAL_LIST));
+//        chooseRecycler.addItemDecoration(new LinearItemDecoration(mContext,LinearItemDecoration.VERTICAL_LIST));
     }
 
     @Override

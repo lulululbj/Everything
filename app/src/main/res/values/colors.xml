@@ -9,6 +9,7 @@
     <color name="grey">#f0f0f0</color>
     <color name="dark_grey">#a9a9a9</color>
     <color name="light_blue">#32b5e7</color>
+    <color name="normal_select">#e4dede</color>
 
     <color name="guide_bg_normal">#a9a9a9</color>
     <color name="guide_bg_selected">#ff1793</color>

@@ -22,7 +22,7 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.CurrencyAdapter;
 import luyao.everything.enity.Currency;
 import luyao.everything.utils.ScreenUtil;
-import luyao.everything.view.LinearItemDecoration;
+
 
 /**
  * 选择币种
@@ -59,7 +59,7 @@ public class ChooseCurrencyPop extends PopupWindow {
         setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 
         currencyRecycle.setLayoutManager(new LinearLayoutManager(EverythingApplication.CONTEXT));
-        currencyRecycle.addItemDecoration(new LinearItemDecoration(EverythingApplication.CONTEXT,LinearItemDecoration.VERTICAL_LIST));
+//        currencyRecycle.addItemDecoration(new LinearItemDecoration(EverythingApplication.CONTEXT,LinearItemDecoration.VERTICAL_LIST));
         if (currencyAdapter==null)currencyAdapter=new CurrencyAdapter();
         currencyRecycle.setAdapter(currencyAdapter);
 

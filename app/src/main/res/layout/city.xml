@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80px">
+        android:layout_height="80px"
+        android:background="@drawable/normal_selector">
 
         <TextView
             android:id="@+id/city"

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="30px"
         android:paddingBottom="30px"
-        android:background="@color/white">
+        android:background="@drawable/bg_card">
 
     </android.support.v7.widget.RecyclerView>
 

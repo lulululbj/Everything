@@ -34,6 +34,9 @@ public class UserfulNumberActivity extends BaseActivity {
 
     private NumAdapter numAdapter;
     private List<NumberEnity> numberEnityList = new ArrayList<>();
+    private int[] IDs = {R.drawable.service_express, R.drawable.service_food, R.drawable.service_entertainmenticon, R.drawable.service_hotel,
+            R.drawable.service_bank, R.drawable.service_driving, R.drawable.service_ticket, R.drawable.service_insurance, R.drawable.service_game,
+            R.drawable.service_brand, R.drawable.service_health, R.drawable.service_appliance, R.drawable.service_car, R.drawable.service_hot_line};
 
     @Override
     protected int getLayoutResId() {
@@ -44,6 +47,7 @@ public class UserfulNumberActivity extends BaseActivity {
     protected void initView() {
         title_tv.setText(R.string.userful_number);
         numRecycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        numRecycle.addItemDecoration(new LinearItemDecoration(mContext, LinearItemDecoration.VERTICAL_LIST));
         if (numAdapter == null) numAdapter = new NumAdapter();
         numRecycle.setAdapter(numAdapter);
 
@@ -61,8 +65,8 @@ public class UserfulNumberActivity extends BaseActivity {
         String json = FileUtils.getAssetsFile(getApplicationContext(), "number");
         numberEnityList = new Gson().fromJson(json, new TypeToken<List<NumberEnity>>() {
         }.getType());
-        for (NumberEnity numberEnity : numberEnityList) {
-            numberEnity.setResId(R.mipmap.ic_launcher);
+        for (int i = 0; i < numberEnityList.size(); i++) {
+            numberEnityList.get(i).setResId(IDs[i]);
         }
         numAdapter.setData(numberEnityList);
     }

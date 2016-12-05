@@ -14,7 +14,6 @@ import luyao.everything.adapter.NumDetailAdapter;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.NumberEnity;
 import luyao.everything.utils.Constants;
-import luyao.everything.view.LinearItemDecoration;
 import luyao.everything.view.dialog.ShowNumberDialog;
 
 /**
@@ -43,7 +42,7 @@ public class NumberDetailActivity extends BaseActivity {
         numberEnity = (NumberEnity) getIntent().getSerializableExtra(Constants.NUMBERENITY);
         title_tv.setText(numberEnity.getKind());
         numberDetailRecycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        numberDetailRecycle.addItemDecoration(new LinearItemDecoration(mContext, LinearItemDecoration.VERTICAL_LIST));
+//        numberDetailRecycle.addItemDecoration(new LinearItemDecoration(mContext, LinearItemDecoration.VERTICAL_LIST));
         if (numDetailAdapter == null) numDetailAdapter = new NumDetailAdapter();
         numberDetailRecycle.setAdapter(numDetailAdapter);
     }

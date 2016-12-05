@@ -11,7 +11,7 @@
         android:layout_height="400px"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@color/white"
+        android:background="@drawable/bg_card"
         android:paddingLeft="20px"
         android:paddingRight="20px">
 
@@ -57,17 +57,9 @@
                     android:textColor="@color/black"
                     android:textSize="34px"/>
 
-                <View
-                    android:id="@+id/num_line1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_below="@id/tv_num1"
-                    android:background="@drawable/divider"
-                    android:layout_marginTop="10px"/>
-
                 <TextView
                     android:id="@+id/tv_name1"
-                    android:layout_below="@id/num_line1"
+                    android:layout_below="@id/tv_num1"
                     android:layout_marginTop="10px"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,17 +102,10 @@
                     android:textColor="@color/black"
                     android:textSize="34px"/>
 
-                <View
-                    android:id="@+id/num_line2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_below="@id/tv_num2"
-                    android:background="@drawable/divider"
-                    android:layout_marginTop="10px"/>
 
                 <TextView
                     android:id="@+id/tv_name2"
-                    android:layout_below="@id/num_line2"
+                    android:layout_below="@id/tv_num2"
                     android:layout_marginTop="10px"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
