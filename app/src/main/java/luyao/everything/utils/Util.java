@@ -1,6 +1,7 @@
 package luyao.everything.utils;
 
 import android.Manifest;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -65,6 +66,30 @@ public class Util {
             return;
         }
         context.startActivity(intent);
+    }
+
+    public static void givePraise(Context context) {
+        Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void share(Context context) {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "我正在使用百事通，快去应用市场下载吧！");
+        shareIntent.setType("text/plain");
+        context.startActivity(Intent.createChooser(shareIntent, "分享到"));
+    }
+
+    /**
+     * 实现文本复制功能
+     */
+    public static void copy(String content, Context context) {
+        ClipboardManager cmb = (ClipboardManager) context
+                .getSystemService(Context.CLIPBOARD_SERVICE);
+        cmb.setText(content.trim());
     }
 
 }

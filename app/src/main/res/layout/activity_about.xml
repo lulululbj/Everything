@@ -3,48 +3,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/about_title"
+    <include
+        android:id="@+id/about_title"
         layout="@layout/title_layout" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="200px"
             android:layout_height="200px"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20px"
             android:text="V1.0"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20px"
             android:textColor="@color/black"
-            android:textSize="32px"/>
+            android:textSize="32px" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="意见反馈"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20px"
+            android:text="百事通，竭力为您服务"
             android:textColor="@color/black"
-            android:textSize="36px"/>
+            android:textSize="30px" />
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="500px"
             android:layout_height="wrap_content"
-            android:text="关于我"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20px"
+            android:text="如果您有需要提供的服务或者对本应用有一些建议，欢迎联系我！"
             android:textColor="@color/black"
-            android:textSize="32px"/>
+            android:textSize="30px" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px">
+
+            <TextView
+                android:id="@+id/tv_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QQ/微信："
+                android:textColor="@color/black"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/about_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_qq"
+                android:autoLink="none"
+                android:text="864588262"
+                android:textColor="@color/colorAccent"
+                android:textSize="30px" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40px"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的邮箱："
+                android:textColor="@color/black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_email"
+                android:autoLink="email"
+                android:text="sunluyao1993x@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px">
+
+            <TextView
+                android:id="@+id/tv_blog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人博客："
+                android:textColor="@color/black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_blog"
+                android:autoLink="web"
+                android:text="https://lulululbj.github.io"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+        </RelativeLayout>
 
     </LinearLayout>
 

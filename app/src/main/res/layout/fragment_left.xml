@@ -64,6 +64,24 @@
 
     <View style="@style/LeftMenu_Line" />
 
+    <RelativeLayout
+        android:id="@+id/rl_praise"
+        style="@style/LeftMenu_Rl">
+
+
+        <ImageView
+            android:id="@+id/leftimg_praise"
+            style="@style/LeftMenu_Image"
+            android:src="@drawable/praise" />
+
+        <TextView
+            style="@style/LeftMenu_TextView"
+            android:layout_toRightOf="@id/leftimg_praise"
+            android:text="@string/give_good_praise" />
+    </RelativeLayout>
+
+    <View style="@style/LeftMenu_Line" />
+
 
     <RelativeLayout
         android:id="@+id/rl_about"
