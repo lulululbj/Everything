@@ -19,4 +19,16 @@ public class TimeUtils {
         Date date=new Date(Long.parseLong(longTime));
         return dateFormat.format(date);
     }
+
+    public static int getNowYear(){
+        return Calendar.getInstance().get(Calendar.YEAR);
+    }
+
+    public static int getNowMonth(){
+        return Calendar.getInstance().get(Calendar.MONTH);
+    }
+
+    public static int getNowDay(){
+        return Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+    }
 }

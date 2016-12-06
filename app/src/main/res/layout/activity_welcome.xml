@@ -11,7 +11,7 @@
         android:layout_centerInParent="true"
         android:text="@string/welcome_to_use"
         android:textColor="@color/black"
-        android:textSize="40px"/>
+        android:textSize="50px"/>
 
 
     <TextView

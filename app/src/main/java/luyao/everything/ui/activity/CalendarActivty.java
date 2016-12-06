@@ -49,7 +49,7 @@ public class CalendarActivty extends BaseActivity {
 
 //        CrashReport.testJavaCrash();
         title_tv.setText(R.string.calendar);
-        datePicker.setDate(2016, 11);
+        datePicker.setDate(TimeUtils.getNowYear(), TimeUtils.getNowMonth()+1);
         datePicker.setMode(DPMode.SINGLE);
         getCalendarData(TimeUtils.LongToTime(Long.toString(System.currentTimeMillis()), "yyyy-MM-dd"));
     }

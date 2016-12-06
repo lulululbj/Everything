@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String MOB_APPKEY = "19053c976d790";
     public static final String EXPRESS_100_URL = "https://m.kuaidi100.com";
+    public static final String TUNIU_TRAIN_URL = "http://dynamic.m.tuniu.com/train";
 
     //Acache
     public static final String SELECT_GUIDES = "select_guides";//用户选择服务
