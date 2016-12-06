@@ -26,14 +26,16 @@ public class LotteryAdapter extends BaseRecycleViewAdapter<String, LotteryAdapte
             public void onNext(LotteryResult lotteryResult) {
                 holder.lottery_name.setText(lotteryResult.getName());
                 holder.lottery_number.setText(lotteryResult.getNumber());
-                holder.lottery_period.setText(String.format("%s期",lotteryResult.getPeriod()));
-                if (lotteryResult.getPool()==0){
+                holder.lottery_period.setText(String.format("%s期", lotteryResult.getPeriod()));
+                if (lotteryResult.getPool() == 0) {
                     holder.lottery_pool_tv.setVisibility(View.GONE);
                     holder.lottery_pool.setVisibility(View.GONE);
-                }else {
+                } else {
                     holder.lottery_pool_tv.setVisibility(View.VISIBLE);
                     holder.lottery_pool.setVisibility(View.VISIBLE);
-                    holder.lottery_pool.setText(String.valueOf(lotteryResult.getPool()));
+
+                    java.math.BigDecimal bigDecimal = new java.math.BigDecimal(lotteryResult.getPool());
+                    holder.lottery_pool.setText(String.format("%s元",bigDecimal.toPlainString()));
                 }
                 holder.lottery_time.setText(lotteryResult.getAwardDateTime());
             }
@@ -42,7 +44,7 @@ public class LotteryAdapter extends BaseRecycleViewAdapter<String, LotteryAdapte
 
     @Override
     public LotteryHolder createHolder(ViewGroup parent, int viewType) {
-        return new LotteryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lottery_item,null));
+        return new LotteryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lottery_item, null));
     }
 
     class LotteryHolder extends BaseRecycleViewAdapter.BaseHolder {
