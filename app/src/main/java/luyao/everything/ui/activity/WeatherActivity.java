@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -27,13 +24,17 @@ import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
-import luyao.everything.message.ChooseCityMessage;
+
+import luyao.everything.message.ChooseMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.PreferencesUtils;
+import luyao.everything.utils.RxBus;
 import luyao.everything.utils.TimeUtils;
 import rx.Subscriber;
+import rx.Subscription;
+import rx.functions.Action1;
 
 /**
  * 天气
@@ -81,7 +82,7 @@ public class WeatherActivity extends BaseActivity {
     RelativeLayout rl_weather_root;
 
     private FutureWeatherAdapter weatherAdapter;
-
+    private Subscription rxSubscription;
     SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
@@ -113,6 +114,14 @@ public class WeatherActivity extends BaseActivity {
         futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
         if (weatherAdapter == null) weatherAdapter = new FutureWeatherAdapter();
         futureWeatherRecycle.setAdapter(weatherAdapter);
+
+        rxSubscription = RxBus.getDefault().toObservable(ChooseMessage.class)
+                .subscribe(new Action1<ChooseMessage>() {
+                    @Override
+                    public void call(ChooseMessage chooseMessage) {
+                        finish();
+                    }
+                });
     }
 
     @Override
@@ -205,21 +214,9 @@ public class WeatherActivity extends BaseActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
-    }
-
-    @Override
     protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void chooseCity(ChooseCityMessage cityMessage){
-        onBackPressed();
+        if (!rxSubscription.isUnsubscribed()) {
+            rxSubscription.unsubscribe();
+        }
     }
 }

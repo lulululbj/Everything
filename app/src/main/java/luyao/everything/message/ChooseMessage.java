@@ -1,11 +1,10 @@
 package luyao.everything.message;
 
 /**
+ *
  * Created by Lu
- * on 2016/11/21 17:53.
+ * on 2016/12/6 17:52.
  */
 
-public class ChooseCityMessage {
-
-
+public class ChooseMessage {
 }

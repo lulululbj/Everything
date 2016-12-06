@@ -3,9 +3,9 @@ package luyao.everything;
 import android.app.Activity;
 import android.app.Application;
 
+//import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.Bugly;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;

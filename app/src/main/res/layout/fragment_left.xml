@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3B3F42"
@@ -9,22 +8,10 @@
 
 
     <ImageView
-        android:layout_width="200px"
-        android:layout_height="200px"
+        android:layout_width="250px"
+        android:layout_height="250px"
         android:layout_marginTop="120px"
         android:src="@drawable/icon" />
-
-
-    <TextView
-        android:id="@+id/tv_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
-        android:gravity="center_horizontal"
-        android:text="Welcome !"
-        android:textColor="@color/menu_text"
-        android:textSize="28px" />
-
 
     <RelativeLayout
         android:id="@+id/rl_service"

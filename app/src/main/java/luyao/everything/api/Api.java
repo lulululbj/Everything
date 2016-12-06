@@ -1,9 +1,5 @@
 package luyao.everything.api;
 
-import android.webkit.WebView;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.json.JSONArray;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

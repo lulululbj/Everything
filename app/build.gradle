@@ -86,7 +86,6 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.android.support:design:25.0.0'
     compile files('libs/AMap_Location_V3.1.0_20161027.jar')
-    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'cn.aigestudio.datepicker:DatePicker:2.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
