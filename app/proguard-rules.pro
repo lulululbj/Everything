@@ -75,7 +75,7 @@
 }
 
 # 对R文件下的所有类及其方法，都不能被混淆
--keep public class com.foresee.R$*{
+-keep public class luyao.everything.R$*{
     public static final int *;
 }
 
