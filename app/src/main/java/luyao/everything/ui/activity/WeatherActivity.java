@@ -111,6 +111,7 @@ public class WeatherActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         futureWeatherRecycle.setLayoutManager(new LinearLayoutManager(mContext));
         if (weatherAdapter == null) weatherAdapter = new FutureWeatherAdapter();
         futureWeatherRecycle.setAdapter(weatherAdapter);
