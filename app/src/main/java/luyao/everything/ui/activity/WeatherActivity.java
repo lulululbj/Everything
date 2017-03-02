@@ -128,6 +128,7 @@ public class WeatherActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
         if (PreferencesUtils.get(PreferencesUtils.IS_FIRST_WEATHER,true)){
             startActivity(ChooseProvinceActivity.class);
             PreferencesUtils.set(PreferencesUtils.IS_FIRST_WEATHER,false);
