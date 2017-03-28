@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import luyao.everything.R;
 import luyao.everything.base.BaseFragmentActivity;
 import luyao.everything.ui.fragment.LeftFragment;

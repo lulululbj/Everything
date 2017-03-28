@@ -129,9 +129,8 @@ public class WeatherActivity extends BaseActivity {
     protected void initData() {
 
 
-        if (PreferencesUtils.get(PreferencesUtils.IS_FIRST_WEATHER,true)){
+        if (!PreferencesUtils.get(PreferencesUtils.HAS_USER_CHOSED,false)){
             startActivity(ChooseProvinceActivity.class);
-            PreferencesUtils.set(PreferencesUtils.IS_FIRST_WEATHER,false);
         }else {
 
             WeatherEnity weatherEnity = (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);

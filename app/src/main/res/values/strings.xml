@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">百事通</string>
-    <string name="welcome_to_use">欢迎使用百事通</string>
+    <string name="welcome_to_use">欢迎来到百事通</string>
     <string name="everything">百事通</string>
     <string name="finish">完成</string>
     <string name="weather_forecast">天气预报</string>

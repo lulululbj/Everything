@@ -13,6 +13,7 @@ import luyao.everything.enity.area.Province;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.PreferencesUtils;
+import luyao.everything.utils.ToastUtil;
 
 /**
  * Created by Lu
@@ -26,6 +27,7 @@ public class ChooseProvinceActivity extends BaseChooseActivity<Province> {
     @Override
     protected void initView() {
         super.initView();
+        ToastUtil.showToast("选择您的城市");
     }
 
     @Override
@@ -37,6 +39,7 @@ public class ChooseProvinceActivity extends BaseChooseActivity<Province> {
             @Override
             public void onItemClick(View view, int position) {
                 PreferencesUtils.set(PreferencesUtils.PROVINCE, dataList.get(position).getProvince());
+                PreferencesUtils.set(PreferencesUtils.HAS_USER_CHOSED, true);
                 EverythingApplication.mACache.put(Constants.CITY, (Serializable) dataList.get(position).getCity());
                 startActivity(ChooseCityActivity.class);
             }

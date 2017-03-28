@@ -18,7 +18,7 @@ public class PreferencesUtils {
     public static final String PROVINCE = "province";//用户选择省份
     public static final String CITY = "city";
     public static final String DISTRICT = "district";
-    public static final String IS_FIRST_WEATHER="isFirstWeather";//第一次查询天气
+    public static final String HAS_USER_CHOSED = "has_user_choed";//用户是否选择过城市
 
 
     @SuppressWarnings("unchecked")
