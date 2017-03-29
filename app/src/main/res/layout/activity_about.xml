@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_blog"
                 android:autoLink="web"
-                android:text="https://lulululbj.github.io"
+                android:text="http://sunluyao.com"
                 android:textColor="@color/black"
                 android:textSize="30px" />
         </RelativeLayout>
