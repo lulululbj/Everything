@@ -1,4 +1,4 @@
-package luyao.everything.ui.activity;
+package luyao.everything.ui.activity.currencyexchange;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -8,12 +8,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.R;
-import luyao.everything.api.Api;
-import luyao.everything.api.BaseSubscriber;
-import luyao.everything.base.BaseActivity;
+import luyao.everything.base.mvp.BaseMvpActivity;
 import luyao.everything.enity.Currency;
 import luyao.everything.enity.ExcangeResult;
-import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.ToastUtil;
 import luyao.everything.view.dialog.ChooseCurrencyPop;
 
@@ -23,7 +20,7 @@ import luyao.everything.view.dialog.ChooseCurrencyPop;
  * on 2016/11/23 14:50.
  */
 
-public class CurrencyExchagneActivity extends BaseActivity {
+public class CurrencyExchagneActivity extends BaseMvpActivity<ExchangePresenter> implements ExchangeConstract.View {
 
     @BindView(R.id.currency_from)
     TextView currency_from;
@@ -56,6 +53,11 @@ public class CurrencyExchagneActivity extends BaseActivity {
     private Currency currencyFrom, currencyTo = null;
 
     private ChooseCurrencyPop currencyPop;
+
+    @Override
+    protected ExchangePresenter createPresenter() {
+        return new ExchangePresenter(this);
+    }
 
     @Override
     protected int getLayoutResId() {
@@ -110,20 +112,15 @@ public class CurrencyExchagneActivity extends BaseActivity {
             ToastUtil.showToast(getString(R.string.please_choose_currency));
         } else {
             String code = currencyFrom.getCode() + currencyTo.getCode();
-            Api.getInstance().getExchangeResult(new BaseSubscriber<ExcangeResult>() {
-                @Override
-                public void onNext(ExcangeResult excangeResult) {
-                    setData(excangeResult);
-                }
-            }, code);
+            mPresenter.getExchange(code);
         }
     }
 
-    private void setData(ExcangeResult excangeResult){
-        if (excangeResult==null){
+    private void setData(ExcangeResult excangeResult) {
+        if (excangeResult == null) {
             ToastUtil.showToast("暂无信息");
             li_currency_result.setVisibility(View.GONE);
-        }else {
+        } else {
             li_currency_result.setVisibility(View.VISIBLE);
             currency_buyPic.setText(excangeResult.getBuyPic());
             currency_closePri.setText(excangeResult.getBuyPic());
@@ -136,5 +133,10 @@ public class CurrencyExchagneActivity extends BaseActivity {
             currency_sellPic.setText(excangeResult.getSellPic());
             currency_yesDayPic.setText(excangeResult.getYesDayPic());
         }
+    }
+
+    @Override
+    public void getExchange(ExcangeResult result) {
+        setData(result);
     }
 }

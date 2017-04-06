@@ -13,12 +13,10 @@ import java.util.List;
 
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
-import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.ui.activity.CalendarActivty;
-import luyao.everything.ui.activity.CurrencyExchagneActivity;
+import luyao.everything.ui.activity.currencyexchange.CurrencyExchagneActivity;
 import luyao.everything.ui.activity.ExpressActivity;
-import luyao.everything.ui.activity.GuideActivity;
-import luyao.everything.ui.activity.LotteryActivity;
+import luyao.everything.ui.activity.lottery.LotteryActivity;
 import luyao.everything.ui.activity.TrainActivity;
 import luyao.everything.ui.activity.UserfulNumberActivity;
 import luyao.everything.ui.activity.WeatherActivity;

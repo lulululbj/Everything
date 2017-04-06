@@ -81,16 +81,17 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
+    compile files('libs/AMap_Location_V3.1.0_20161027.jar')
+    compile 'cn.aigestudio.datepicker:DatePicker:2.2.0'
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     compile 'io.reactivex:rxjava:1.2.4'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.android.support:design:25.0.0'
-    compile files('libs/AMap_Location_V3.1.0_20161027.jar')
-    compile 'cn.aigestudio.datepicker:DatePicker:2.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'

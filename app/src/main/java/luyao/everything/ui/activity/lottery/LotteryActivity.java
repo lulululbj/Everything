@@ -1,4 +1,4 @@
-package luyao.everything.ui.activity;
+package luyao.everything.ui.activity.lottery;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,7 @@ import luyao.everything.adapter.LotteryAdapter;
 import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
+import luyao.everything.base.mvp.BaseMvpActivity;
 import luyao.everything.enity.LotteryResult;
 import luyao.everything.utils.ToastUtil;
 import luyao.everything.view.SpaceItemDecoration;
@@ -21,12 +22,17 @@ import luyao.everything.view.SpaceItemDecoration;
  * on 2016/11/22 17:49.
  */
 
-public class LotteryActivity extends BaseActivity {
+public class LotteryActivity extends BaseMvpActivity<LotteryPresenter> implements LotteryConstract.View {
 
     @BindView(R.id.lotteryRecycle)
     RecyclerView lotteryRecycle;
 
     private LotteryAdapter lotteryAdapter;
+
+    @Override
+    protected LotteryPresenter createPresenter() {
+        return new LotteryPresenter(this);
+    }
 
     @Override
     protected int getLayoutResId() {
@@ -44,20 +50,17 @@ public class LotteryActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        getLotteryList();
+        mPresenter.getLotteryList();
     }
 
-    private void getLotteryList() {
-        Api.getInstance().getLotteryList(new BaseSubscriber<List<String>>() {
-            @Override
-            public void onNext(List<String> list) {
-                lotteryAdapter.setData(list);
-            }
-        });
-    }
 
     @Override
     protected void clickBack() {
         onBackPressed();
+    }
+
+    @Override
+    public void getLotteryList(List<String> list) {
+        lotteryAdapter.setData(list);
     }
 }

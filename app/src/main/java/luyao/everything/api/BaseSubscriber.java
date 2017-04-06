@@ -9,6 +9,7 @@ import rx.Subscriber;
 
 public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
+
     @Override
     public void onCompleted() {
 
@@ -21,6 +22,10 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onNext(T t) {
+    }
+
+    @Override
+    public void onStart() {
 
     }
 }

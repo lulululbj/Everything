@@ -19,7 +19,7 @@ import rx.Observable;
  * on 2016/11/15 12:38.
  */
 
-interface ApiService {
+public interface ApiService {
 
     @GET("v1/weather/query")
     Observable<HttpResult<List<WeatherEnity>>> getWeather(@Query("key") String key, @Query("city") String city, @Query("province") String province);

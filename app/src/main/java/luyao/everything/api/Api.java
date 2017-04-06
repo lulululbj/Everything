@@ -74,31 +74,17 @@ public class Api {
                 .build().create(serviceClass);
     }
 
-    private ApiService getApiSerVice(String baseUrl) {
+    public ApiService getApiSerVice() {
 
         return new Retrofit.Builder()
+                .baseUrl(MOB_BASE_URL)
                 .client(getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(baseUrl)
                 .build().create(ApiService.class);
     }
 
-    /**
-     * 用来统一处理Http的resultCode,并将HttpResult的Data部分剥离出来返回给subscriber
-     *
-     * @param <T> Subscriber真正需要的数据类型，也就是Data部分的数据类型
-     */
-    private class HttpResultFunc<T> implements Func1<HttpResult<T>, T> {
 
-        @Override
-        public T call(HttpResult<T> httpResult) {
-//            if (httpResult.get() != 0) {
-//                throw new ApiException(httpResult.getResultCode());
-//            }
-            return httpResult.getResult();
-        }
-    }
 
     private <T> void toSubscribe(Observable<T> o, Subscriber<T> s) {
         o.subscribeOn(Schedulers.io())
@@ -114,7 +100,7 @@ public class Api {
      * @param province 省份名
      */
     public void getWeather(Subscriber<List<WeatherEnity>> subscriber, String city, String province) {
-        Observable observable = getApiSerVice(MOB_BASE_URL).getWeather(Constants.MOB_APPKEY, city, province)
+        Observable observable = getApiSerVice().getWeather(Constants.MOB_APPKEY, city, province)
                 .map(new HttpResultFunc<List<WeatherEnity>>());
         toSubscribe(observable, subscriber);
     }
@@ -123,7 +109,7 @@ public class Api {
      * 获取城市列表
      */
     public void getcityList(Subscriber<List<Province>> subscriber) {
-        Observable observable = getApiSerVice(MOB_BASE_URL).getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
+        Observable observable = getApiSerVice().getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
         toSubscribe(observable, subscriber);
     }
 
@@ -132,7 +118,7 @@ public class Api {
      * 万年历
      */
     public void getTodayFortune(Subscriber<CalendarFortune> subscriber, String date) {
-        Observable o = getApiSerVice(MOB_BASE_URL).getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
+        Observable o = getApiSerVice().getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
         toSubscribe(o, subscriber);
     }
 
@@ -140,7 +126,7 @@ public class Api {
      * 获取支持的彩种
      */
     public void getLotteryList(Subscriber<List<String>> subscribe) {
-        Observable observable = getApiSerVice(MOB_BASE_URL).getLotteryList(Constants.MOB_APPKEY).map(new HttpResultFunc<List<String>>());
+        Observable observable = getApiSerVice().getLotteryList(Constants.MOB_APPKEY).map(new HttpResultFunc<List<String>>());
         toSubscribe(observable, subscribe);
     }
 
@@ -149,7 +135,7 @@ public class Api {
      * 获取开奖结果
      */
     public void getLotteryResult(Subscriber<LotteryResult> subscriber, String name, String period) {
-        Observable observable = getApiSerVice(MOB_BASE_URL).getLotteryResult(Constants.MOB_APPKEY, name, period).map(new HttpResultFunc<LotteryResult>());
+        Observable observable = getApiSerVice().getLotteryResult(Constants.MOB_APPKEY, name, period).map(new HttpResultFunc<LotteryResult>());
         toSubscribe(observable, subscriber);
     }
 
@@ -157,7 +143,7 @@ public class Api {
      * 获取货币汇率
      */
     public void getExchangeResult(Subscriber<ExcangeResult> subscriber,String code){
-        Observable observable=getApiSerVice(MOB_BASE_URL).getExchangeResult(Constants.MOB_APPKEY,code).map(new HttpResultFunc<ExcangeResult>());
+        Observable observable=getApiSerVice().getExchangeResult(Constants.MOB_APPKEY,code).map(new HttpResultFunc<ExcangeResult>());
         toSubscribe(observable,subscriber);
     }
 }

@@ -63,13 +63,13 @@
             android:name=".ui.activity.ChooseDistrictActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.LotteryActivity"
+            android:name=".ui.activity.lottery.LotteryActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ExpressActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.CurrencyExchagneActivity"
+            android:name=".ui.activity.currencyexchange.CurrencyExchagneActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.TrainActivity"
