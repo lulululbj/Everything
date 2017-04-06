@@ -47,7 +47,7 @@ android {
         }
 
         release {
-            storeFile file("G:/android/luyao/luyao.jks")
+//            storeFile file("G:/android/luyao/luyao.jks")
             storePassword "256743"
             keyAlias "luyao"
             keyPassword "256743"
