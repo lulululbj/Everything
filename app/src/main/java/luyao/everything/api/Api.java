@@ -41,8 +41,13 @@ public class Api {
     }
 
     public static Api getInstance() {
-        if (api == null) api = new Api();
-        return api;
+       if (api==null){
+           synchronized (Api.class){
+               if (api==null)
+                   api=new Api();
+           }
+       }
+       return api;
     }
 
     private OkHttpClient getHttpClient() {
