@@ -3,6 +3,7 @@ package luyao.everything.api;
 
 import java.util.List;
 
+import luyao.everything.enity.BingImageBean;
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.enity.ExcangeResult;
 import luyao.everything.enity.HttpResult;
@@ -38,5 +39,8 @@ public interface ApiService {
 
     @GET("exchange/code/query")
     Observable<HttpResult<ExcangeResult>> getExchangeResult(@Query("key")String key,@Query("code")String code);
+
+    @GET("http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1491805738297&pid=hp")
+    Observable<BingImageBean> getBingImage();
 
 }

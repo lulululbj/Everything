@@ -105,14 +105,6 @@ public class Api {
         toSubscribe(observable, subscriber);
     }
 
-    /**
-     * 获取城市列表
-     */
-    public void getcityList(Subscriber<List<Province>> subscriber) {
-        Observable observable = getApiSerVice().getCity(Constants.MOB_APPKEY).map(new HttpResultFunc<List<Province>>());
-        toSubscribe(observable, subscriber);
-    }
-
 
     /**
      * 万年历
@@ -123,27 +115,10 @@ public class Api {
     }
 
     /**
-     * 获取支持的彩种
-     */
-    public void getLotteryList(Subscriber<List<String>> subscribe) {
-        Observable observable = getApiSerVice().getLotteryList(Constants.MOB_APPKEY).map(new HttpResultFunc<List<String>>());
-        toSubscribe(observable, subscribe);
-    }
-
-
-    /**
      * 获取开奖结果
      */
     public void getLotteryResult(Subscriber<LotteryResult> subscriber, String name, String period) {
         Observable observable = getApiSerVice().getLotteryResult(Constants.MOB_APPKEY, name, period).map(new HttpResultFunc<LotteryResult>());
         toSubscribe(observable, subscriber);
-    }
-
-    /**
-     * 获取货币汇率
-     */
-    public void getExchangeResult(Subscriber<ExcangeResult> subscriber,String code){
-        Observable observable=getApiSerVice().getExchangeResult(Constants.MOB_APPKEY,code).map(new HttpResultFunc<ExcangeResult>());
-        toSubscribe(observable,subscriber);
     }
 }
