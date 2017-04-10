@@ -12,8 +12,8 @@ public abstract class BaseSubscriber2<T> extends Subscriber<T> {
 
     private BaseView v;
 
-    public BaseSubscriber2(BaseView v){
-        this.v=v;
+    public BaseSubscriber2(BaseView v) {
+        this.v = v;
     }
 
     @Override

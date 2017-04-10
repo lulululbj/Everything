@@ -7,7 +7,7 @@ import java.io.Serializable;
  * on 2016/11/15 14:15.
  */
 
-public class FutureWeatherEnity implements Serializable{
+public class FutureWeatherEnity implements Serializable {
 
 //    "date":"2016-11-15",
 //            "dayTime":"多云",

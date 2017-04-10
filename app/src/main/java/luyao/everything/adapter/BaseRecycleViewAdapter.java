@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import luyao.everything.R;
 import luyao.everything.utils.ScreenUtil;
@@ -20,7 +19,7 @@ import luyao.everything.utils.ScreenUtil;
 
 public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
-    protected List<T> mData=new ArrayList<>();
+    protected List<T> mData = new ArrayList<>();
 
     protected OnItemClickListener onItemClickListener;
     protected View.OnClickListener clickListener = new View.OnClickListener() {
@@ -48,7 +47,7 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
     public void onBindViewHolder(VH holder, int position) {
         holder.itemView.setTag(R.id.item_position, position);
         holder.itemView.setOnClickListener(clickListener);
-        bindData(holder,mData.get(position),getItemViewType(position),position );
+        bindData(holder, mData.get(position), getItemViewType(position), position);
     }
 
     @Override
@@ -61,7 +60,8 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
         return mData.size();
     }
 
-    public abstract void bindData(VH holder, T data, int viewType,int position);
+    public abstract void bindData(VH holder, T data, int viewType, int position);
+
     public abstract VH createHolder(ViewGroup parent, int viewType);
 
     public T getItem(int position) {
@@ -83,8 +83,8 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
         void onItemClick(View view, int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        this.onItemClickListener=onItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
 
@@ -93,7 +93,7 @@ public abstract class BaseRecycleViewAdapter<T, VH extends RecyclerView.ViewHold
         public BaseHolder(View itemView) {
             super(itemView);
             ScreenUtil.initScale(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

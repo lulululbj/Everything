@@ -22,12 +22,12 @@ import luyao.everything.utils.Constants;
  * on 2016/11/16 13:16.
  */
 
-public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.MainHolder> implements OnMoveListener{
+public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.MainHolder> implements OnMoveListener {
 
 
     @Override
     public void bindData(MainHolder holder, GuideEnity data, int viewType, int position) {
-        if (data.isSelected()){
+        if (data.isSelected()) {
             holder.main_img.setImageResource(data.getResId());
             holder.main_tv.setText(data.getName());
         }
@@ -40,12 +40,12 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
 
     @Override
     public boolean onItemMove(int fromPostion, int toPosition) {
-        Collections.swap(mData,fromPostion,toPosition);
-        notifyItemMoved(fromPostion,toPosition);
+        Collections.swap(mData, fromPostion, toPosition);
+        notifyItemMoved(fromPostion, toPosition);
 
 
-        List<GuideEnity> unSelect= (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.UNSELECT_GUIDES);
-        List<GuideEnity> allGuide=new ArrayList<>();
+        List<GuideEnity> unSelect = (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.UNSELECT_GUIDES);
+        List<GuideEnity> allGuide = new ArrayList<>();
         allGuide.addAll(mData);
         allGuide.addAll(unSelect);
         EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) mData);
@@ -66,7 +66,7 @@ public class MainAdapter extends BaseRecycleViewAdapter<GuideEnity, MainAdapter.
         }
     }
 
-    public List<GuideEnity> getAllList(){
+    public List<GuideEnity> getAllList() {
         return mData;
     }
 }

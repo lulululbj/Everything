@@ -8,12 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.WindowManager;
 
-//import com.umeng.analytics.MobclickAgent;
-
 import butterknife.ButterKnife;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
 import luyao.everything.utils.ScreenUtil;
+
+//import com.umeng.analytics.MobclickAgent;
 
 /**
  * 基类FragmentActivity

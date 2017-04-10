@@ -31,7 +31,7 @@ public class LotteryResult {
     public String getNumber() {
         StringBuffer stringBuffer = new StringBuffer();
         for (String s : lotteryNumber) {
-            stringBuffer.append(s+"  ");
+            stringBuffer.append(s + "  ");
         }
         return stringBuffer.toString();
     }

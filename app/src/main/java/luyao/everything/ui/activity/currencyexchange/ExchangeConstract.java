@@ -1,7 +1,6 @@
 package luyao.everything.ui.activity.currencyexchange;
 
 
-
 import luyao.everything.base.mvp.BaseModel;
 import luyao.everything.base.mvp.BasePresenter;
 import luyao.everything.base.mvp.BaseView;
@@ -17,15 +16,15 @@ import rx.Observable;
 
 public interface ExchangeConstract {
 
-    interface View extends BaseView{
-     void getExchange(ExcangeResult result);
+    interface View extends BaseView {
+        void getExchange(ExcangeResult result);
     }
 
-    interface Model extends BaseModel{
+    interface Model extends BaseModel {
         Observable<ExcangeResult> getExchange(String code);
     }
 
-    abstract class Presenter extends BasePresenter<View,Model> {
+    abstract class Presenter extends BasePresenter<View, Model> {
         abstract void getExchange(String code);
     }
 

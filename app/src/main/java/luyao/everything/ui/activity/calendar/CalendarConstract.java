@@ -13,15 +13,15 @@ import rx.Observable;
 
 public interface CalendarConstract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void getFortune(CalendarFortune fortune);
     }
 
-    interface Model extends BaseModel{
+    interface Model extends BaseModel {
         Observable<CalendarFortune> getFortune(String date);
     }
 
-    abstract class Presenter extends BasePresenter<View,Model>{
+    abstract class Presenter extends BasePresenter<View, Model> {
         abstract void getFortune(String date);
     }
 }

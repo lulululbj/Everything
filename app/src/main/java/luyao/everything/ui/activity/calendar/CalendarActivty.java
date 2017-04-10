@@ -6,8 +6,6 @@ import butterknife.BindView;
 import cn.aigestudio.datepicker.cons.DPMode;
 import cn.aigestudio.datepicker.views.DatePicker;
 import luyao.everything.R;
-import luyao.everything.api.Api;
-import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.mvp.BaseMvpActivity;
 import luyao.everything.enity.CalendarFortune;
 import luyao.everything.utils.LogUtils;

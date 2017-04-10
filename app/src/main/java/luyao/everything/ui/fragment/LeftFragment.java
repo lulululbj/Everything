@@ -1,11 +1,7 @@
 package luyao.everything.ui.fragment;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.widget.RelativeLayout;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
@@ -13,8 +9,6 @@ import luyao.everything.base.BaseFragment;
 import luyao.everything.ui.activity.AboutActivity;
 import luyao.everything.ui.activity.ServiceManagerActivity;
 import luyao.everything.utils.Util;
-
-import static luyao.everything.R.styleable.View;
 
 /**
  * 侧边栏Fragment

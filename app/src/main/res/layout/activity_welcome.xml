@@ -4,12 +4,12 @@
     android:layout_height="match_parent">
 
 
-
     <ImageView
         android:id="@+id/splashImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
+
     <TextView
         android:id="@+id/welcome_tv"
         android:layout_width="80px"
@@ -22,8 +22,7 @@
         android:layout_marginTop="50px"
         android:layout_marginRight="50px"
         android:gravity="center"
-        android:background="@drawable/welcome_bg"/>
-
+        android:background="@drawable/welcome_bg" />
 
 
 </RelativeLayout>

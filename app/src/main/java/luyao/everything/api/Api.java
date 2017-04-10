@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import luyao.everything.BuildConfig;
-import luyao.everything.enity.CalendarFortune;
-import luyao.everything.enity.ExcangeResult;
-import luyao.everything.enity.HttpResult;
 import luyao.everything.enity.LotteryResult;
-import luyao.everything.enity.area.Province;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.utils.Constants;
 import okhttp3.OkHttpClient;
@@ -20,7 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 
@@ -41,13 +36,13 @@ public class Api {
     }
 
     public static Api getInstance() {
-       if (api==null){
-           synchronized (Api.class){
-               if (api==null)
-                   api=new Api();
-           }
-       }
-       return api;
+        if (api == null) {
+            synchronized (Api.class) {
+                if (api == null)
+                    api = new Api();
+            }
+        }
+        return api;
     }
 
     private OkHttpClient getHttpClient() {
@@ -83,7 +78,6 @@ public class Api {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build().create(ApiService.class);
     }
-
 
 
     private <T> void toSubscribe(Observable<T> o, Subscriber<T> s) {

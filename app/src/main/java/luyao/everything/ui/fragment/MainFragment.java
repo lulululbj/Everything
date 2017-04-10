@@ -6,7 +6,6 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,10 +76,10 @@ public class MainFragment extends BaseFragment {
     }
 
     @OnClick({R.id.title_back})
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.title_back:
-                ((MenuActivity)getActivity()).openMenu();
+                ((MenuActivity) getActivity()).openMenu();
                 break;
         }
     }

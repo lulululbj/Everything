@@ -23,25 +23,25 @@
             tools:text="大乐透" />
 
         <TextView
-        android:id="@+id/lottery_period"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_toRightOf="@id/lottery_name"
-        android:textColor="@color/black"
-        android:textSize="32px"
-        tools:text="16137期" />
+            android:id="@+id/lottery_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_toRightOf="@id/lottery_name"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            tools:text="16137期" />
 
 
         <TextView
-        android:id="@+id/lottery_pool_tv"
-        android:layout_below="@id/lottery_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
-        android:textColor="@color/black"
-        android:textSize="32px"
-        android:text="奖池金额：" />
+            android:id="@+id/lottery_pool_tv"
+            android:layout_below="@id/lottery_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:text="奖池金额：" />
 
         <TextView
             android:id="@+id/lottery_pool"

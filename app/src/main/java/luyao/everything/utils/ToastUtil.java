@@ -1,7 +1,6 @@
 package luyao.everything.utils;
 
 
-
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
@@ -37,8 +36,6 @@ public class ToastUtil {
     public static void showToast(Context context, @StringRes int resId) {
         showToast(context, resId, Toast.LENGTH_SHORT);
     }
-
-
 
 
 }

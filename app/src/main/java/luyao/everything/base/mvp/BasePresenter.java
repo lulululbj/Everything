@@ -8,23 +8,23 @@ import rx.subscriptions.CompositeSubscription;
  * on 2017/04/06 15:09
  */
 
-public class BasePresenter<V extends BaseView,M extends BaseModel> {
+public class BasePresenter<V extends BaseView, M extends BaseModel> {
 
     protected V mView;
     protected M mModel;
 
     private CompositeSubscription mSubscription;
 
-    protected void addSubscribe(Subscription subscription){
-        if (mSubscription==null)
-            mSubscription=new CompositeSubscription();
+    protected void addSubscribe(Subscription subscription) {
+        if (mSubscription == null)
+            mSubscription = new CompositeSubscription();
         mSubscription.add(subscription);
     }
 
-    public void unSubscribe(){
-        if (mView!=null)
-            mView=null;
-        if (mSubscription!=null && mSubscription.hasSubscriptions())
+    public void unSubscribe() {
+        if (mView != null)
+            mView = null;
+        if (mSubscription != null && mSubscription.hasSubscriptions())
             mSubscription.clear();
     }
 }

@@ -2,5 +2,5 @@
 <resources>
     <item name="is_scale_tag" type="id" />
     <item name="is_scale_font_size_tag" type="id" />
-    <item name="item_position" type="id"/>
+    <item name="item_position" type="id" />
 </resources>

@@ -3,7 +3,6 @@ package luyao.everything.base;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +71,7 @@ public abstract class BaseChooseActivity<T> extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!rxSubscription.isUnsubscribed()){
+        if (!rxSubscription.isUnsubscribed()) {
             rxSubscription.unsubscribe();
         }
     }

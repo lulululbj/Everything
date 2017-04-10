@@ -56,7 +56,7 @@ public class ManagerAdapter extends BaseRecycleViewAdapter<GuideEnity, ManagerAd
         }
     }
 
-    public List<GuideEnity> getList(){
+    public List<GuideEnity> getList() {
         return mData;
     }
 }

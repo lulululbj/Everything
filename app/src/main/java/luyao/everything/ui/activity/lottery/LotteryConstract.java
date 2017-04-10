@@ -14,15 +14,15 @@ import rx.Observable;
 
 public interface LotteryConstract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void getLotteryList(List<String> list);
     }
 
-    interface Model extends BaseModel{
-       Observable<List<String>>  getLotteryList();
+    interface Model extends BaseModel {
+        Observable<List<String>> getLotteryList();
     }
 
-    abstract class Presenter extends BasePresenter<View,Model>{
+    abstract class Presenter extends BasePresenter<View, Model> {
         abstract void getLotteryList();
     }
 }

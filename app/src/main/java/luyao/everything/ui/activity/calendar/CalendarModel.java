@@ -16,7 +16,7 @@ public class CalendarModel implements CalendarConstract.Model {
     @Override
     public Observable<CalendarFortune> getFortune(String date) {
         return Api.getInstance().getApiSerVice()
-                .getTodayFortune(Constants.MOB_APPKEY,date)
+                .getTodayFortune(Constants.MOB_APPKEY, date)
                 .map(new HttpResultFunc<CalendarFortune>())
                 .compose(RxSchedulers.<CalendarFortune>switchThread());
     }

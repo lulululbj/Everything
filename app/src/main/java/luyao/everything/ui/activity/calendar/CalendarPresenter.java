@@ -11,13 +11,14 @@ import rx.Subscription;
 
 public class CalendarPresenter extends CalendarConstract.Presenter {
 
-    public CalendarPresenter(CalendarConstract.View view){
-        mView=view;
-        mModel=new CalendarModel();
+    public CalendarPresenter(CalendarConstract.View view) {
+        mView = view;
+        mModel = new CalendarModel();
     }
+
     @Override
     void getFortune(String date) {
-        Subscription subscription=mModel.getFortune(date)
+        Subscription subscription = mModel.getFortune(date)
                 .subscribe(new BaseSubscriber2<CalendarFortune>(mView) {
                     @Override
                     public void onNext(CalendarFortune fortune) {

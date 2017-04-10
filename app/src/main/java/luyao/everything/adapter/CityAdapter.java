@@ -14,7 +14,7 @@ import luyao.everything.enity.area.City;
  * on 2016/11/21 15:12.
  */
 
-public class CityAdapter extends BaseRecycleViewAdapter<City,CityAdapter.CityHolder>{
+public class CityAdapter extends BaseRecycleViewAdapter<City, CityAdapter.CityHolder> {
 
     @Override
     public void bindData(CityHolder holder, City data, int viewType, int position) {

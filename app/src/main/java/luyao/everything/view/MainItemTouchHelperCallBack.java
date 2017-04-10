@@ -36,7 +36,7 @@ public class MainItemTouchHelperCallBack extends ItemTouchHelper.Callback {
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        onMoveListener.onItemMove(viewHolder.getAdapterPosition(),target.getAdapterPosition());
+        onMoveListener.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
         return true;
     }
 

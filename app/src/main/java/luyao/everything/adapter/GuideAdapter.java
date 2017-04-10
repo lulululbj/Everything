@@ -1,15 +1,10 @@
 package luyao.everything.adapter;
 
 import android.os.Handler;
-import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +33,7 @@ public class GuideAdapter extends BaseRecycleViewAdapter<GuideEnity, GuideAdapte
     public void bindData(final GuideHolder holder, final GuideEnity data, int viewType, final int position) {
         holder.guide_bt.setText(data.getName());
         holder.guide_bt.setBackgroundResource(data.isSelected() ? R.drawable.guide_item_bg_selected : R.drawable.guide_item_bg_normal);
-        holder.guide_bt.setTextColor(data.isSelected()? EverythingApplication.CONTEXT.getResources().getColor(R.color.guide_bg_selected):
+        holder.guide_bt.setTextColor(data.isSelected() ? EverythingApplication.CONTEXT.getResources().getColor(R.color.guide_bg_selected) :
                 EverythingApplication.CONTEXT.getResources().getColor(R.color.guide_bg_normal));
         holder.guide_bt.setOnClickListener(new View.OnClickListener() {
             @Override

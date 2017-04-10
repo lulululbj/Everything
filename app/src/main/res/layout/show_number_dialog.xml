@@ -22,13 +22,13 @@
             tools:text="德邦"
             android:layout_gravity="center_horizontal"
             android:textSize="36px"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@drawable/divider"
-            android:layout_marginTop="20px"/>
+            android:layout_marginTop="20px" />
 
         <RelativeLayout
             android:id="@+id/rl_num1"
@@ -40,7 +40,7 @@
                 android:id="@+id/img_call1"
                 android:layout_width="100px"
                 android:layout_height="100px"
-                android:src="@drawable/call"/>
+                android:src="@drawable/call" />
 
             <RelativeLayout
                 android:layout_toRightOf="@id/img_call1"
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     tools:text="95588"
                     android:textColor="@color/black"
-                    android:textSize="34px"/>
+                    android:textSize="34px" />
 
                 <TextView
                     android:id="@+id/tv_name1"
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     tools:text="客服热线"
                     android:textColor="@color/dark_grey"
-                    android:textSize="28px"/>
+                    android:textSize="28px" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@drawable/divider"
-            android:layout_marginTop="15px"/>
+            android:layout_marginTop="15px" />
 
         <RelativeLayout
             android:id="@+id/rl_num2"
@@ -85,7 +85,7 @@
                 android:id="@+id/img_call2"
                 android:layout_width="100px"
                 android:layout_height="100px"
-                android:src="@drawable/green_call"/>
+                android:src="@drawable/green_call" />
 
             <RelativeLayout
                 android:layout_toRightOf="@id/img_call2"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     tools:text="95588"
                     android:textColor="@color/black"
-                    android:textSize="34px"/>
+                    android:textSize="34px" />
 
 
                 <TextView
@@ -111,16 +111,9 @@
                     android:layout_height="wrap_content"
                     tools:text="客服热线"
                     android:textColor="@color/dark_grey"
-                    android:textSize="28px"/>
+                    android:textSize="28px" />
             </RelativeLayout>
         </RelativeLayout>
-
-
-
-
-
-
-
 
 
     </LinearLayout>

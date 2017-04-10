@@ -13,7 +13,7 @@ import luyao.everything.utils.ScreenUtil;
  * on 2016/8/14 11:35
  */
 public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
-    int mSpace ;
+    int mSpace;
 
     /**
      * @param space

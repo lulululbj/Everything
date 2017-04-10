@@ -8,7 +8,7 @@ import java.io.Serializable;
  * on 2016/11/18 00:17
  */
 
-public class District implements Serializable{
+public class District implements Serializable {
 
     private String district;
 

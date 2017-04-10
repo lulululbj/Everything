@@ -1,7 +1,6 @@
 package luyao.everything.ui.activity;
 
 import luyao.everything.R;
-import luyao.everything.base.BaseActivity;
 import luyao.everything.base.BaseWebViewActivity;
 import luyao.everything.utils.Constants;
 
@@ -21,7 +20,7 @@ public class TrainActivity extends BaseWebViewActivity {
     @Override
     protected void initData() {
         super.initData();
-      webView.loadUrl(Constants.TUNIU_TRAIN_URL);
+        webView.loadUrl(Constants.TUNIU_TRAIN_URL);
     }
 
     @Override

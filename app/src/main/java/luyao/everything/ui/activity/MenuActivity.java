@@ -41,25 +41,25 @@ public class MenuActivity extends BaseFragmentActivity {
 
     @Override
     protected void initView() {
-        if (mainFragment==null)mainFragment=new MainFragment();
-        if (leftFragment==null)leftFragment=new LeftFragment();
+        if (mainFragment == null) mainFragment = new MainFragment();
+        if (leftFragment == null) leftFragment = new LeftFragment();
 
         initDrawerLayout();
     }
 
     @Override
     protected void initData() {
-        shwowFragment(mainFragment,R.id.main_content);
-        shwowFragment(leftFragment,R.id.left_content);
+        shwowFragment(mainFragment, R.id.main_content);
+        shwowFragment(leftFragment, R.id.left_content);
     }
 
-    private void shwowFragment(Fragment fragment,int resId){
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        if (!fragment.isAdded())transaction.add(resId,fragment);
+    private void shwowFragment(Fragment fragment, int resId) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (!fragment.isAdded()) transaction.add(resId, fragment);
         transaction.commit();
     }
 
-    private void initDrawerLayout(){
+    private void initDrawerLayout() {
         measureView(left_content);
         mDrawerWidth = left_content.getMeasuredWidth();
 
@@ -119,19 +119,19 @@ public class MenuActivity extends BaseFragmentActivity {
         child.measure(childWidthSpec, childHeightSpec);
     }
 
-    public  void openMenu(){
-        if (mDrawerLayout.isDrawerOpen(left_content)){
+    public void openMenu() {
+        if (mDrawerLayout.isDrawerOpen(left_content)) {
             mDrawerLayout.closeDrawer(left_content);
-        }else {
+        } else {
             mDrawerLayout.openDrawer(left_content);
         }
     }
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(left_content)){
+        if (mDrawerLayout.isDrawerOpen(left_content)) {
             mDrawerLayout.closeDrawer(left_content);
-        }else {
+        } else {
             super.onBackPressed();
         }
 

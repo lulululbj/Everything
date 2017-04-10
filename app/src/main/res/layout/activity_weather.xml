@@ -47,7 +47,7 @@
                 android:layout_marginTop="8px"
                 android:textSize="40px"
                 tools:text="多云"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/weather_tem"
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#000000"
-                android:layout_marginTop="5px"/>
+                android:layout_marginTop="5px" />
 
 
             <LinearLayout
@@ -140,6 +140,7 @@
                     android:text="温度" />
 
             </LinearLayout>
+
             <ScrollView
                 android:id="@+id/futureScroll"
                 android:layout_width="match_parent"
@@ -161,7 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#000000"
-                android:layout_marginTop="5px"/>
+                android:layout_marginTop="5px" />
 
             <LinearLayout
                 android:layout_width="match_parent"

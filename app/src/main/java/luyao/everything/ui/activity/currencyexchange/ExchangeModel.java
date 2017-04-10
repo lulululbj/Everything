@@ -1,7 +1,6 @@
 package luyao.everything.ui.activity.currencyexchange;
 
 
-
 import luyao.everything.api.Api;
 import luyao.everything.api.HttpResultFunc;
 import luyao.everything.base.mvp.RxSchedulers;

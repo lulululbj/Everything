@@ -18,21 +18,22 @@ public abstract class BaseDialog extends Dialog {
 
     protected Context mContext;
 
-    public BaseDialog(Context context){
+    public BaseDialog(Context context) {
         super(context, R.style.dialog);
     }
 
-    public BaseDialog(Context context,int themeId) {
-        super(context,themeId);
-        this.mContext=context;
+    public BaseDialog(Context context, int themeId) {
+        super(context, themeId);
+        this.mContext = context;
         this.setCanceledOnTouchOutside(true);
-        View contentView=getLayoutInflater().inflate(getResId(),null);
+        View contentView = getLayoutInflater().inflate(getResId(), null);
         ScreenUtil.initScale(contentView);
         setContentView(contentView);
-        ButterKnife.bind(this,contentView);
+        ButterKnife.bind(this, contentView);
         initData();
     }
 
     protected abstract int getResId();
+
     protected abstract void initData();
 }

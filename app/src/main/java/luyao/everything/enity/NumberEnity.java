@@ -8,7 +8,7 @@ import java.util.List;
  * on 2016/11/24 10:23.
  */
 
-public class NumberEnity implements Serializable{
+public class NumberEnity implements Serializable {
 
     private String kind;
     private int resId;
@@ -39,7 +39,7 @@ public class NumberEnity implements Serializable{
         this.numberDetailList = numberDetailList;
     }
 
-    public static class NumberDetail implements Serializable{
+    public static class NumberDetail implements Serializable {
         private String brand;
         private String name1;
         private String number1;

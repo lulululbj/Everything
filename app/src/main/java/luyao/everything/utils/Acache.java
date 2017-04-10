@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2012-2013, Michael Yang 杨福海 (www.yangfuhai.com).
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,6 +14,17 @@
  * limitations under the License.
  */
 package luyao.everything.utils;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,17 +46,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 
 /**
  * @author Michael Yang（www.yangfuhai.com） update at 2013.08.07
@@ -100,6 +100,7 @@ public class Acache {
     // =======================================
     // ============ String数据 读写 ==============
     // =======================================
+
     /**
      * 保存 String数据 到 缓存中
      *
@@ -187,6 +188,7 @@ public class Acache {
     // =======================================
     // ============= JSONObject 数据 读写 ==============
     // =======================================
+
     /**
      * 保存 JSONObject数据 到 缓存中
      *
@@ -233,6 +235,7 @@ public class Acache {
     // =======================================
     // ============ JSONArray 数据 读写 =============
     // =======================================
+
     /**
      * 保存 JSONArray数据 到 缓存中
      *
@@ -279,6 +282,7 @@ public class Acache {
     // =======================================
     // ============== byte 数据 读写 =============
     // =======================================
+
     /**
      * 保存 byte数据 到 缓存中
      *
@@ -363,6 +367,7 @@ public class Acache {
     // =======================================
     // ============= 序列化 数据 读写 ===============
     // =======================================
+
     /**
      * 保存 Serializable数据 到 缓存中
      *
@@ -449,6 +454,7 @@ public class Acache {
     // =======================================
     // ============== bitmap 数据 读写 =============
     // =======================================
+
     /**
      * 保存 bitmap 到 缓存中
      *
@@ -491,6 +497,7 @@ public class Acache {
     // =======================================
     // ============= drawable 数据 读写 =============
     // =======================================
+
     /**
      * 保存 drawable 到 缓存中
      *
@@ -777,7 +784,7 @@ public class Acache {
                 String saveDate = new String(copyOfRange(data, 0, 13));
                 String deleteAfter = new String(copyOfRange(data, 14,
                         indexOf(data, mSeparator)));
-                return new String[] { saveDate, deleteAfter };
+                return new String[]{saveDate, deleteAfter};
             }
             return null;
         }

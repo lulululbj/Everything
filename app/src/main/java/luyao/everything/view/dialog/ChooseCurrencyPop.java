@@ -38,17 +38,17 @@ public class ChooseCurrencyPop extends PopupWindow {
     private CurrencyAdapter currencyAdapter;
     private OnItemClick onItemClick;
     private Activity context;
-    private List<Currency> currencyList=new ArrayList<>();
+    private List<Currency> currencyList = new ArrayList<>();
 
-    public ChooseCurrencyPop(Activity context){
-        this.context=context;
+    public ChooseCurrencyPop(Activity context) {
+        this.context = context;
         initPop();
     }
 
-    private void initPop(){
-        View view= LayoutInflater.from(EverythingApplication.CONTEXT).inflate(R.layout.pop_choose_currency,null);
+    private void initPop() {
+        View view = LayoutInflater.from(EverythingApplication.CONTEXT).inflate(R.layout.pop_choose_currency, null);
         ScreenUtil.initScale(view);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         setContentView(view);
         setWidth(ScreenUtil.getScalePxValue(640));
@@ -60,13 +60,13 @@ public class ChooseCurrencyPop extends PopupWindow {
 
         currencyRecycle.setLayoutManager(new LinearLayoutManager(EverythingApplication.CONTEXT));
 //        currencyRecycle.addItemDecoration(new LinearItemDecoration(EverythingApplication.CONTEXT,LinearItemDecoration.VERTICAL_LIST));
-        if (currencyAdapter==null)currencyAdapter=new CurrencyAdapter();
+        if (currencyAdapter == null) currencyAdapter = new CurrencyAdapter();
         currencyRecycle.setAdapter(currencyAdapter);
 
-        String[] NAMES=EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_name);
-        String[] CODES=EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_code);
-        for (int i=0;i<NAMES.length;i++){
-            Currency currency=new Currency();
+        String[] NAMES = EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_name);
+        String[] CODES = EverythingApplication.CONTEXT.getResources().getStringArray(R.array.currency_code);
+        for (int i = 0; i < NAMES.length; i++) {
+            Currency currency = new Currency();
             currency.setCode(CODES[i]);
             currency.setName(NAMES[i]);
             currencyList.add(currency);
@@ -76,8 +76,8 @@ public class ChooseCurrencyPop extends PopupWindow {
         currencyAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (onItemClick!=null){
-                    onItemClick.onItemCkick(position,currencyList.get(position));
+                if (onItemClick != null) {
+                    onItemClick.onItemCkick(position, currencyList.get(position));
                     dismiss();
                 }
             }
@@ -91,12 +91,12 @@ public class ChooseCurrencyPop extends PopupWindow {
         });
     }
 
-    public void show(View v){
-        if (isShowing()){
+    public void show(View v) {
+        if (isShowing()) {
             dismiss();
             backgroundAlpha(context, 1f);
-        }else {
-            showAtLocation(v, Gravity.CENTER,0,0);
+        } else {
+            showAtLocation(v, Gravity.CENTER, 0, 0);
             backgroundAlpha(context, 0.7f);
         }
     }

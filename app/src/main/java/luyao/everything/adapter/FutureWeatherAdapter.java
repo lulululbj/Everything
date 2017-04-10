@@ -1,7 +1,5 @@
 package luyao.everything.adapter;
 
-import android.renderscript.ScriptGroup;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +19,7 @@ public class FutureWeatherAdapter extends BaseRecycleViewAdapter<FutureWeatherEn
 
     @Override
     public void bindData(FutureWeatherHOlder holder, FutureWeatherEnity data, int viewType, int position) {
-            holder.future_dayWeather.setText(data.getDayTime());
+        holder.future_dayWeather.setText(data.getDayTime());
         holder.future_nightWeather.setText(data.getNight());
         holder.future_weekDay.setText(data.getWeek());
         holder.future_tem.setText(data.getTemperature());

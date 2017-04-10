@@ -9,11 +9,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import luyao.everything.EverythingApplication;
+import luyao.everything.R;
 import luyao.everything.adapter.ManagerAdapter;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.utils.Constants;
-import luyao.everything.R;
 
 /**
  * 服务管理

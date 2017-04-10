@@ -13,14 +13,14 @@
         android:layout_alignParentStart="true"
         android:padding="20px">
 
-       <Button
-           android:id="@+id/guide_bt"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:textSize="32px"
-           tools:text="天气预报"
-           android:gravity="center"
-           android:background="@drawable/guide_item_bg_normal"/>
+        <Button
+            android:id="@+id/guide_bt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="32px"
+            tools:text="天气预报"
+            android:gravity="center"
+            android:background="@drawable/guide_item_bg_normal" />
 
     </RelativeLayout>
 

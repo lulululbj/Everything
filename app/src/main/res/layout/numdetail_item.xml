@@ -16,9 +16,8 @@
             android:textColor="@color/black"
             tools:text="德邦"
             android:gravity="center_vertical"
-            android:paddingLeft="20px"/>
+            android:paddingLeft="20px" />
     </RelativeLayout>
-
 
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

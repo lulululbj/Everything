@@ -15,13 +15,14 @@ import rx.Subscription;
 public class SplashPresenter extends SplashConstract.Presenter {
 
 
-    public SplashPresenter(SplashConstract.View view){
-        mView=view;
-        mModel=new SplashModel();
+    public SplashPresenter(SplashConstract.View view) {
+        mView = view;
+        mModel = new SplashModel();
     }
+
     @Override
     void getBingImg() {
-        Subscription subscription=mModel.getBingImg()
+        Subscription subscription = mModel.getBingImg()
                 .subscribe(new BaseSubscriber2<BingImageBean>(mView) {
                     @Override
                     public void onNext(BingImageBean bingImageBean) {
@@ -33,12 +34,13 @@ public class SplashPresenter extends SplashConstract.Presenter {
 
     @Override
     void getCityList() {
-        Subscription subscription=mModel.getCityList()
+        Subscription subscription = mModel.getCityList()
                 .subscribe(new BaseSubscriber2<List<Province>>(mView) {
                     @Override
                     public void onNext(List<Province> list) {
                         mView.getCityList(list);
                     }
                 });
+        addSubscribe(subscription);
     }
 }

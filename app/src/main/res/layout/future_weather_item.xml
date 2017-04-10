@@ -34,10 +34,6 @@
             android:text="温度" />
 
 
-
-
-
-
     </LinearLayout>
 
 </RelativeLayout>

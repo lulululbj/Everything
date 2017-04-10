@@ -2,7 +2,6 @@ package luyao.everything.ui.activity;
 
 import android.view.View;
 
-
 import java.util.List;
 
 import luyao.everything.EverythingApplication;

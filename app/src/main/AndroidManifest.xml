@@ -108,8 +108,8 @@
             android:value="a97cec080f" />
         <!-- 配置APP版本号 -->
         <!--<meta-data-->
-            <!--android:name="BUGLY_APP_VERSION"-->
-            <!--android:value="1.0" />-->
+        <!--android:name="BUGLY_APP_VERSION"-->
+        <!--android:value="1.0" />-->
         <!-- 配置APP渠道号 -->
         <meta-data
             android:name="BUGLY_APP_CHANNEL"

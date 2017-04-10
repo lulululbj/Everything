@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/train_title"
-        layout="@layout/title_layout"/>
+    <include
+        android:id="@+id/train_title"
+        layout="@layout/title_layout" />
 
 </RelativeLayout>

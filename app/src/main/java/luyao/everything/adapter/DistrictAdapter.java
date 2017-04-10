@@ -8,7 +8,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import luyao.everything.R;
 import luyao.everything.enity.area.District;
-import luyao.everything.enity.area.Province;
 
 /**
  * Created by Lu

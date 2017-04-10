@@ -14,7 +14,7 @@
             android:layout_height="80px"
             android:src="@mipmap/ic_launcher"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="40px"/>
+            android:layout_marginLeft="40px" />
 
         <TextView
             android:id="@+id/manager_service"
@@ -25,7 +25,7 @@
             android:textColor="@color/black"
             tools:text="天气预报"
             android:layout_toRightOf="@id/manager_img"
-            android:layout_marginLeft="50px"/>
+            android:layout_marginLeft="50px" />
 
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/manager_switch"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="40px"/>
+            android:layout_marginRight="40px" />
 
     </RelativeLayout>
 

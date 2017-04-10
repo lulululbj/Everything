@@ -21,6 +21,6 @@ public class Constants {
     public static final String CITY = "city_list";//市
     public static final String DISTRICT = "district_list";//区
 
-    public static final String NUMBERENITY="number_enity";
+    public static final String NUMBERENITY = "number_enity";
 
 }

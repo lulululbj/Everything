@@ -26,19 +26,19 @@ public interface ApiService {
     Observable<HttpResult<List<WeatherEnity>>> getWeather(@Query("key") String key, @Query("city") String city, @Query("province") String province);
 
     @GET("v1/weather/citys")
-    Observable<HttpResult<List<Province>>> getCity(@Query("key")String key);
+    Observable<HttpResult<List<Province>>> getCity(@Query("key") String key);
 
     @GET("appstore/calendar/day")
     Observable<HttpResult<CalendarFortune>> getTodayFortune(@Query("key") String key, @Query("date") String date);
 
     @GET("lottery/list")
-    Observable<HttpResult<List<String>>>  getLotteryList(@Query("key")String key);
+    Observable<HttpResult<List<String>>> getLotteryList(@Query("key") String key);
 
     @GET("lottery/query")
-    Observable<HttpResult<LotteryResult>> getLotteryResult(@Query("key")String key,@Query("name")String name,@Query("period")String period);
+    Observable<HttpResult<LotteryResult>> getLotteryResult(@Query("key") String key, @Query("name") String name, @Query("period") String period);
 
     @GET("exchange/code/query")
-    Observable<HttpResult<ExcangeResult>> getExchangeResult(@Query("key")String key,@Query("code")String code);
+    Observable<HttpResult<ExcangeResult>> getExchangeResult(@Query("key") String key, @Query("code") String code);
 
     @GET("http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1491805738297&pid=hp")
     Observable<BingImageBean> getBingImage();

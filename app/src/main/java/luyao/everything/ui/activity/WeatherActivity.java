@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,7 +23,6 @@ import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
-
 import luyao.everything.message.ChooseMessage;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
@@ -129,9 +127,9 @@ public class WeatherActivity extends BaseActivity {
     protected void initData() {
 
 
-        if (!PreferencesUtils.get(PreferencesUtils.HAS_USER_CHOSED,false)){
+        if (!PreferencesUtils.get(PreferencesUtils.HAS_USER_CHOSED, false)) {
             startActivity(ChooseProvinceActivity.class);
-        }else {
+        } else {
 
             WeatherEnity weatherEnity = (WeatherEnity) EverythingApplication.mACache.getAsObject(Constants.WEATHER_DATA);
             if (weatherEnity != null) {

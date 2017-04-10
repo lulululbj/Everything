@@ -14,9 +14,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import luyao.everything.EverythingApplication;
 import luyao.everything.R;
-import luyao.everything.api.Api;
-import luyao.everything.api.BaseSubscriber;
-import luyao.everything.base.BaseActivity;
 import luyao.everything.base.mvp.BaseMvpActivity;
 import luyao.everything.enity.BingImageBean;
 import luyao.everything.enity.area.Province;
@@ -25,7 +22,6 @@ import luyao.everything.ui.activity.MenuActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.PreferencesUtils;
-import rx.Subscriber;
 
 /**
  * 欢迎页

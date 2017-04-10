@@ -20,7 +20,7 @@
             android:layout_width="180px"
             android:layout_height="180px"
             android:src="@mipmap/ic_launcher"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/main_tv"
@@ -30,7 +30,7 @@
             tools:text="天气预报"
             android:layout_centerHorizontal="true"
             android:textSize="28px"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 

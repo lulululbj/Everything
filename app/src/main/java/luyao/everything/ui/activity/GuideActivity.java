@@ -84,9 +84,9 @@ public class GuideActivity extends BaseActivity {
         } else {
             EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) guideEnities);
             EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) guideAdapter.getAll());
-            List<GuideEnity> unSelect=new ArrayList<>();
-            for (GuideEnity guideEnity:guideAdapter.getAll()){
-                if (!guideEnity.isSelected())unSelect.add(guideEnity);
+            List<GuideEnity> unSelect = new ArrayList<>();
+            for (GuideEnity guideEnity : guideAdapter.getAll()) {
+                if (!guideEnity.isSelected()) unSelect.add(guideEnity);
             }
             EverythingApplication.mACache.put(Constants.UNSELECT_GUIDES, (Serializable) unSelect);
             startActivity(MenuActivity.class);

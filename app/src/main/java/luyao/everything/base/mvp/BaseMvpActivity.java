@@ -125,7 +125,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
 
     @Override
     public void onRequestError(String msg) {
-        LogUtils.e("net", "onRequestError "+msg);
+        LogUtils.e("net", "onRequestError " + msg);
     }
 
     @Override

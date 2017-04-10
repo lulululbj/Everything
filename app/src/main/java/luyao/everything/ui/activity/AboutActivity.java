@@ -37,8 +37,8 @@ public class AboutActivity extends BaseActivity {
     }
 
     @OnClick({R.id.about_qq})
-    public void onClick(){
-        Util.copy(about_qq.getText().toString(),getApplicationContext());
+    public void onClick() {
+        Util.copy(about_qq.getText().toString(), getApplicationContext());
         ToastUtil.showToast("已为您复制到剪切板");
     }
 

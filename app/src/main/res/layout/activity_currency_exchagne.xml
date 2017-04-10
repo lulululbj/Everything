@@ -38,7 +38,7 @@
         android:textSize="32px"
         android:textColor="@color/white"
         android:background="@drawable/round_corner"
-        android:gravity="center"/>
+        android:gravity="center" />
 
 
     <LinearLayout

@@ -24,22 +24,23 @@ public class ChooseCityActivity extends BaseChooseActivity<City> {
 
     @Override
     protected void initView() {
-        super.initView();  }
+        super.initView();
+    }
 
     @Override
     protected void initData() {
-        if (cityAdapter==null) cityAdapter=new CityAdapter();
+        if (cityAdapter == null) cityAdapter = new CityAdapter();
         chooseRecycler.setAdapter(cityAdapter);
         cityAdapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                PreferencesUtils.set(PreferencesUtils.CITY,dataList.get(position).getCity());
+                PreferencesUtils.set(PreferencesUtils.CITY, dataList.get(position).getCity());
                 EverythingApplication.mACache.put(Constants.DISTRICT, (Serializable) dataList.get(position).getDistrict());
                 startActivity(ChooseDistrictActivity.class);
             }
         });
 
-        List<City> cityList=(List<City>) EverythingApplication.mACache.getAsObject(Constants.CITY);
+        List<City> cityList = (List<City>) EverythingApplication.mACache.getAsObject(Constants.CITY);
         setDataList(cityList);
         cityAdapter.setData(dataList);
     }

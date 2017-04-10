@@ -62,7 +62,7 @@ public class LocationUtil {
     private class MyLocationListener implements AMapLocationListener {
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
-             locationCallBack.locationCallBack(aMapLocation);
+            locationCallBack.locationCallBack(aMapLocation);
         }
     }
 

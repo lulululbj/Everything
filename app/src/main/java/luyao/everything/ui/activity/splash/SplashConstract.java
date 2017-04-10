@@ -1,7 +1,6 @@
 package luyao.everything.ui.activity.splash;
 
 
-
 import java.util.List;
 
 import luyao.everything.base.mvp.BaseModel;
@@ -18,18 +17,21 @@ import rx.Observable;
 
 public interface SplashConstract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void getBingImg(BingImageBean bingImage);
+
         void getCityList(List<Province> list);
     }
 
-    interface Model extends BaseModel{
+    interface Model extends BaseModel {
         Observable<BingImageBean> getBingImg();
+
         Observable<List<Province>> getCityList();
     }
 
-    abstract class Presenter extends BasePresenter<View,Model>{
+    abstract class Presenter extends BasePresenter<View, Model> {
         abstract void getBingImg();
+
         abstract void getCityList();
     }
 }

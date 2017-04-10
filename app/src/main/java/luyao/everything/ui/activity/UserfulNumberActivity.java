@@ -1,7 +1,6 @@
 package luyao.everything.ui.activity;
 
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

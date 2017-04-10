@@ -17,7 +17,7 @@
             android:layout_width="60px"
             android:layout_height="60px"
             android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="30px"/>
+            android:layout_marginLeft="30px" />
 
         <TextView
             android:id="@+id/main_tv"
@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:textSize="28px"
             android:layout_marginLeft="20px"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 
