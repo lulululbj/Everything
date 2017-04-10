@@ -18,7 +18,6 @@ import luyao.everything.enity.LotteryResult;
 
 public class LotteryAdapter extends BaseRecycleViewAdapter<String, LotteryAdapter.LotteryHolder> {
 
-
     @Override
     public void bindData(final LotteryHolder holder, String data, int viewType, int position) {
         Api.getInstance().getLotteryResult(new BaseSubscriber<LotteryResult>() {
@@ -35,7 +34,7 @@ public class LotteryAdapter extends BaseRecycleViewAdapter<String, LotteryAdapte
                     holder.lottery_pool.setVisibility(View.VISIBLE);
 
                     java.math.BigDecimal bigDecimal = new java.math.BigDecimal(lotteryResult.getPool());
-                    holder.lottery_pool.setText(String.format("%s元",bigDecimal.toPlainString()));
+                    holder.lottery_pool.setText(String.format("%s元", bigDecimal.toPlainString()));
                 }
                 holder.lottery_time.setText(lotteryResult.getAwardDateTime());
             }

@@ -8,12 +8,7 @@ import java.util.List;
 import butterknife.BindView;
 import luyao.everything.R;
 import luyao.everything.adapter.LotteryAdapter;
-import luyao.everything.api.Api;
-import luyao.everything.api.BaseSubscriber;
-import luyao.everything.base.BaseActivity;
 import luyao.everything.base.mvp.BaseMvpActivity;
-import luyao.everything.enity.LotteryResult;
-import luyao.everything.utils.ToastUtil;
 import luyao.everything.view.SpaceItemDecoration;
 
 /**

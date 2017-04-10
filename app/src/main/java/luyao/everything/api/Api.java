@@ -107,14 +107,6 @@ public class Api {
 
 
     /**
-     * 万年历
-     */
-    public void getTodayFortune(Subscriber<CalendarFortune> subscriber, String date) {
-        Observable o = getApiSerVice().getTodayFortune(Constants.MOB_APPKEY, date).map(new HttpResultFunc<CalendarFortune>());
-        toSubscribe(o, subscriber);
-    }
-
-    /**
      * 获取开奖结果
      */
     public void getLotteryResult(Subscriber<LotteryResult> subscriber, String name, String period) {

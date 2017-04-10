@@ -51,7 +51,7 @@
             android:name=".ui.activity.WeatherActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.CalendarActivty"
+            android:name=".ui.activity.calendar.CalendarActivty"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ChooseProvinceActivity"
