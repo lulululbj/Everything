@@ -13,7 +13,6 @@ public class Constants {
 
     //Acache
     public static final String SELECT_GUIDES = "select_guides";//用户选择服务
-    public static final String UNSELECT_GUIDES = "unselect_guides";//用户选择服务
     public static final String ALL_GUIDES = "all_guides";//所有服务（含用户选中状态）
     public static final String WEATHER_DATA = "weather_data";//天气信息
     public static final String CITY_LIST = "city_data";//
@@ -23,4 +22,6 @@ public class Constants {
 
     public static final String NUMBERENITY = "number_enity";
 
+    //RxBus 标识
+    public static final int MESSAGE_REFRESH_GUIDE = 1001;
 }

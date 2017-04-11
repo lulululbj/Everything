@@ -88,7 +88,6 @@ public class GuideActivity extends BaseActivity {
             for (GuideEnity guideEnity : guideAdapter.getAll()) {
                 if (!guideEnity.isSelected()) unSelect.add(guideEnity);
             }
-            EverythingApplication.mACache.put(Constants.UNSELECT_GUIDES, (Serializable) unSelect);
             startActivity(MenuActivity.class);
             finish();
         }

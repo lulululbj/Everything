@@ -1,4 +1,4 @@
-package luyao.everything.ui.activity;
+package luyao.everything.ui.activity.weather;
 
 import android.view.View;
 
@@ -10,6 +10,7 @@ import luyao.everything.adapter.DistrictAdapter;
 import luyao.everything.base.BaseChooseActivity;
 import luyao.everything.enity.area.District;
 import luyao.everything.message.ChooseMessage;
+import luyao.everything.ui.activity.WeatherActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.PreferencesUtils;
 import luyao.everything.utils.RxBus;

@@ -10,3 +10,8 @@
 /captures
 .externalNativeBuild
 
+.idea/kotlinc.xml
+.idea/markdown-navigator.xml
+.idea/markdown-navigator/
+app/Everything_v1.0_20170328_baidu.apk
+app/Everything_v1.0_20170410_baidu.apk

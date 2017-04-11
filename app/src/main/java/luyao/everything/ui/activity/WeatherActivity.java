@@ -24,6 +24,7 @@ import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
 import luyao.everything.message.ChooseMessage;
+import luyao.everything.ui.activity.weather.ChooseProvinceActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
 import luyao.everything.utils.LogUtils;

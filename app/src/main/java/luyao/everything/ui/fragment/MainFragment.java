@@ -2,7 +2,6 @@ package luyao.everything.ui.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,7 +18,9 @@ import luyao.everything.base.BaseFragment;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.ui.activity.MenuActivity;
 import luyao.everything.utils.Constants;
-import luyao.everything.view.MainItemTouchHelperCallBack;
+import luyao.everything.utils.RxBus;
+import rx.Subscription;
+import rx.functions.Action1;
 
 /**
  * 主页面Fragment
@@ -36,6 +37,7 @@ public class MainFragment extends BaseFragment {
 
     private MainAdapter mainAdapter;
     private List<GuideEnity> guideEnities = new ArrayList<>();
+    private  Subscription rxSubscription;
 
     @Override
     protected int getLayoutResId() {
@@ -48,9 +50,16 @@ public class MainFragment extends BaseFragment {
         mainRecycleView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         if (mainAdapter == null) mainAdapter = new MainAdapter();
         mainRecycleView.setAdapter(mainAdapter);
-        MainItemTouchHelperCallBack callBack = new MainItemTouchHelperCallBack(mainAdapter);
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callBack);
-        itemTouchHelper.attachToRecyclerView(mainRecycleView);
+
+
+        rxSubscription= RxBus.getDefault().toObservable(Integer.class)
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                       mainAdapter.setData((List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.SELECT_GUIDES));
+                    }
+                });
+
     }
 
     @Override
@@ -67,13 +76,6 @@ public class MainFragment extends BaseFragment {
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        guideEnities = (List<GuideEnity>) EverythingApplication.mACache.getAsObject(Constants.SELECT_GUIDES);
-        if (guideEnities == null) guideEnities = new ArrayList<>();
-        mainAdapter.setData(guideEnities);
-    }
 
     @OnClick({R.id.title_back})
     public void onClick(View v) {

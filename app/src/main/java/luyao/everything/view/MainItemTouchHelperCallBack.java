@@ -1,6 +1,6 @@
 package luyao.everything.view;
 
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
@@ -26,8 +26,8 @@ public class MainItemTouchHelperCallBack extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        if (recyclerView.getLayoutManager() instanceof GridLayoutManager) {
-            int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+            int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
             int swipeFlags = 0;
             return makeMovementFlags(dragFlags, swipeFlags);
         }

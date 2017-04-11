@@ -45,6 +45,7 @@ public class Util {
             guideEnity.setName(guideNames[i]);
             guideEnity.setResId(guideImgs[i]);
             guideEnity.setZ(z[i]);
+            guideEnity.setSelected(true);
             guideEnities.add(guideEnity);
         }
         return guideEnities;

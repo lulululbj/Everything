@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,11 +22,11 @@ import luyao.everything.enity.GuideEnity;
  * on 2016/12/2 14:45.
  */
 
-public class ManagerAdapter extends BaseRecycleViewAdapter<GuideEnity, ManagerAdapter.ManagerHolder> {
+public class ManagerAdapter extends BaseRecycleViewAdapter<GuideEnity, ManagerAdapter.ManagerHolder> implements OnMoveListener {
 
 
     @Override
-    public void bindData(ManagerHolder holder, final GuideEnity data, int viewType, int position) {
+    public void bindData(final ManagerHolder holder, final GuideEnity data, int viewType, int position) {
         holder.manager_img.setImageResource(data.getResId());
         holder.manager_service.setText(data.getName());
         holder.manager_switch.setChecked(data.isSelected());
@@ -35,11 +37,19 @@ public class ManagerAdapter extends BaseRecycleViewAdapter<GuideEnity, ManagerAd
                 data.setSelected(b);
             }
         });
+
     }
 
     @Override
     public ManagerHolder createHolder(ViewGroup parent, int viewType) {
         return new ManagerHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.manager_item, null));
+    }
+
+    @Override
+    public boolean onItemMove(int fromPostion, int toPosition) {
+        Collections.swap(mData, fromPostion, toPosition);
+        notifyItemMoved(fromPostion, toPosition);
+        return true;
     }
 
     class ManagerHolder extends BaseRecycleViewAdapter.BaseHolder {
@@ -50,6 +60,8 @@ public class ManagerAdapter extends BaseRecycleViewAdapter<GuideEnity, ManagerAd
         TextView manager_service;
         @BindView(R.id.manager_switch)
         SwitchCompat manager_switch;
+        @BindView(R.id.item_manager_root)
+        RelativeLayout item_manager_root;
 
         public ManagerHolder(View itemView) {
             super(itemView);

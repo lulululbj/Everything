@@ -1,4 +1,4 @@
-package luyao.everything.ui.activity;
+package luyao.everything.ui.activity.weather;
 
 import android.view.View;
 

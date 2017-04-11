@@ -17,11 +17,11 @@ import luyao.everything.R;
 import luyao.everything.base.mvp.BaseMvpActivity;
 import luyao.everything.enity.BingImageBean;
 import luyao.everything.enity.area.Province;
-import luyao.everything.ui.activity.GuideActivity;
 import luyao.everything.ui.activity.MenuActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LogUtils;
 import luyao.everything.utils.PreferencesUtils;
+import luyao.everything.utils.Util;
 
 /**
  * 欢迎页
@@ -57,12 +57,11 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
         if (PreferencesUtils.get(PreferencesUtils.IS_FIRST, true)) {
             //首次登陆时，获取部分所需数据
             mPresenter.getCityList();//城市列表
-
+            EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) Util.getAllGuide(getApplicationContext()));
+            EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) Util.getAllGuide(getApplicationContext()));
+            PreferencesUtils.set(PreferencesUtils.IS_FIRST, false);
         }
-
         mPresenter.getBingImg();
-
-
     }
 
     @OnClick({R.id.welcome_tv})
@@ -85,13 +84,7 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
     };
 
     private void startActivity() {
-        if (PreferencesUtils.get(PreferencesUtils.IS_FIRST, true)) {
-            startActivity(GuideActivity.class);
-
-        } else {
-            startActivity(MenuActivity.class);
-        }
-        PreferencesUtils.set(PreferencesUtils.IS_FIRST, false);
+        startActivity(MenuActivity.class);
         finish();
     }
 
@@ -100,7 +93,6 @@ public class SplashActivity extends BaseMvpActivity<SplashPresenter> implements 
         LogUtils.e("bing", bingImage.getImages().get(0).getUrlbase());
         String url = String.format("http://cn.bing.com/%s_480x800.jpg", bingImage.getImages().get(0).getUrlbase());
         Glide.with(mContext).load(url).into(splashImg);
-
     }
 
     @Override

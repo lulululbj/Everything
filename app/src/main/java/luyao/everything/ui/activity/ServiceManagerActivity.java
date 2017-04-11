@@ -2,6 +2,8 @@ package luyao.everything.ui.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.widget.CheckBox;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import luyao.everything.adapter.ManagerAdapter;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.utils.Constants;
+import luyao.everything.utils.RxBus;
+import luyao.everything.view.MainItemTouchHelperCallBack;
 
 /**
  * 服务管理
@@ -28,6 +32,7 @@ public class ServiceManagerActivity extends BaseActivity {
 
     private ManagerAdapter managerAdapter;
     private List<GuideEnity> guideEnityList = new ArrayList<>();
+    private ItemTouchHelper itemTouchHelper;
 
     @Override
     protected int getLayoutResId() {
@@ -40,6 +45,11 @@ public class ServiceManagerActivity extends BaseActivity {
         managerRecycle.setLayoutManager(new LinearLayoutManager(this));
         if (managerAdapter == null) managerAdapter = new ManagerAdapter();
         managerRecycle.setAdapter(managerAdapter);
+
+
+        MainItemTouchHelperCallBack callBack = new MainItemTouchHelperCallBack(managerAdapter);
+        itemTouchHelper = new ItemTouchHelper(callBack);
+        itemTouchHelper.attachToRecyclerView(managerRecycle);
     }
 
     @Override
@@ -69,9 +79,10 @@ public class ServiceManagerActivity extends BaseActivity {
             }
         }
         EverythingApplication.mACache.put(Constants.SELECT_GUIDES, (Serializable) selectList);
-        EverythingApplication.mACache.put(Constants.UNSELECT_GUIDES, (Serializable) unSelectList);
         EverythingApplication.mACache.put(Constants.ALL_GUIDES, (Serializable) allList);
 
+        RxBus.getDefault().post(Constants.MESSAGE_REFRESH_GUIDE);
         super.onBackPressed();
     }
+
 }
