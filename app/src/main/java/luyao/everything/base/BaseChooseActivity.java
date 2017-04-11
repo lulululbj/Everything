@@ -8,7 +8,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import luyao.everything.R;
-import luyao.everything.message.ChooseMessage;
 import luyao.everything.utils.RxBus;
 import rx.Subscription;
 import rx.functions.Action1;
@@ -36,10 +35,10 @@ public abstract class BaseChooseActivity<T> extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        rxSubscription = RxBus.getDefault().toObservable(ChooseMessage.class)
-                .subscribe(new Action1<ChooseMessage>() {
+        rxSubscription = RxBus.getDefault().toObservable(Integer.class)
+                .subscribe(new Action1<Integer>() {
                     @Override
-                    public void call(ChooseMessage chooseMessage) {
+                    public void call(Integer integer) {
                         finish();
                     }
                 }, new Action1<Throwable>() {

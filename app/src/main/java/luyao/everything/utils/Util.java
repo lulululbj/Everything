@@ -14,6 +14,7 @@ import java.util.List;
 import luyao.everything.R;
 import luyao.everything.enity.GuideEnity;
 import luyao.everything.ui.activity.ExpressActivity;
+import luyao.everything.ui.activity.FlashLightActivity;
 import luyao.everything.ui.activity.TrainActivity;
 import luyao.everything.ui.activity.UserfulNumberActivity;
 import luyao.everything.ui.activity.WeatherActivity;
@@ -30,20 +31,25 @@ import luyao.everything.ui.activity.lottery.LotteryActivity;
 public class Util {
 
     /**
-     * 获取所有服务
+     * V1.0 获取所有服务
      */
     public static List<GuideEnity> getAllGuide(Context context) {
-        List<GuideEnity> guideEnities = new ArrayList<>();
+
         String[] guideNames = context.getResources().getStringArray(R.array.guide_name);
         int[] guideImgs = {R.drawable.weather_forecast, R.drawable.calendar, R.drawable.lottery, R.drawable.express, R.drawable.train,
-                R.drawable.currency, R.drawable.number};
+                R.drawable.currency, R.drawable.number,R.drawable.about};
         Class[] z = {WeatherActivity.class, CalendarActivty.class, LotteryActivity.class, ExpressActivity.class, TrainActivity.class,
-                CurrencyExchagneActivity.class, UserfulNumberActivity.class};
+                CurrencyExchagneActivity.class, UserfulNumberActivity.class, FlashLightActivity.class};
 
-        for (int i = 0; i < guideNames.length; i++) {
+        return getGuides(guideNames,guideImgs,z);
+    }
+
+    private static List<GuideEnity> getGuides(String[] names,int[] imgs,Class[] z){
+        List<GuideEnity> guideEnities = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
             GuideEnity guideEnity = new GuideEnity();
-            guideEnity.setName(guideNames[i]);
-            guideEnity.setResId(guideImgs[i]);
+            guideEnity.setName(names[i]);
+            guideEnity.setResId(imgs[i]);
             guideEnity.setZ(z[i]);
             guideEnity.setSelected(true);
             guideEnities.add(guideEnity);

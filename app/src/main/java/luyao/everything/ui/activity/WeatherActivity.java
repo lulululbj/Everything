@@ -23,7 +23,6 @@ import luyao.everything.api.Api;
 import luyao.everything.api.BaseSubscriber;
 import luyao.everything.base.BaseActivity;
 import luyao.everything.enity.weather.WeatherEnity;
-import luyao.everything.message.ChooseMessage;
 import luyao.everything.ui.activity.weather.ChooseProvinceActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.LocationUtil;
@@ -115,11 +114,12 @@ public class WeatherActivity extends BaseActivity {
         if (weatherAdapter == null) weatherAdapter = new FutureWeatherAdapter();
         futureWeatherRecycle.setAdapter(weatherAdapter);
 
-        rxSubscription = RxBus.getDefault().toObservable(ChooseMessage.class)
-                .subscribe(new Action1<ChooseMessage>() {
+        rxSubscription = RxBus.getDefault().toObservable(Integer.class)
+                .subscribe(new Action1<Integer>() {
                     @Override
-                    public void call(ChooseMessage chooseMessage) {
-                        finish();
+                    public void call(Integer integer) {
+                        if (integer == Constants.MESSAGE_FINISH_CHOOSE)
+                            finish();
                     }
                 });
     }

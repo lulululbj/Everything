@@ -9,7 +9,6 @@ import luyao.everything.adapter.BaseRecycleViewAdapter;
 import luyao.everything.adapter.DistrictAdapter;
 import luyao.everything.base.BaseChooseActivity;
 import luyao.everything.enity.area.District;
-import luyao.everything.message.ChooseMessage;
 import luyao.everything.ui.activity.WeatherActivity;
 import luyao.everything.utils.Constants;
 import luyao.everything.utils.PreferencesUtils;
@@ -36,7 +35,7 @@ public class ChooseDistrictActivity extends BaseChooseActivity<District> {
 
                 PreferencesUtils.set(PreferencesUtils.DISTRICT, dataList.get(position).getDistrict());
 
-                RxBus.getDefault().post(new ChooseMessage());
+                RxBus.getDefault().post(Constants.MESSAGE_FINISH_CHOOSE);
                 startActivity(WeatherActivity.class);
                 finish();
             }

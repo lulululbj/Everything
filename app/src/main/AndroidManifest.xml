@@ -24,6 +24,12 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
 
+    <!-- 相机，闪光灯-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.flash" />
+
     <application
         android:name=".EverythingApplication"
         android:allowBackup="true"
@@ -89,6 +95,9 @@
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:theme="@android:style/Theme.Translucent" />
+
+        <activity android:name=".ui.activity.FlashLightActivity"
+            android:screenOrientation="portrait"/>
 
 
         <!-- 高德定位

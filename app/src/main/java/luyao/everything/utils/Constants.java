@@ -24,4 +24,5 @@ public class Constants {
 
     //RxBus 标识
     public static final int MESSAGE_REFRESH_GUIDE = 1001;
+    public static final int MESSAGE_FINISH_CHOOSE = 1002;
 }
